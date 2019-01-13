@@ -1,0 +1,40 @@
+extends layout
+
+block content  
+    // Page Header
+    section.page-header.page_404
+        .container
+            .page-header_wrap
+                .page-heading
+                    h1 Error 404
+                ul.coustom-breadcrumb
+                    li
+                        a(href='#') Home
+                    li Error 404
+        // Dark Overlay
+        .dark-overlay
+    // /Page Header
+    // Error-404
+    section.error_404.section-padding
+        .container
+            .row
+                .col-md-6.col-sm-5
+                    .error_text_m
+                        h2
+                            | 4
+                            span 0
+                            | 4
+                        .background_icon
+                            i.fa.fa-road(aria-hidden='true')
+                .col-md-6.col-sm-7
+                    .not_found_msg
+                        .error_icon
+                            i.fa.fa-smile-o(aria-hidden='true')
+                        .error_msg_div
+                            h3
+                                | Oops, 
+                                span Page Can't be Found
+                            a.btn(href='/')
+                                | Back to Home 
+                                span.angle_arrow
+                                    i.fa.fa-angle-right(aria-hidden='true')

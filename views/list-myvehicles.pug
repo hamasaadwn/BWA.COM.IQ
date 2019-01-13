@@ -1,0 +1,76 @@
+extends layout
+
+block content
+    // my-vehicles
+    section.user_profile.inner_pages(style='padding-top: 1%')
+        .container
+            ul.coustom-breadcrumb
+                li
+                    a(href='/', style='color: #1e96fe') Home
+                li
+                    a(style='color: #1e96fe') >
+                li(style='color: #1e96fe') My Vehicles
+            
+            .row
+                .col-md-3.col-sm-3
+                    .profile_nav
+                        ul
+                            li
+                                a(href='/profile/myprofile') Profile Settings
+                            li.active
+                                a(href='/profile/myvehicles') My Vehicles
+                            li
+                                a(href='/parts/myvehicleparts') My Vehicle Parts
+                            li
+                                a(href='/car/addnewcar') Post a Vehicles
+                            li
+                                a(href='/parts/addCarPart') Post a Vehicle Part
+                            li
+                                a(href='/auth/logout') Sign Out
+                .col-md-6.col-sm-8
+                    .profile_wrap
+                        h5.uppercase.underline
+                            | My Vehicles 
+                        .my_vehicles_list
+                            ul.vehicle_listing
+                                each doc in result
+                                    if doc.state == 'active'
+                                        li(id="id"+doc._id)
+                                            .vehicle_img
+                                                a(href='/car/forsale/'+doc._id)
+                                                    if(doc.pics[0])
+                                                        img.img-responsive(src="/uploads/carpics/"+doc.pics[0], alt='image')
+                                                    if(!doc.pics[0])
+                                                        img.img-responsive(src="/images/Car-Placeholder.jpg", alt='image')
+                                            .vehicle_title
+                                                h6
+                                                    a(href='/car/forsale/'+doc._id) #{doc.model}
+                                            .vehicle_status
+                                                a.btn.outline.btn-xs.active-btn.chng(href='/inactive/'+doc._id) Sold
+                                                .clearfix
+                                                a(href='/car/edit/'+doc._id)
+                                                    i.fa.fa-pencil-square-o(aria-hidden='true')
+                                                a.delete-car(href='#',data-id=doc._id)
+                                                    i.fa.fa-trash(aria-hidden='true')
+                                    if doc.state == 'inactive'
+                                        li.deactive_vehicle(id="id"+doc._id)
+                                            .vehicle_img
+                                                a(href='/car/forsale/'+doc._id)
+                                                        if(doc.pics[0])
+                                                            img.img-responsive(src="/uploads/carpics/"+doc.pics[0], alt='image')
+                                                        if(!doc.pics[0])
+                                                            img.img-responsive(src="/images/Car-Placeholder.jpg", alt='image')
+                                            .vehicle_title
+                                                h6
+                                                    a(href='/car/forsale/'+doc._id) #{doc.model}
+                                            .vehicle_status
+                                                a.btn.outline.btn-xs.chng(href='/active/'+doc._id) Activate
+                                                .clearfix
+                                                a(href='/car/edit/'+doc._id)
+                                                    i.fa.fa-pencil-square-o(aria-hidden='true')
+                                                a.delete-car(href='#',data-id=doc._id)
+                                                    i.fa.fa-trash(aria-hidden='true')
+    script(src='/js/jquery.min.js')
+    script(src='/js/ajax/car-changestate.js')
+    script(src='/js/ajax/delete-car.js')
+                                        

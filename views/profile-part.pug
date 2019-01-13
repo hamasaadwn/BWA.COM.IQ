@@ -1,0 +1,234 @@
+extends layout
+
+block content  
+ 
+    // Listing-detail
+    section.listing-detail
+        .container
+            .listing_detail_head.white-text.div_zindex.row
+                .col-md-9
+                    h2(style='color:#000;')=part.name
+                    .car-location
+                        span
+                            i.fa.fa-map-marker(aria-hidden='true')
+                            |  Iraq / #{part.location}
+                .col-md-3
+                    .price_info
+                        p $#{part.price}
+
+            .row
+                .col-md-9
+                    .listing_images
+                        #listing_images_slider.listing_images_slider
+                            if !part.pics[0]
+                                div
+                                    img(src="/images/Car-Placeholder.jpg", alt='image')
+                            each image in part.pics
+                                div
+                                    img(src='/uploads/partpics/'+image, alt='image')
+                        #listing_images_slider_nav.listing_images_slider_nav
+                            each image in part.pics
+                                div
+                                    img(src='/uploads/partpics/'+image, alt='image')
+                    .listing_more_info
+                        .listing_detail_wrap
+                            // Nav tabs
+                            ul.nav.nav-tabs.gray-bg(role='tablist')
+                                li.active(role='presentation')
+                                    a(href='#vehicle-overview ', aria-controls='vehicle-overview', role='tab', data-toggle='tab') Car Part Overview 
+                                li(role='presentation')
+                                    a(href='#specification', aria-controls='specification', role='tab', data-toggle='tab') Technical Specification
+                            // Tab panes
+                            .tab-content
+                                // vehicle-overview
+                                #vehicle-overview.tab-pane.active(role='tabpanel')
+                                    h4 About This Car Part
+                                    p #{part.description}
+                                // Technical-Specification
+                                #specification.tab-pane(role='tabpanel')
+                                    .table-responsive
+                                        // Basic-Info-Table
+                                        table
+                                            thead
+                                                tr
+                                                    th(colspan='2') BASIC INFO
+                                            tbody
+                                                tr
+                                                    td Part Name
+                                                    td #{part.name}
+                                                tr
+                                                    td Brand
+                                                    td #{part.model}
+                                                tr
+                                                    td Make
+                                                    td #{part.make.makeName}
+                                                tr
+                                                    td Year
+                                                    td #{part.year}
+                // Side-Bar
+                aside.col-md-3
+                    if pro
+                        .sidebar_widget
+                            .widget_heading
+                                h5
+                                    i.fa.fa-address-card-o(aria-hidden='true')
+                                    |  Dealer Contact
+                            .dealer_detail
+                                img(src='/uploads/avatars/'+pro.avatar, alt='image')
+                                p
+                                    span Name:
+                                    |  #{pro.company}
+                                if pro.phoneNumber
+                                    p
+                                        span Phone:
+                                        |  #{pro.phoneNumber}
+                                p
+                                    span city:
+                                    |  #{pro.address.city}
+                                a.btn.btn-xs(href='#') View Profile
+                    else
+                        .sidebar_widget
+                            .widget_heading
+                                h5
+                                    i.fa.fa-address-card-o(aria-hidden='true')
+                                    |  Dealer Contact
+                            .dealer_detail
+                                p
+                                    span Name:
+                                    |  #{part.user.name}
+                                if part.user.phoneNumber
+                                    p
+                                        span Phone:
+                                        |  #{part.user.phoneNumber}
+                                p
+                                    span city:
+                                    |  #{part.location}
+                    //- .sidebar_widget
+                    //-     .widget_heading
+                    //-         h5
+                    //-             i.fa.fa-envelope(aria-hidden='true')
+                    //-             |  Message to Dealer
+                    //-     form(action='#')
+                    //-         .form-group
+                    //-             input.form-control(type='text', placeholder='Name')
+                    //-         .form-group
+                    //-             input.form-control(type='email', placeholder='Email')
+                    //-         .form-group
+                    //-             textarea.form-control(rows='4', placeholder='Message')
+                    //-         .form-group
+                    //-             input.btn.btn-block(type='submit', value='Send Message')
+                // /Side-Bar
+            .space-20
+            .divider
+            // Similar-Cars
+            .similar_cars
+                h3 Similar Cars
+                .row
+                    .col-md-3.grid_listing
+                        .product-listing-m.gray-bg
+                            .product-listing-img
+                                a(href='#')
+                                    img.img-responsive(src='assets/images/600x380.jpg', alt='image')
+                                .label_icon New
+                            .product-listing-content
+                                h5
+                                    a(href='#') Car Name
+                                p.list-price $89,000
+                                .car-location
+                                    span
+                                        i.fa.fa-map-marker(aria-hidden='true')
+                                        |  Erbil
+                                ul.features_list
+                                    li
+                                        i.fa.fa-road(aria-hidden='true')
+                                        | 35,000 km
+                                    li
+                                        i.fa.fa-tachometer(aria-hidden='true')
+                                        | 30.000 miles
+                                    li
+                                        i.fa.fa-calendar(aria-hidden='true')
+                                        | 2005 model
+                                    li
+                                        i.fa.fa-car(aria-hidden='true')
+                                        | Diesel
+                    .col-md-3.grid_listing
+                        .product-listing-m.gray-bg
+                            .product-listing-img
+                                a(href='#')
+                                    img.img-responsive(src='assets/images/600x380.jpg', alt='image')
+                                .label_icon New
+                            .product-listing-content
+                                h5
+                                    a(href='#') Car Name
+                                p.list-price $89,000
+                                .car-location
+                                    span
+                                        i.fa.fa-map-marker(aria-hidden='true')
+                                        |  Sulaymaniyah
+                                ul.features_list
+                                    li
+                                        i.fa.fa-road(aria-hidden='true')
+                                        | 35,000 km
+                                    li
+                                        i.fa.fa-tachometer(aria-hidden='true')
+                                        | 30.000 miles
+                                    li
+                                        i.fa.fa-calendar(aria-hidden='true')
+                                        | 2005 model
+                                    li
+                                        i.fa.fa-car(aria-hidden='true')
+                                        | Diesel
+                    .col-md-3.grid_listing
+                        .product-listing-m.gray-bg
+                            .product-listing-img
+                                a(href='#')
+                                    img.img-responsive(src='assets/images/600x380.jpg', alt='image')
+                                .label_icon Used
+                            .product-listing-content
+                                h5
+                                    a(href='#') Car Name
+                                p.list-price $89,000
+                                .car-location
+                                    span
+                                        i.fa.fa-map-marker(aria-hidden='true')
+                                        |  Erbil
+                                ul.features_list
+                                    li
+                                        i.fa.fa-road(aria-hidden='true')
+                                        | 35,000 km
+                                    li
+                                        i.fa.fa-tachometer(aria-hidden='true')
+                                        | 30.000 miles
+                                    li
+                                        i.fa.fa-calendar(aria-hidden='true')
+                                        | 2005 model
+                                    li
+                                        i.fa.fa-car(aria-hidden='true')
+                                        | Diesel
+                    .col-md-3.grid_listing
+                        .product-listing-m.gray-bg
+                            .product-listing-img
+                                a(href='#')
+                                    img.img-responsive(src='assets/images/600x380.jpg', alt='image')
+                                .label_icon Used
+                            .product-listing-content
+                                h5
+                                    a(href='#') Car Name
+                                p.list-price $89,000
+                                .car-location
+                                    span
+                                        i.fa.fa-map-marker(aria-hidden='true')
+                                        |  Kirkuk
+                                ul.features_list
+                                    li
+                                        i.fa.fa-road(aria-hidden='true')
+                                        | 35,000 km
+                                    li
+                                        i.fa.fa-tachometer(aria-hidden='true')
+                                        | 30.000 miles
+                                    li
+                                        i.fa.fa-calendar(aria-hidden='true')
+                                        | 2005 model
+                                    li
+                                        i.fa.fa-car(aria-hidden='true')
+                                        | Diesel

@@ -1,0 +1,100 @@
+extends layout
+
+block content   
+    // Banners
+    section#banner.banner-section
+        .container
+            .div_zindex
+                .row
+                    // Filter-Form
+                    section#filter_form.gray-bg
+                        .container 
+                            h3
+                                | Find Your Car 
+                                span (Easy search from here)
+                            .row
+                                form#filtSearch(action='/filtSearch', method='get')
+                                    .form-group.col-md-3.col-sm-6.black_input
+                                        .select
+                                            select#location.form-control(name='location')
+                                                option(value='') Select Location 
+                                                option(value='Slemany') Sulaymaniyah 
+                                                option(value='Halwer') Erbil 
+                                                option(value='Duhok') Duhok 
+                                    .form-group.col-md-3.col-sm-6.black_input
+                                        .select
+                                            select#makes.form-control(name='make')
+                                                option(value='') Select Brand
+
+                                    .form-group.col-md-3.col-sm-6.black_input
+                                        .select
+                                            select#models.form-control(name='model')
+                                                option(value='') Select Model
+
+                                    .form-group.col-md-3.col-sm-6.black_input
+                                        .select
+                                            select#year.form-control(name='year')
+                                                option(value='') Year of Model 
+                                    
+                                    .form-group.col-md-6.col-sm-6.black_input
+                                        label.form-label Price Range ($)
+                                        input#price_range.span2(type='text', value='', data-slider-min='0', data-slider-max='100000', data-slider-step='5', data-slider-value='[0,50000]')
+                                        input#minprice(type='hidden',name="minPrice",value="0")
+                                        input#maxprice(type='hidden',name="maxPrice",value="50000")
+                                        input(type='hidden',name="page",value="1")
+                                    .form-group.col-md-3.col-sm-6.black_input
+                                        .select
+                                            select#searchType.form-control(name="searchType")
+                                                option(value='') Type of Search
+                                                option(value='New') New Car
+                                                option(value='Used') Used Car
+                                    .form-group.col-md-3.col-sm-6
+                                        button.btn.btn-block(type='submit')
+                                            i.fa.fa-search(aria-hidden='true')
+                                            |  Search
+                    // /Filter-Form
+    // /Banners
+    // Listing-detail
+    section.listing-detail
+        .container
+            // Similar-Cars
+            .similar_cars
+                h3.text-center Featured Cars
+                .row
+                    each doc, i in car
+                        .col-md-3.grid_listing
+                            .product-listing-m.gray-bg
+                                .product-listing-img
+                                    a(href='/car/forsale/'+doc._id)
+                                        if(doc.pics[0])
+                                            img.img-responsive(src="/uploads/carpics/"+doc.pics[0], alt='image')
+                                        if(!doc.pics[0])
+                                            img.img-responsive(src="/images/Car-Placeholder.jpg", alt='image')
+                                    .label_icon #{doc.vehicle_type}
+                                .product-listing-content
+                                    h5
+                                        a(href='/car/forsale/'+doc._id) #{doc.model}
+                                    p.list-price $ #{doc.price}
+                                    .car-location
+                                        span
+                                            i.fa.fa-map-marker(aria-hidden='true')=doc.location
+                                    ul.features_list
+                                        li
+                                            i.fa.fa-road(aria-hidden='true')
+                                            | #{doc.kmsd} km
+                                        li
+                                            i.fa.fa-tachometer(aria-hidden='true')
+                                            | #{doc.drivetrian}
+                                        li
+                                            i.fa.fa-calendar(aria-hidden='true')
+                                            | #{doc.year}
+                                        li
+                                            i.fa.fa-car(aria-hidden='true')
+                                            | #{doc.fuelType}
+                    
+                    
+            // /Similar-Cars
+    // /Listing-detail
+    script(src='/js/jquery.min.js')
+    script(src='/js/ajax/car.js')
+    script(src='/js/ajax/filter-search.js')

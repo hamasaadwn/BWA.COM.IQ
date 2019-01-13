@@ -1,0 +1,117 @@
+extends layout
+
+block content
+    // Dealer-profile
+    section.dealer_profile.inner_pages(style='padding-top: 1%')
+        .container
+            ul.coustom-breadcrumb
+                li
+                    a(href='/', style='color: #1e96fe') Home
+                li
+                    a(style='color: #1e96fe') >
+                li(style='color: #1e96fe') Dealers Profile
+            .row
+                .col-md-3.col-sm-3.col-xs-4
+                    .dealer_logo
+                        img(src='/uploads/avatars/'+pro.avatar, alt='image')
+                .col-md-6.col-sm-5.col-xs-8
+                    .dealer_info
+                        h4 #{pro.company}
+                        p #{pro.address.city} - #{pro.address.street}
+                        ul.dealer_social_links
+                            if pro.socialLinks.facebook
+                                li.facebook-icon
+                                    a(href=pro.socialLinks.facebook)
+                                        i.fa.fa-facebook-square(aria-hidden='true')
+                            if pro.socialLinks.instagram
+                                li.instagram-icon
+                                    a(href=pro.socialLinks.instagram)
+                                        i.fa.fa-instagram(aria-hidden='true')
+                            if pro.socialLinks.youtube
+                                li.youtube-icon
+                                    a(href=pro.socialLinks.youtube)
+                                        i.fa.fa-youtube(aria-hidden='true')
+                            if pro.socialLinks.twitter
+                                li.twitter-icon
+                                    a(href=pro.socialLinks.twitter)
+                                        i.fa.fa-twitter(aria-hidden='true')
+                .col-md-3.col-sm-4.col-xs-12
+                    if pro.website
+                        .dealer_contact_info.gray-bg
+                            h6
+                                i.fa.fa-globe(aria-hidden='true')
+                                |  Website
+                            a(href=pro.website)=pro.website
+                    if pro.phoneNumber
+                    .dealer_contact_info.gray-bg
+                        h6
+                            i.fa.fa-phone(aria-hidden='true')
+                            |  Phone Number
+                        a(href='tel:'+pro.phoneNumber)=pro.phoneNumber
+                    //- .dealer_contact_info.gray-bg
+                    //-     h6
+                    //-         i.fa.fa-star(aria-hidden='true')
+                    //-         |  Rating
+                    //-     a .
+                    //-     fieldset.rating
+                    //-         input#star5(type='radio', name='rating', value='5')
+                    //-         label.full(for='star5', title='Awesome - 5 stars')
+                    //-         input#star4half(type='radio', name='rating', value='4 and a half')
+                    //-         label.half(for='star4half', title='Pretty good - 4.5 stars')
+                    //-         input#star4(type='radio', name='rating', value='4')
+                    //-         label.full(for='star4', title='Pretty good - 4 stars')
+                    //-         input#star3half(type='radio', name='rating', value='3 and a half')
+                    //-         label.half(for='star3half', title='Meh - 3.5 stars')
+                    //-         input#star3(type='radio', name='rating', value='3')
+                    //-         label.full(for='star3', title='Meh - 3 stars')
+                    //-         input#star2half(type='radio', name='rating', value='2 and a half')
+                    //-         label.half(for='star2half', title='Kinda bad - 2.5 stars')
+                    //-         input#star2(type='radio', name='rating', value='2')
+                    //-         label.full(for='star2', title='Kinda bad - 2 stars')
+                    //-         input#star1half(type='radio', name='rating', value='1 and a half')
+                    //-         label.half(for='star1half', title='Meh - 1.5 stars')
+                    //-         input#star1(type='radio', name='rating', value='1')
+                    //-         label.full(for='star1', title='Sucks big time - 1 star')
+                    //-         input#starhalf(type='radio', name='rating', value='half')
+                    //-         label.half(for='starhalf', title='Sucks big time - 0.5 stars')
+                    //-     script(src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js')
+            .space-60
+            .row
+                .col-md-9
+                    .dealer_more_info
+                        h5.gray-bg.info_title  About #{pro.company}
+                        p=pro.info
+                        .dealer_listings
+                            h6 Agency Listing Cars
+                            .row
+                                each car in cars
+                                    .col-md-4.grid_listing
+                                        .product-listing-m.gray-bg
+                                            .product-listing-img
+                                                a(href='/car/forsale/'+doc._id)
+                                                    if(doc.pics[0])
+                                                        img.img-responsive(src="/uploads/carpics/"+doc.pics[0], alt='image')
+                                                    if(!doc.pics[0])
+                                                        img.img-responsive(src="/images/Car-Placeholder.jpg", alt='image')
+                                                .label_icon #{doc.vehicle_type}
+                                            .product-listing-content
+                                                h5
+                                                    a(href='/car/forsale/'+doc._id) #{doc.model}
+                                                p.list-price $ #{doc.price}
+                                                .car-location
+                                                    span
+                                                        i.fa.fa-map-marker(aria-hidden='true')=doc.location
+                                                ul.features_list
+                                                    li
+                                                        i.fa.fa-road(aria-hidden='true')
+                                                        | #{doc.kmsd} km
+                                                    li
+                                                        i.fa.fa-tachometer(aria-hidden='true')
+                                                        | #{doc.drivetrian}
+                                                    li
+                                                        i.fa.fa-calendar(aria-hidden='true')
+                                                        | #{doc.year}
+                                                    li
+                                                        i.fa.fa-car(aria-hidden='true')
+                                                        | #{doc.fuelType}
+                                    

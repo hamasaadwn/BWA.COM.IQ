@@ -1,0 +1,49 @@
+extends layout
+
+block content
+    // Dealers-list
+    section.inner_pages(style='padding-top: 1%;')
+        .container
+            ul.coustom-breadcrumb
+                li
+                    a(href='/', style='color: #1e96fe;') Home
+                li
+                    a(style='color: #1e96fe;') >
+                li(style='color: #1e96fe;') Dealers List
+            .result-sorting-wrapper
+                .sorting-count
+                    p
+                        span #{result.totalDocs} Dealers available.
+                //- .result-sorting-by
+                //-     p Sort by:
+                //-     form(action='#', method='post')
+                //-         .form-group.select.sorting-select
+                //-             select.form-control
+                //-                 option Best Sellers
+                //-                 option Newest Sellers
+            .dealers_list_wrap
+                each doc, i in result.docs
+                    .dealers_listing
+                        .row
+                            .col-sm-3.col-xs-4
+                                .dealer_logo
+                                    a(href='/dealers/profile/'+doc._id)
+                                        img(src='/uploads/avatars/'+doc.avatar, alt='image')
+                            .col-sm-6.col-xs-8
+                                .dealer_info
+                                    h5
+                                        a(href='/dealers/profile/'+doc._id) #{doc.company}
+                                    p #{doc.address.city}
+                            .col-sm-3.col-xs-12
+                                .view_profile
+                                    a.btn.btn-xs.outline(href='/dealers/profile/'+doc._id) View Profile
+            .pagination
+                ul
+                    - for(var i = 1; i <= result.totalPages; i++) {
+                        if i == page
+                            li.current #{i}
+                        if i != page
+                            li
+                                a(href="/dealers?page="+i)=i
+                    -}
+    // /Dealers-list

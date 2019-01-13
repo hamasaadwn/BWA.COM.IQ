@@ -1,0 +1,36 @@
+extends layout
+
+block content
+    .container  
+        if user 
+            table.table
+                caption List of Users
+                thead
+                    tr
+                        th(scope="col") name
+                        th(scope="col") email
+                        th(scope="col") role
+                        th(scope="col") date created
+                tbody
+                    each user, i in users
+                        tr
+                            td= user.name
+                            td= user.email
+                            td
+                                select.custom-select.mr-sm-2(name="",id="id"+user._id)
+                                    if user.role == "admin"
+                                        option(value="admin",selected="") Admin
+                                    else
+                                        option(value="admin") Admin
+                                    if user.role == "user"
+                                        option(value="user",selected="") User
+                                    else 
+                                        option(value="user") User
+                                span 
+                                a.changerole(href='#',data-id=user._id)
+                                    i.fa.fa-save(aria-hidden='true')
+                            td= user.date
+    script(src='/js/jquery.min.js')
+    script(src='/js/ajax/change-role.js')
+
+                

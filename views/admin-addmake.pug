@@ -1,0 +1,31 @@
+extends layout
+
+block content  
+    
+	// /Header
+	// Page Header
+	section.page-header.profile_page
+		.container
+			.page-header_wrap
+				.page-heading
+					h1 Add New Car Make
+				ul.coustom-breadcrumb
+					li
+						a(href='/') Home
+					li Add New Car Make
+		// Dark Overlay
+		.dark-overlay
+	section.user_profile.inner_pages
+		.container
+			form#postMakes(action='/admin/addmake', method='post')
+				.form-group
+					label.control-label Make Name
+					input#makeName.form-control.white_bg(type='text',placeholder="make name",required="required")
+				.form-group
+					button.btn(style='width: 40%;', type='submit')
+						| Add Make 
+			ul#makes.list-group
+				//- each make, i in makes
+				//- 	li.list-group-item= make.makeName
+	script(src='/js/jquery.min.js')
+	script(src='/js/ajax/admin-addmake.js')

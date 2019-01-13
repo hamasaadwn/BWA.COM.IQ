@@ -1,0 +1,182 @@
+extends layout
+
+block content  
+    
+	// Navigation end
+	// /Header
+	// Page Header
+	section.page-header.profile_page
+		.container
+			.page-header_wrap
+				.page-heading
+					h1 Post a Vehicle
+				ul.coustom-breadcrumb
+					li
+						a(href='/') Home
+					li Post a Vehicle
+		// Dark Overlay
+		.dark-overlay
+	// /Page Header
+	// Post-vehicle
+	section.user_profile.inner_pages
+		.container
+			.user_profile_info.gray-bg.padding_4x4_40
+				//- .upload_user_logo
+				//- 	img(src='/images/222x172.jpg', alt='image')
+				//- 	.upload_newlogo
+				//- 		input(name='upload', type='file')
+				//- .dealer_info
+				//- 	h5 Muhannad Group
+				//- 	p Iraq - Sulaymaniyah
+			.row
+				.col-md-3.col-sm-3
+					.profile_nav
+						ul
+							li
+								a(href='/profile/myprofile') Profile Settings
+							li
+								a(href='/profile/myvehicles') My Vehicles
+							li
+								a(href='/parts/myvehicleparts') My Vehicle Parts
+							li.active
+								a(href='/car/addnewcar') Post a Vehicles
+							li
+								a(href='/parts/addCarPart') Post a Vehicle Part
+							li
+								a(href='/auth/logout') Sign Out
+				.col-md-6.col-sm-8
+					.profile_wrap
+						h5.uppercase.underline Post a New Vehicle
+						form(action='/car/addnewcar', method='post', encType="multipart/form-data")
+							.form-group
+								label.control-label Make
+								.select
+									select#makes.form-control.white_bg(name='make',required="")
+										option(value="") Select Brand
+							.form-group
+								label.control-label Model
+								.select
+									select#models.form-control.white_bg(name="model",required="")
+										option(value="") Select Model
+							.form-group
+								label.control-label Model Year
+								.select
+									select#year.form-control.white_bg(name="year",required="")
+										option(value="") Select Year
+							.form-group
+								label.control-label City
+								.select
+									select.form-control.white_bg(name="location")
+										option(value='Duhok') Duhok
+										option(value='Hawler') Hawler
+										option(value='Slemany') Slemany
+										
+
+							.form-group
+								label.control-label Vehicle Overview Description
+								textarea.form-control.white_bg(rows='4',name="description")
+							.form-group
+								label.control-label Price ($)
+								input#Price.form-control.white_bg(type='number',name='price')
+							.form-group
+								label.control-label Upload Images ( size = 900 x 560 )
+								.vehicle_images#gallery
+									.upload_more_img
+										input#gallery-photo-add(name='pics',multiple="multiple",accept="image/*", type='file')
+							.gray-bg.field-title
+								h6 Basic Info
+							.form-group
+								label.control-label KMs Driven
+								input#kws.form-control.white_bg(type='number',name='kmsd')
+							.form-group
+								label.control-label Fuel Type
+								.select
+									select.form-control.white_bg(name="fuelType")
+										option(value="",selected="") Select fuel type
+										option(value='Petrol') Petrol
+										option(value='Diesel') Diesel
+										option(value='LPG autogas') LPG autogas
+										option(value='Electric') Electric
+										option(value='Hybrid') Hybrid
+							.form-group
+								label.control-label Roof Type
+								.select
+									select.form-control.white_bg(name="roofType")
+										option(value="",selected="") Select roof type
+										option(value='Regular') Regular
+										option(value='Convertible') Convertible
+										option(value='Slide Sunroof') Slide Sunroof
+										option(value='Panoramic Sunroof') Panoramic Sunroof
+							.gray-bg.field-title
+								h6 Technical Specification
+							.form-group
+								label.control-label No. of Cylinders
+								input#cylinders.form-control.white_bg(type='text',name="cylNo")
+							.form-group
+								label.control-label Fuel Tank Capacity
+								input#capacity.form-control.white_bg(type='text',name="tankCap")
+							.form-group
+								label.control-label Seating Capacity
+								input#s-capacity.form-control.white_bg(type='text',name="seatCap")
+							.form-group
+								label.control-label Airbags
+								input#airbags.form-control.white_bg(type='number',name="airbags")
+							.form-group
+								label.control-label Transmission
+								.form-check.form-check-inline
+									input#inlineRadio1.form-check-input(type='radio', name='transmission', value='Automatic')
+									label.form-check-label(for='inlineRadio1') Automatic
+								.form-check.form-check-inline
+									input#inlineRadio2.form-check-input(type='radio', name='transmission', value='Manual')
+									label.form-check-label(for='inlineRadio2') Manual
+
+							.form-group
+								label.control-label Drivetrain
+								.select
+									select.form-control.white_bg(name="drivetrain")
+										option(value="",selected="") Select Drivetrain
+										option(value='AWD') AWD
+										option(value='FWD') FWD
+										option(value='RWD') RWD
+										option(value='4X4') 4X4
+							.gray-bg.field-title
+								h6 Accessories
+							.vehicle_accessories
+								.form-group.checkbox.col-md-6.accessories_list
+									input#screen(type='checkbox', name="screen",value="Big Screen")
+									label(for='screen') Big Screen
+								.form-group.checkbox.col-md-6.accessories_list
+									input#camera(type='checkbox', name="camera",value="Backup Camera")
+									label(for='camera') Backup Camera
+								.form-group.checkbox.col-md-6.accessories_list
+									input#bluetooth(type='checkbox', name="bluetooth",value="Bluetooth")
+									label(for='bluetooth') Bluetooth
+								.form-group.checkbox.col-md-6.accessories_list
+									input#seats(type='checkbox', name="lseats",value="Leather Seats")
+									label(for='seats') Leather Seats
+								.form-group.checkbox.col-md-6.accessories_list
+									input#hseats(type='checkbox', name="hseats",value="Heated Seats")
+									label(for='hseats') Heated Seats
+								.form-group.checkbox.col-md-6.accessories_list
+									input#starter(type='checkbox', name="starter",value="Remote Starter")
+									label(for='starter') Remote Starter
+								.form-group.checkbox.col-md-6.accessories_list
+									input#cruise(type='checkbox', name="cruise",value="Cruise Control")
+									label(for='cruise') Cruise Control
+								.form-group.checkbox.col-md-6.accessories_list
+									input#ac(type='checkbox', name="ac",value="Dual Air Conditioner")
+									label(for='ac') Dual Air Conditioner
+							.vehicle_type
+								.form-group.radio.col-md-6.accessories_list
+									input#newcar(type='radio', name='vehicle_type', value='New',required='')
+									label(for='newcar') New Car
+								.form-group.radio.col-md-6.accessories_list
+									input#usedcar(type='radio', name='vehicle_type', value='Used')
+									label(for='usedcar') Used Car
+							.form-group
+								button.btn(style='width: 100%;', type='submit')
+									| Submit and Post 
+									span.angle_arrow
+										i.fa.fa-angle-right(aria-hidden='true')
+	script(src='/js/jquery.min.js')
+	script(src='/js/ajax/car.js')

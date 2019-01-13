@@ -1,0 +1,34 @@
+extends layout
+
+block content   
+    form(action='/auth/register',method="post")
+        .field
+            label.label Name
+            .control
+                input.input(type='text', name='name', placeholder='Name',value=name)
+        .field
+            label.label Email
+            .control.has-icons-left
+                input.input(type='email',id="get-email", name='email', placeholder='Email',value=email)
+                span.icon.is-small.is-left
+                    i.fas.fa-envelope
+                p.help.is-danger#err This email is already in use
+
+        .field
+            label.label Password
+            .control
+                input.input(type='password', name='password', placeholder='password')
+        .field
+            label.label Confirm Password
+            .control
+                input.input(type='password', name='password2', placeholder='Confirm password')
+        .field
+            label.label Phone Number
+            .control
+                input.input(type='number', name='phoneNumber', placeholder='phoneNumber')
+
+        .field
+            p.control
+                button.button.is-success#sub(type='submit') Register
+
+    script(src='/js/checkEmail.js')

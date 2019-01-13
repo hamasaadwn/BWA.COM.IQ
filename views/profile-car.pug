@@ -1,0 +1,365 @@
+extends layout
+
+block content  
+    // Listing-detail-header
+    section.listing_detail_header
+        .container
+            .listing_detail_head.white-text.div_zindex.row
+                .col-md-9
+                    h2 #{car.make.makeName} #{car.model}
+                    .car-location
+                        span
+                            i.fa.fa-map-marker(aria-hidden='true')
+                            |  Iraq / #{car.location}
+                .col-md-3
+                    .price_info
+                        p $#{car.price}
+        .dark-overlay
+    // /Listing-detail-header
+    section.listing_other_info.secondary-bg
+        .container
+            #filter_toggle.search_other
+                i.fa.fa-filter(aria-hidden='true')
+                |  Quick Search
+            //- #other_info
+            //-     i.fa.fa-info-circle(aria-hidden='true')
+            //- #info_toggle
+            //-     button(type='button', data-toggle='modal', data-target='#email_friend')
+            //-         i.fa.fa-envelope(aria-hidden='true')
+            //-         |  Email to a Friend
+            //-     button(type='button', data-toggle='modal', data-target='#more_info')
+            //-         i.fa.fa-file-text-o(aria-hidden='true')
+            //-         |  Request More Info
+    // Filter-Form
+    section#filter_form.inner-filter.gray-bg
+        .container
+            h3
+                | Find Your Car 
+                span (Easy search from here)
+            .row
+                form#filtSearch(action='/filtSearch', method='get')
+                    .form-group.col-md-3.col-sm-6.black_input
+                        .select
+                            select#location.form-control(name='location')
+                                option(value='') Select Location 
+                                option(value='Slemany') Sulaymaniyah 
+                                option(value='Halwer') Erbil 
+                                option(value='Duhok') Duhok 
+                    .form-group.col-md-3.col-sm-6.black_input
+                        .select
+                            select#makes.form-control(name='make')
+                                option(value='') Select Brand
+                    .form-group.col-md-3.col-sm-6.black_input
+                        .select
+                            select#models.form-control(name='model')
+                                option(value='') Select Model
+                    .form-group.col-md-3.col-sm-6.black_input
+                        .select
+                            select#year.form-control(name='year')
+                                option(value='') Year of Model 
+                    .form-group.col-md-6.col-sm-6.black_input
+                        label.form-label Price Range ($)
+                        input#price_range.span2(type='text', value='', data-slider-min='0', data-slider-max='100000', data-slider-step='5', data-slider-value='[0,50000]')
+                        input#minprice(type='hidden',name="minPrice",value="0")
+                        input#maxprice(type='hidden',name="maxPrice",value="50000")
+                        input(type='hidden',name="page",value="1")
+                    .form-group.col-md-3.col-sm-6.black_input
+                        .select
+                            select#searchType.form-control(name="searchType")
+                                option(value='') Type of Search
+                                option(value='New') New Car
+                                option(value='Used') Used Car
+                    .form-group.col-md-3.col-sm-6
+                        button.btn.btn-block(type='submit')
+                            i.fa.fa-search(aria-hidden='true')
+                            |  Search
+    // /Filter-Form
+
+    // Listing-detail
+    section.listing-detail
+        .container
+            .row
+                .col-md-9
+                    .listing_images
+                        #listing_images_slider.listing_images_slider
+                            if !car.pics[0]
+                                div
+                                    img(src="/images/Car-Placeholder.jpg", alt='image')
+                            each image in car.pics
+                                div
+                                    img(src='/uploads/carpics/'+image, alt='image')
+                        #listing_images_slider_nav.listing_images_slider_nav
+                            each image in car.pics
+                                div
+                                    img(src='/uploads/carpics/'+image, alt='image')
+                    .main_features
+                        ul
+                            if car.kmsd
+                                li
+                                    i.fa.fa-tachometer(aria-hidden='true')
+                                    h5 #{car.kmsd}
+                                    p Total Kilometres
+                            li
+                                i.fa.fa-calendar(aria-hidden='true')
+                                h5 #{car.year}
+                                p Reg.Year
+                            if car.fuelType
+                                li
+                                    i.fa.fa-cogs(aria-hidden='true')
+                                    h5 #{car.fuelType}
+                                    p Fuel Type
+                            if car.transmission
+                                li
+                                    i.fa.fa-power-off(aria-hidden='true')
+                                    h5 #{car.transmission}
+                                    p Transmission
+                            if car.cylNo
+                                li
+                                    i.fa.fa-superpowers(aria-hidden='true')
+                                    h5 #{car.cylNo}
+                                    p Cylinders
+                            if car.seatCap
+                                li
+                                    i.fa.fa-user-plus(aria-hidden='true')
+                                    h5 #{car.seatCap}
+                                    p Seats
+                    .listing_more_info
+                        .listing_detail_wrap
+                            // Nav tabs
+                            ul.nav.nav-tabs.gray-bg(role='tablist')
+                                li.active(role='presentation')
+                                    a(href='#vehicle-overview ', aria-controls='vehicle-overview', role='tab', data-toggle='tab') Vehicle Overview 
+                                li(role='presentation')
+                                    a(href='#specification', aria-controls='specification', role='tab', data-toggle='tab') Technical Specification
+                                li(role='presentation')
+                                    a(href='#accessories', aria-controls='accessories', role='tab', data-toggle='tab') Accessories
+                            // Tab panes
+                            .tab-content
+                                // vehicle-overview
+                                #vehicle-overview.tab-pane.active(role='tabpanel')
+                                    h4 About This Car
+                                    p #{car.description}
+                                // Technical-Specification
+                                #specification.tab-pane(role='tabpanel')
+                                    .table-responsive
+                                        // Basic-Info-Table
+                                        table
+                                            thead
+                                                tr
+                                                    th(colspan='2') BASIC INFO
+                                            tbody
+                                                tr
+                                                    td Model Year
+                                                    td #{car.year}
+                                                if car.kmsd
+                                                    tr
+                                                        td KMs Driven
+                                                        td #{car.kmsd}
+                                                if car.fuelType
+                                                    tr
+                                                        td Fuel Type
+                                                        td #{car.fuelType}
+                                                if car.roofType
+                                                    tr
+                                                        td Roof Type
+                                                        td #{car.roofType}
+                                        // Technical-Specification-Table
+                                        table
+                                            thead
+                                                tr
+                                                    th(colspan='2') Technical Specification
+                                            tbody
+                                                if car.cylNo
+                                                    tr
+                                                        td No. of Cylinders
+                                                        td #{car.cylNo}
+                                                if car.tankCap
+                                                    tr
+                                                        td Fuel Tank Capacity
+                                                        td #{car.tankCap}
+                                                if car.seatCap
+                                                    tr
+                                                        td Seating Capacity
+                                                        td #{car.seatCap}
+                                                if car.airbags
+                                                    tr
+                                                        td Airbags
+                                                        td #{car.airbags}
+                                                if car.transmission
+                                                    tr
+                                                        td Transmission Type
+                                                        td #{car.transmission}
+                                                if car.drivetrain
+                                                    tr
+                                                        td Drivetrain
+                                                        td #{car.drivetrain}
+                                // Accessories
+                                #accessories.tab-pane(role='tabpanel')
+                                    // Accessories
+                                    table
+                                        thead
+                                            tr
+                                                th(colspan='2') Accessories
+                                        tbody
+                                            tr
+                                                td Leather Seats
+                                                td
+                                                    if car.lseats
+                                                        i.fa.fa-check(aria-hidden='true')
+                                                    else 
+                                                        i.fa.fa-close(aria-hidden='true')
+                                            tr
+                                                td Heated Seats
+                                                td
+                                                    if car.hseats
+                                                        i.fa.fa-check(aria-hidden='true')
+                                                    else 
+                                                        i.fa.fa-close(aria-hidden='true')
+                                            tr
+                                                td Big Screen
+                                                td
+                                                    if car.screen
+                                                        i.fa.fa-check(aria-hidden='true')
+                                                    else 
+                                                        i.fa.fa-close(aria-hidden='true')
+                                            tr
+                                                td Backup Camera
+                                                td
+                                                    if car.camera
+                                                        i.fa.fa-check(aria-hidden='true')
+                                                    else 
+                                                        i.fa.fa-close(aria-hidden='true')
+                                            tr
+                                                td Bluetooth
+                                                td
+                                                    if car.bluetooth
+                                                        i.fa.fa-check(aria-hidden='true')
+                                                    else 
+                                                        i.fa.fa-close(aria-hidden='true')
+                                            tr
+                                                td Remote Starter
+                                                td
+                                                    if car.starter
+                                                        i.fa.fa-check(aria-hidden='true')
+                                                    else 
+                                                        i.fa.fa-close(aria-hidden='true')
+                                            tr
+                                                td Cruise Control
+                                                td
+                                                    if car.cruise
+                                                        i.fa.fa-check(aria-hidden='true')
+                                                    else 
+                                                        i.fa.fa-close(aria-hidden='true')
+                                            tr
+                                                td Dual Air Conditioner
+                                                td
+                                                    if car.ac
+                                                        i.fa.fa-check(aria-hidden='true')
+                                                    else 
+                                                        i.fa.fa-close(aria-hidden='true')
+                                            
+                // Side-Bar
+                aside.col-md-3
+                    if user
+                        if user.role == "admin"
+                            if car.state == "active"
+                                a.btn.outline.prom(href="/admin/car/promoted/"+car._id) Promote
+                            if car.state == "promoted"
+                                a.btn.outline.prom(href="/admin/car/active/"+car._id) remove from promotion
+                            br
+                            br
+                            
+                    if pro
+                        .sidebar_widget
+                            .widget_heading
+                                h5
+                                    i.fa.fa-address-card-o(aria-hidden='true')
+                                    |  Dealer Contact
+                            .dealer_detail
+                                img(src='/uploads/avatars/'+pro.avatar, alt='image')
+                                p
+                                    span Name:
+                                    |  #{pro.company}
+                                if pro.phoneNumber
+                                    p
+                                        span Phone:
+                                        |  #{pro.phoneNumber}
+                                p
+                                    span city:
+                                    |  #{pro.address.city}
+                                a.btn.btn-xs(href='#') View Profile
+                    else
+                        .sidebar_widget
+                            .widget_heading
+                                h5
+                                    i.fa.fa-address-card-o(aria-hidden='true')
+                                    |  Dealer Contact
+                            .dealer_detail
+                                p
+                                    span Name:
+                                    |  #{car.user.name}
+                                if car.user.phoneNumber
+                                    p
+                                        span Phone:
+                                        |  #{car.user.phoneNumber}
+                                p
+                                    span city:
+                                    |  #{car.location}
+                    //- .sidebar_widget
+                    //-     .widget_heading
+                    //-         h5
+                    //-             i.fa.fa-envelope(aria-hidden='true')
+                    //-             |  Message to Dealer
+                    //-     form(action='#')
+                    //-         .form-group
+                    //-             input.form-control(type='text', placeholder='Name')
+                    //-         .form-group
+                    //-             input.form-control(type='email', placeholder='Email')
+                    //-         .form-group
+                    //-             textarea.form-control(rows='4', placeholder='Message')
+                    //-         .form-group
+                    //-             input.btn.btn-block(type='submit', value='Send Message')
+                // /Side-Bar
+            .space-20
+            .divider
+            // Similar-Cars
+            .similar_cars
+                h3 Featured Cars
+                .row
+                    each doc, i in cars
+                        .col-md-3.grid_listing
+                            .product-listing-m.gray-bg
+                                .product-listing-img
+                                    a(href='/car/forsale/'+doc._id)
+                                        if(doc.pics[0])
+                                            img.img-responsive(src="/uploads/carpics/"+doc.pics[0], alt='image')
+                                        if(!doc.pics[0])
+                                            img.img-responsive(src="/images/Car-Placeholder.jpg", alt='image')
+                                    .label_icon #{doc.vehicle_type}
+                                .product-listing-content
+                                    h5
+                                        a(href='/car/forsale/'+doc._id) #{doc.model}
+                                    p.list-price $ #{doc.price}
+                                    .car-location
+                                        span
+                                            i.fa.fa-map-marker(aria-hidden='true')=doc.location
+                                    ul.features_list
+                                        li
+                                            i.fa.fa-road(aria-hidden='true')
+                                            | #{doc.kmsd} km
+                                        li
+                                            i.fa.fa-tachometer(aria-hidden='true')
+                                            | #{doc.drivetrian}
+                                        li
+                                            i.fa.fa-calendar(aria-hidden='true')
+                                            | #{doc.year}
+                                        li
+                                            i.fa.fa-car(aria-hidden='true')
+                                            | #{doc.fuelType}
+                    
+
+
+    script(src='/js/jquery.min.js')
+    script(src='/js/ajax/car.js')
+    script(src='/js/ajax/filter-search.js')
+    script(src='/js/ajax/car-promote.js')

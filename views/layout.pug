@@ -1,0 +1,359 @@
+doctype html
+html 
+    head
+        meta(http-equiv='Content-Type', content='text/html; charset=utf-8')
+        meta(http-equiv='X-UA-Compatible', content='IE=edge')
+        meta(name='viewport', content='width=device-width,initial-scale=1')
+        meta(name='keywords', content='')
+        meta(name='description', content='')
+        title #{title}
+        // Bootstrap
+        link(rel='stylesheet', href='/css/bootstrap.min.css', type='text/css')
+        // Custome Style
+        link(rel='stylesheet', href='/css/style.css', type='text/css')
+        // OWL Carousel slider
+        link(rel='stylesheet', href='/css/owl.carousel.css', type='text/css')
+        link(rel='stylesheet', href='/css/owl.transitions.css', type='text/css')
+        // slick-slider
+        link(href='/css/slick.css', rel='stylesheet')
+        // bootstrap-slider
+        link(href='/css/bootstrap-slider.min.css', rel='stylesheet')
+        // FontAwesome Font Style
+        link(href='/css/font-awesome.min.css', rel='stylesheet')
+        // Custom Colors
+        link(rel='stylesheet', href='/colors/blue.css')
+        // Fav and touch icons
+        link(rel='apple-touch-icon-precomposed', sizes='144x144', href='/images/favicon-icon/apple-touch-icon-144-precomposed.png')
+        link(rel='apple-touch-icon-precomposed', sizes='114x114', href='/images/favicon-icon/apple-touch-icon-114-precomposed.png')
+        link(rel='apple-touch-icon-precomposed', sizes='72x72', href='/images/favicon-icon/apple-touch-icon-72-precomposed.png')
+        link(rel='apple-touch-icon-precomposed', href='/images/favicon-icon/apple-touch-icon-57-precomposed.png')
+        link(rel='shortcut icon', href='/images/favicon-icon/favicon.png')
+        // Google-Font
+        link(href='https://fonts.googleapis.com/css?family=Lato:300,400,700,900', rel='stylesheet')
+        // HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
+        // WARNING: Respond.js doesn't work if you view the page via file://
+        //if lt IE 9
+          script(src='https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js')
+          script(src='https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js')
+    body
+        // Header
+        header
+            .default-header
+                .container
+                    .row
+                        .col-sm-3.col-md-2
+                            .logo
+                                a(href='/')
+                                img(src='/images/logo.png', alt='image')
+                        .col-sm-9.col-md-10
+                            .header_info
+                                .header_widgets
+                                    .circle_icon
+                                        i.fa.fa-envelope(aria-hidden='true')
+                                    p.uppercase_text Mail us : 
+                                    a(href='mailto:info@bwa.com.iq') info@bwa.com.iq
+                                .header_widgets
+                                    .circle_icon
+                                        i.fa.fa-phone(aria-hidden='true')
+                                    p.uppercase_text Call Us: 
+                                    a(href='tel:+964 770 152 7381') +964 770 152 7381
+                                .social-follow
+                                    ul
+                                        li
+                                            a(href='#')
+                                                i.fa.fa-facebook-square(aria-hidden='true')
+                                        li
+                                            a(href='#')
+                                                i.fa.fa-instagram(aria-hidden='true')
+                                if user == null || user == undifiended || user ==""
+                                    .login_btn
+                                        a.btn.btn-xs.uppercase(href='#loginform', data-toggle='modal', data-dismiss='modal') Login
+                                        span 
+                                        a.btn.btn-xs.uppercase(href='#signupform', data-toggle='modal', data-dismiss='modal') Register
+
+        != messages('message', locals)
+        if errors
+            each error, i in errors
+                div.alert.alert-danger(role="alert") #{error.msg}
+        // Navigation
+        nav#navigation_bar.navbar.navbar-default
+            .container
+                .navbar-header
+                    button#menu_slide.navbar-toggle.collapsed(data-target='#navigation', aria-expanded='false', data-toggle='collapse', type='button')
+                        span.sr-only Toggle navigation
+                        span.icon-bar
+                        span.icon-bar
+                        span.icon-bar
+                .header_wrap
+                    if user
+                        .user_login
+                            ul
+                                li.dropdown
+                                    a(href='#', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+                                        i.fa.fa-user-circle(aria-hidden='true')
+                                        |  #{user.name}
+                                        i.fa.fa-angle-down(aria-hidden='true')
+                                    ul.dropdown-menu
+                                        li
+                                            a(href='/profile/myprofile') Profile Settings
+                                        hr
+                                        if user.role=='admin'
+                                            li
+                                                a(href='/admin/users') Users
+                                            li
+                                                a(href='/admin/Dealers') Dealers 
+                                            li
+                                                a(href='/admin/requests') Requests
+                                            hr
+                                        li
+                                            a(href='/profile/myvehicles') My Vehicles
+                                        li
+                                            a(href='/parts/myvehicleparts') My Vehicle Parts
+                                        li
+                                            a(href='/car/addnewcar') Post a Vehicle
+                                        li
+                                            a(href='/parts/addCarPart') Post a Vehicle Part
+                                        li
+                                            a(href='/auth/logout') Sign Out
+                    //- .header_search
+                    //-     #search_toggle
+                    //-         i.fa.fa-search(aria-hidden='true')
+                    //-     form#header-search-form(action='#', method='get')
+                    //-         input.form-control(type='text', placeholder='Search...')
+                    //-         button(type='submit')
+                    //-             i.fa.fa-search(aria-hidden='true')
+                #navigation.collapse.navbar-collapse
+                    ul.nav.navbar-nav
+                        li
+                            a(href='/') Home
+                        li
+                            a(href='/dealers') Dealers
+                        li
+                            a(href="/list?page=1&l=New") New Cars
+                        li
+                            a(href="/list?page=1&l=Used") Used Cars
+                        li
+                            a(href='/parts/list') Car Parts
+                        li
+                            a(href='/about-us') About us
+        // Navigation end
+
+        block content
+
+
+
+        // Footer
+        footer
+            .footer-bottom
+                .container
+                    .row
+                        .col-md-6.col-md-push-6.text-right
+                            .footer_widget
+                                //- p Download Our APP:
+                                //- ul
+                                //-     li
+                                //-         a(href='#')
+                                //-         i.fa.fa-android(aria-hidden='true')
+                                //-     li
+                                //-         a(href='#')
+                                //-         i.fa.fa-apple(aria-hidden='true')
+                            .footer_widget
+                                p Connect with Us:
+                                ul
+                                    li
+                                        a(href='#')
+                                        i.fa.fa-facebook-square(aria-hidden='true')
+                                    li
+                                        a(href='#')
+                                        i.fa.fa-instagram(aria-hidden='true')
+                        .col-md-6.col-md-pull-6
+                            p.copy-right Copyright © 2018 BlueWorldAuto. All Rights Reserved
+
+
+        // Back to top
+        #back-top.back-top
+            a(href='#top')
+                i.fa.fa-angle-up(aria-hidden='true')
+        // /Back to top
+
+
+        // Login-Form
+        #loginform.modal.fade
+            .modal-dialog(role='document')
+                .modal-content
+                    .modal-header
+                        button.close(type='button', data-dismiss='modal', aria-label='Close')
+                            span(aria-hidden='true') ×
+                        h3.modal-title Login
+                    .modal-body
+                        .row
+                            .login_wrap
+                                .col-md-6.col-sm-6
+                                    form(action='/auth/login', method='post')
+                                        .form-group
+                                            input.form-control(type='text',name='email', placeholder='Email address')
+                                        .form-group
+                                            input.form-control(type='password',name='password', placeholder='Password*')
+                                        //- .form-group.checkbox
+                                        //-     input#remember(type='checkbox',disabled='disabled')
+                                        //-     label(for='remember') Remember Me
+                                        .form-group
+                                            input.btn.btn-block(type='submit', value='Login')
+                                //- .col-md-6.col-sm-6
+                                //-     h6.gray_text Login the Quick Way
+                                //-     a.btn.btn-block.facebook-btn(href='#')
+                                //-         i.fa.fa-facebook-square(aria-hidden='true')
+                                //-         |  Login with Facebook
+                                //-     a.btn.btn-block.twitter-btn(href='#')
+                                //-         i.fa.fa-twitter-square(aria-hidden='true')
+                                //-         |  Login with Twitter
+                                //-     a.btn.btn-block.googleplus-btn(href='#')
+                                //-         i.fa.fa-google-plus-square(aria-hidden='true')
+                                //-         |  Login with Google+
+                                .mid_divider
+                    .modal-footer.text-center
+                        p
+                            | Don't have an account? 
+                            a(href='#signupform', data-toggle='modal', data-dismiss='modal') Signup Here
+                        //- p
+                        //-     a(href='#forgotpassword', data-toggle='modal', data-dismiss='modal') Forgot Password ?
+        // /Login-Form
+
+        // Register-Form
+        #signupform.modal.fade
+            .modal-dialog(role='document')
+                .modal-content
+                    .modal-header
+                        button.close(type='button', data-dismiss='modal', aria-label='Close')
+                            span(aria-hidden='true') ×
+                        h3.modal-title Sign Up 
+                    .modal-body
+                        .row
+                            .signup_wrap
+                                .col-md-6.col-sm-6
+                                    form(action='/auth/register', method='post')
+                                        .form-group
+                                            input.form-control(type='text', name='name',placeholder='Full Name',required='')
+                                        .form-group
+                                            input.form-control(type='email',id="get-email",name='email', placeholder='Email Address',required='')
+                                            span#err.text-danger This email is already in use
+                                        .form-group
+                                            input.form-control(type='number' , name='phoneNumber',placeholder='Phone Number',required='')
+                                        .form-group
+                                            input.form-control(type='password',name='password', placeholder='Password',required='')
+                                        .form-group
+                                            input.form-control(type='password' , name='password2',placeholder='Confirm Password',required='')
+                                        //- .form-group.checkbox
+                                        //-     input#terms_agree(type='checkbox')
+                                        //-     label(for='terms_agree')
+                                        //-         | I Agree with 
+                                        //-         a(href='#') Terms and Conditions
+                                        .form-group
+                                            input.btn.btn-block#sub(type='submit', value='Sign Up')
+                                //- .col-md-6.col-sm-6
+                                //-     h6.gray_text Login the Quick Way
+                                //-     a.btn.btn-block.facebook-btn(href='#')
+                                //-         i.fa.fa-facebook-square(aria-hidden='true')
+                                //-         |  Login with Facebook
+                                //-     a.btn.btn-block.twitter-btn(href='#')
+                                //-         i.fa.fa-twitter-square(aria-hidden='true')
+                                //-         |  Login with Twitter
+                                //-     a.btn.btn-block.googleplus-btn(href='#')
+                                //-         i.fa.fa-google-plus-square(aria-hidden='true')
+                                //-         |  Login with Google+
+                                .mid_divider
+                    .modal-footer.text-center
+                        p
+                            | Already got an account? 
+                            a(href='#loginform', data-toggle='modal', data-dismiss='modal') Login Here
+        // /Register-Form
+
+
+
+        script(src='/js/jquery.min.js')
+        script(src='http://www.carqueryapi.com/js/carquery.0.3.4.js')
+        script(src='/js/bootstrap.min.js')
+        script(src='/js/interface.js')
+        // bootstrap-slider-JS
+        script(src='/js/bootstrap-slider.min.js')
+        // Slider-JS
+        script(src='/js/slick.min.js')
+        script(src='/js/owl.carousel.min.js')
+        script(src='/js/checkEmail.js')
+    //- nav.navbar.is-transparent
+    //-     .navbar-brand
+    //-         a.navbar-item(href='https://bulma.io')
+        //-             img(src='https://bulma.io/images/bulma-logo.png', alt='Bulma: a modern CSS framework based on Flexbox', width='112', height='2')
+        //-             .navbar-burger.burger(data-target='navbarExampleTransparentExample')
+        //-             span
+        //-             span
+        //-             span
+        //-         a.navbar-burger.burger(role='button', aria-label='menu', aria-expanded='false')
+        //-             span(aria-hidden='true')
+        //-             span(aria-hidden='true')
+        //-             span(aria-hidden='true')
+        //-     .navbar-menu
+        //-         .navbar-start
+        //-             a.navbar-item.is-active(href='https://bulma.io/') Home
+        //-             .navbar-item.has-dropdown.is-hoverable
+        //-                 a.navbar-link(href='/documentation/overview/start/') Docs
+        //-                 .navbar-dropdown.is-boxed
+        //-                     a.navbar-item(href='/documentation/overview/start/')
+        //-                         | Overview
+        //-                     a.navbar-item(href='https://bulma.io/documentation/modifiers/syntax/')
+        //-                         | Modifiers
+        //-                     a.navbar-item(href='https://bulma.io/documentation/columns/basics/')
+        //-                         | Columns
+        //-                     a.navbar-item(href='https://bulma.io/documentation/layout/container/')
+        //-                         | Layout
+        //-                     a.navbar-item(href='https://bulma.io/documentation/form/general/')
+        //-                         | Form
+        //-                     hr.navbar-divider
+        //-                     a.navbar-item(href='https://bulma.io/documentation/elements/box/')
+        //-                         | Elements
+        //-                     a.navbar-item.is-active(href='https://bulma.io/documentation/components/breadcrumb/')
+        //-                         | Components
+        //-         .navbar-end
+        //-             .navbar-item.has-dropdown.is-hoverable
+        //-                 a.navbar-link(href='/documentation/overview/start/') My Account
+        //-                 .navbar-dropdown.is-boxed
+        //-                     if user && user.role=="admin"
+        //-                         a.navbar-item(href='/admin/requests')
+        //-                             | Requests
+        //-                         a.navbar-item(href='/admin/users')
+        //-                             | Users
+        //-                         a.navbar-item(href='/admin/dealers')
+        //-                             | Dealers
+        //-                     if user 
+        //-                         a.navbar-item(href='/profile/myprofile')
+        //-                             | My profile 
+
+        //-                         hr.dropdown-divider
+        //-                         a.navbar-item(href='/auth/logout')
+        //-                             | Log out
+        //-                     else
+        //-                         a.navbar-item(href='/auth/login')
+        //-                             | Log in
+        //-                         a.navbar-item(href='/auth/register')
+        //-                             | Register
+                                
+        //- .container
+        //-     != messages('message',locals)
+        //-     if errors
+        //-         div(class='message is-danger')
+        //-             .message-header
+        //-                 p error
+        //-                 button.delete(aria-label='delete')
+        //-             each error, i in errors
+        //-                 .message-body #{error.msg}
+        //-             //div(class="message is-danger") #{error.msg}
+        //-     block content
+        //- br
+        //- hr
+        //- footer.footer
+        //-     .content.has-text-centered
+        //-         p
+        //-             | Designed And Developed By 
+        //-             a(href='http://www.facebook.com') Hama
+        //-             |  and 
+        //-             a(href='http://www.facebook.com') Hama

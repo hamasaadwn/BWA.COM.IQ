@@ -1,0 +1,27 @@
+extends layout
+
+block content    
+    .container
+        table.table
+            caption List of Dealers
+            thead
+                th company
+                th name
+                th phone number
+                th city
+                th state
+            tbody
+                each profile, i in profiles
+                    tr
+                        td
+                            a(href="/dealers/profile/"+profile.id) #{profile.company}
+                        td= profile.name
+                        td= profile.phoneNumber
+                        td= profile.address.city
+                        td
+                            if profile.state == "active"
+                                a.btn.outline.btn-xs.active-btn.chngst(href='/inactive/'+profile._id,id="id"+profile._id) Deactivate
+                            if profile.state == "inactive" || profile.state == "req"
+                                a.btn.outline.btn-xs.active-btn.chngst(href='/active/'+profile._id,id="id"+profile._id) Activate
+    script(src='/js/jquery.min.js')
+    script(src='/js/ajax/profile-changestate.js')

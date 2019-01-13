@@ -1,0 +1,95 @@
+extends layout
+
+block content   
+    if profile && profile.state == "active"
+        .row
+            .col-md-3.col-sm-3
+                .profile_nav
+                    ul
+                        li.active
+                            a(href='/profile/myprofile') Profile Settings
+                        li
+                            a(href='/profile/myvehicles') My Vehicles
+                        li
+                            a(href='/parts/myvehicleparts') My Vehicle Parts
+                        li
+                            a(href='/car/addnewcar') Post a Vehicles
+                        li
+                            a(href='/parts/addCarPart') Post a Vehicle Part
+                        li
+                            a(href='/auth/logout') Sign Out
+            .col-md-6.col-sm-8
+                .profile_wrap
+                    h5.uppercase.underline Please fill the form to request a profile
+                    form(action='/profile/createprofile',method="post", encType="multipart/form-data")
+                        .form-group
+                            label.control-label Company Name
+                            input#fullname.form-control.white_bg(type='text', name='company', value=profile.company,required='')
+                        .form-group
+                            label.control-label Your Name
+                            input#fullname.form-control.white_bg(type='text', name='name', value=profile.name,required='')
+                        .form-group
+                            label.control-label Phone Number
+                            input#phone-number.form-control.white_bg(type='text', name='phoneNumber', value=profile.phoneNumber,required='')
+                        .form-group
+                            label.control-label City
+                            select.selection(style='width: 100%; padding: 15px; border-color: #dbdbdb',name='city')
+                                if profile.address.city=='Slemany'
+                                    option(value="Slemany",selected='') Slemany
+                                else
+                                    option(value="Hawler") Slemany
+                                if profile.address.city=='Hawler'
+                                    option(value="Hawler",selected='') Hawler
+                                else
+                                    option(value="Hawler") Hawler
+                                if profile.address.city=='Duhok'
+                                    option(value="Duhok",selected='') Duhok
+                                else
+                                    option(value="Duhok") Duhok
+                                
+                                
+                        .form-group
+                            label.control-label Street
+                            input#fullname.form-control.white_bg(type='text', name='street',value=profile.address.street,required='')
+                        .form-group
+                            label.control-label Website
+                            input#fullname.form-control.white_bg(type='text', name='website',value=profile.website)
+                        .gray-bg.field-title
+                            h6 Social Links
+                        .form-group
+                            label.control-label Facebook Link
+                            input#facebook.form-control.white_bg(type='text', name='facebook', value=profile.socialLinks.facebook)
+                        .form-group
+                            label.control-label Instagram Link
+                            input#instagram.form-control.white_bg(type='text', name='instagram', value=profile.socialLinks.instagram)
+                        .form-group
+                            label.control-label Youtube Link
+                            input#instagram.form-control.white_bg(type='text', name='youtube', value=profile.socialLinks.youtube)
+                        .form-group
+                            label.control-label Twitter Link
+                            input#instagram.form-control.white_bg(type='text', name='twitter', value=profile.socialLinks.twitter)
+                        .form-group
+                            label.control-label Info
+                            textarea.form-control(name="info")=profile.info
+                        .form-group
+                            button.btn(type='submit')
+                                | Save
+                                span.angle_arrow
+                                    i.fa.fa-angle-right(aria-hidden='true')
+            // /Profile-setting
+
+    else if profile && profile.state == "req"
+        .container
+            br
+            .user_profile_info.gray-bg.padding_4x4_40
+                .dealer_info
+                    h5 you have requested a profile 
+                    h5 please wait until we will review it
+
+    else
+        .container
+            br
+            .user_profile_info.gray-bg.padding_4x4_40
+                .dealer_info
+                    h5 you dont have a profile
+                    a.button.is-primary(href="/profile/createprofile") please click here to request a profile

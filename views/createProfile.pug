@@ -1,0 +1,70 @@
+extends layout
+
+block content
+    .row
+        .col-md-3.col-sm-3
+            .profile_nav
+                ul
+                    li.active
+                        a(href='/profile/myprofile') Profile Settings
+                    li
+                        a(href='/profile/myvehicles') My Vehicles
+                    li
+                        a(href='/parts/myvehicleparts') My Vehicle Parts
+                    li
+                        a(href='/car/addnewcar') Post a Vehicles
+                    li
+                        a(href='/parts/addCarPart') Post a Vehicle Part
+                    li
+                        a(href='/auth/logout') Sign Out
+        .col-md-6.col-sm-8
+            .profile_wrap
+                h5.uppercase.underline Please fill the form to request a profile
+                form(action='/profile/createprofile',method="post", encType="multipart/form-data")
+                    .form-group
+                        label.control-label Company Name
+                        input#fullname.form-control.white_bg(type='text', name='company', placeholder='Company Name',required='')
+                    .form-group
+                        label.control-label Your Name
+                        input#fullname.form-control.white_bg(type='text', name='name', value=user.name,required='')
+                    .form-group
+                        label.control-label Phone Number
+                        input#phone-number.form-control.white_bg(type='text', name='phoneNumber', placeholder='Phone Number',required='')
+                    .form-group
+                        label.control-label City
+                        select.selection(style='width: 100%; padding: 15px; border-color: #dbdbdb',name='city')
+                            option(value="Slemany") Slemany
+                            option(value="Hawler") Hawler
+                            option(value="Duhok") Duhok
+                    .form-group
+                        label.control-label Street
+                        input#fullname.form-control.white_bg(type='text', name='street',placeholder="Street",required='')
+                    .form-group
+                        label.control-label Website
+                        input#fullname.form-control.white_bg(type='text', name='website',placeholder="Website")
+                    .gray-bg.field-title
+                        h6 Social Links
+                    .form-group
+                        label.control-label Facebook Link
+                        input#facebook.form-control.white_bg(type='text', name='facebook', placeholder="Facebook")
+                    .form-group
+                        label.control-label Instagram Link
+                        input#instagram.form-control.white_bg(type='text', name='instagram', placeholder="Instagram")
+                    .form-group
+                        label.control-label Youtube Link
+                        input#instagram.form-control.white_bg(type='text', name='youtube', placeholder="Youtube")
+                    .form-group
+                        label.control-label Twitter Link
+                        input#instagram.form-control.white_bg(type='text', name='twitter', placeholder="Twitter")
+                    .form-group
+                        label.control-label Info
+                        textarea.form-control(placeholder='info',name="info")
+                    .form-group
+                        label.control-label Logo
+                        input.form-control-file(type='file', name='avatar', accept='image/*')
+                    .form-group
+                        button.btn(type='submit')
+                            | Send Profile request
+                            span.angle_arrow
+                                i.fa.fa-angle-right(aria-hidden='true')
+        // /Profile-setting

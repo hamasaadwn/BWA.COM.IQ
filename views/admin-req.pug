@@ -1,0 +1,12 @@
+extends layout
+
+block content  
+    .container
+        br
+        each profile, i in profiles
+            .list-group
+                a.list-group-item.list-group-item-action(href='/admin/request/dealer/'+profile.id)
+                    .d-flex.w-100.justify-content-between
+                        h5.mb-1 Profile Request
+                    p.mb-1 #{profile.user.name} sent a request to create dealer profile for #{profile.company} company
+                    small #{profile.date}
