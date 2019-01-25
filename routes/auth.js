@@ -60,8 +60,13 @@ router.post("/register", function(req, res) {
             console.log(err);
             return;
           } else {
-            req.flash("success", "You are now registered and can log in");
-            res.redirect("/");
+            req.login(newUser, function(err) {
+              if (err) {
+                console.log(err);
+              }
+              req.flash("success", "You have registered successfully");
+              res.redirect("/");
+            });
           }
         });
       });
