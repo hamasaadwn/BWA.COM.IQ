@@ -37,7 +37,7 @@ router.post("/register", function(req, res) {
   let errors = req.validationErrors();
 
   if (errors) {
-    res.render("index", {
+    res.render("/", {
       title: "register errors",
       errors: errors
     });
