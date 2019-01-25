@@ -50,7 +50,7 @@ $(document).ready(function() {
 
   $(() => {
     var year = new Date().getFullYear();
-    for (i = 1975; i <= year; i++) {
+    for (i = year; i >= 1975; i--) {
       $("select#year").append("<option value=" + i + " >" + i + "</option>");
     }
   });
