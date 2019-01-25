@@ -1,23 +1,15 @@
 extends layout
 
 block content  
-	// /Header
-	// Page Header
-	section.page-header.profile_page
+
+	section.user_profile.inner_pages(style='padding-top: 1%')
 		.container
-			.page-header_wrap
-				.page-heading
-					h1 Post a Vehicle
-				ul.coustom-breadcrumb
-					li
-						a(href='/') Home
-					li Post a Vehicle
-		// Dark Overlay
-		.dark-overlay
-	// /Page Header
-	// Post-vehicle
-	section.user_profile.inner_pages
-		.container
+			ul.coustom-breadcrumb
+				li
+					a(href='/', style='color: #1e96fe') Home
+				li
+					a(style='color: #1e96fe') >
+				li(style='color: #1e96fe') My Vehicles
 			//- .user_profile_info.gray-bg.padding_4x4_40
 				//- .upload_user_logo
 				//- 	img(src='/images/222x172.jpg', alt='image')
@@ -92,14 +84,13 @@ block content
 								label.control-label Price ($)
 								input#Price.form-control.white_bg(type='number',name='price')
 							.form-group
-								label.control-label Description
-								textarea.form-control.white_bg(rows='4',name="description")
-							.form-group
 								label.control-label Upload Images ( size = 900 x 560 )
 								.vehicle_images#gallery
 									.upload_more_img
 										input#gallery-photo-add(name='pics',multiple="multiple",accept="image/*", type='file')
-
+							.form-group
+								label.control-label Description
+								textarea.form-control.white_bg(rows='4',name="description")
 							.form-group
 								button.btn(style='width: 100%;', type='submit')
 									| Submit and Post 

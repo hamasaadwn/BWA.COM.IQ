@@ -2,25 +2,15 @@ extends layout
 
 block content  
     
-	// Navigation end
-	// /Header
-	// Page Header
-	section.page-header.profile_page
+	section.user_profile.inner_pages(style='padding-top: 1%')
 		.container
-			.page-header_wrap
-				.page-heading
-					h1 Edit Your Vehicle
-				ul.coustom-breadcrumb
-					li
-						a(href='/') Home
-					li edit Your Vehicle
-		// Dark Overlay
-		.dark-overlay
-	// /Page Header
-	// Post-vehicle
-	section.user_profile.inner_pages
-		.container
-			.user_profile_info.gray-bg.padding_4x4_40
+			ul.coustom-breadcrumb
+				li
+					a(href='/', style='color: #1e96fe') Home
+				li
+					a(style='color: #1e96fe') >
+				li(style='color: #1e96fe') Edit Vehicles Part
+			//- .user_profile_info.gray-bg.padding_4x4_40
 				//- .upload_user_logo
 				//- 	img(src='/images/222x172.jpg', alt='image')
 				//- 	.upload_newlogo
@@ -146,15 +136,12 @@ block content
 											option(value='Al Anbar',selected="") Al Anbar
 										else
 											option(value='Al Anbar') Al Anbar
-										
-
-							.form-group
-								label.control-label Description
-								textarea.form-control.white_bg(rows='4',name="description")=car.description
 							.form-group
 								label.control-label Price ($)
 								input#Price.form-control.white_bg(type='number',name='price',value=car.price)
-							
+							.form-group
+								label.control-label Description
+								textarea.form-control.white_bg(rows='4',name="description")=car.description
 							.form-group
 								button.btn(style='width: 100%;', type='submit')
 									| Save
