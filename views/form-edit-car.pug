@@ -67,10 +67,6 @@ block content
 								label.control-label City
 								.select
 									select.form-control.white_bg(name="location",required="")
-										if car.location == "Duhok"
-											option(value='Duhok',selected="") Duhok
-										else
-											option(value='Duhok') Duhok
 										if car.location == "Hawler"
 											option(value='Hawler',selected="") Hawler
 										else
@@ -79,6 +75,74 @@ block content
 											option(value='Slemany',selected="") Slemany
 										else
 											option(value='Slemany') Slemany
+										if car.location == "Duhok"
+											option(value='Duhok',selected="") Duhok
+										else
+											option(value='Duhok') Duhok
+										if car.location == "Halabja"
+											option(value='Halabja',selected="") Halabja
+										else
+											option(value='Halabja') Halabja
+										if car.location == "Kirkuk"
+											option(value='Kirkuk',selected="") Kirkuk
+										else
+											option(value='Kirkuk') Kirkuk
+										if car.location == "Baghdad"
+											option(value='Baghdad',selected="") Baghdad
+										else
+											option(value='Baghdad') Baghdad
+										if car.location == "Mosul"
+											option(value='Mosul',selected="") Mosul
+										else
+											option(value='Mosul') Mosul
+										if car.location == "Basra"
+											option(value='Basra',selected="") Basra
+										else
+											option(value='Basra') Basra
+										if car.location == "Salah Al Din"
+											option(value='Salah Al Din',selected="") Salah Al Din
+										else
+											option(value='Salah Al Din') Salah Al Din
+										if car.location == "Diyala"
+											option(value='Diyala',selected="") Diyala
+										else
+											option(value='Diyala') Diyala
+										if car.location == "Wasit"
+											option(value='Wasit',selected="") Wasit
+										else
+											option(value='Wasit') Wasit
+										if car.location == "Maysan"
+											option(value='Maysan',selected="") Maysan
+										else
+											option(value='Maysan') Maysan
+										if car.location == "Dhi Qar"
+											option(value='Dhi Qar',selected="") Dhi Qar
+										else
+											option(value='Dhi Qar') Dhi Qar
+										if car.location == "Al Muthana"
+											option(value='Al Muthana',selected="") Al Muthana
+										else
+											option(value='Al Muthana') Al Muthana
+										if car.location == "Al-Qadisiyah"
+											option(value='Al-Qadisiyah',selected="") Al-Qadisiyah
+										else
+											option(value='Al-Qadisiyah') Al-Qadisiyah
+										if car.location == "Babil"
+											option(value='Babil',selected="") Babil
+										else
+											option(value='Babil') Babil
+										if car.location == "Karbala"
+											option(value='Karbala',selected="") Karbala
+										else
+											option(value='Karbala') Karbala
+										if car.location == "Najaf"
+											option(value='Najaf',selected="") Najaf
+										else
+											option(value='Najaf') Najaf
+										if car.location == "Al Anbar"
+											option(value='Al Anbar',selected="") Al Anbar
+										else
+											option(value='Al Anbar') Al Anbar
 							.form-group
 								label.control-label Vehicle Overview Description
 								textarea.form-control.white_bg(rows='4',name="description")=car.description
