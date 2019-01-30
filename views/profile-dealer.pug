@@ -88,30 +88,30 @@ block content
                                     .col-md-4.grid_listing
                                         .product-listing-m.gray-bg
                                             .product-listing-img
-                                                a(href='/car/forsale/'+doc._id)
-                                                    if(doc.pics[0])
-                                                        img.img-responsive(src="/uploads/carpics/"+doc.pics[0], alt='image')
-                                                    if(!doc.pics[0])
+                                                a(href='/car/forsale/'+car._id)
+                                                    if(car.pics[0])
+                                                        img.img-responsive(src="/uploads/carpics/"+car.pics[0], alt='image')
+                                                    if(!car.pics[0])
                                                         img.img-responsive(src="/images/Car-Placeholder.jpg", alt='image')
-                                                .label_icon #{doc.vehicle_type}
+                                                .label_icon #{car.vehicle_type}
                                             .product-listing-content
                                                 h5
-                                                    a(href='/car/forsale/'+doc._id) #{doc.model}
-                                                p.list-price $ #{doc.price}
+                                                    a(href='/car/forsale/'+car._id) #{car.model}
+                                                p.list-price $ #{car.price}
                                                 .car-location
                                                     span
-                                                        i.fa.fa-map-marker(aria-hidden='true')=doc.location
+                                                        i.fa.fa-map-marker(aria-hidden='true')=car.location
                                                 ul.features_list
                                                     li
                                                         i.fa.fa-road(aria-hidden='true')
-                                                        | #{doc.kmsd} km
+                                                        | #{car.kmsd} km
                                                     li
                                                         i.fa.fa-tachometer(aria-hidden='true')
-                                                        | #{doc.drivetrian}
+                                                        | #{car.drivetrian}
                                                     li
                                                         i.fa.fa-calendar(aria-hidden='true')
-                                                        | #{doc.year}
+                                                        | #{car.year}
                                                     li
                                                         i.fa.fa-car(aria-hidden='true')
-                                                        | #{doc.fuelType}
+                                                        | #{car.fuelType}
                                     
