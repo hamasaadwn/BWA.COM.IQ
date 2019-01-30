@@ -1,21 +1,21 @@
 extends layout
 
 block content  
-    // Listing-detail-header
-    section.listing_detail_header
-        .container
-            .listing_detail_head.white-text.div_zindex.row
-                .col-md-9
-                    h2 #{car.make.makeName} #{car.model}
-                    .car-location
-                        span
-                            i.fa.fa-map-marker(aria-hidden='true')
-                            |  Iraq / #{car.location}
-                .col-md-3
-                    .price_info
-                        p $#{car.price}
-        .dark-overlay
-    // /Listing-detail-header
+    //- // Listing-detail-header
+    //- section.listing_detail_header
+    //-     .container
+    //-         .listing_detail_head.white-text.div_zindex.row
+    //-             .col-md-9
+    //-                 h2 #{car.make.makeName} #{car.model}
+    //-                 .car-location
+    //-                     span
+    //-                         i.fa.fa-map-marker(aria-hidden='true')
+    //-                         |  Iraq / #{car.location}
+    //-             .col-md-3
+    //-                 .price_info
+    //-                     p $#{car.price}
+    //-     .dark-overlay
+    //- // /Listing-detail-header
     section.listing_other_info.secondary-bg
         .container
             #filter_toggle.search_other
@@ -42,25 +42,25 @@ block content
                         .select
                             select#location.form-control(name='location')
                                 option(value='') All Location 
-										option(value='Hawler') Hawler
-										option(value='Slemany') Slemany
-										option(value='Duhok') Duhok
-										option(value='Halabja') Halabja
-										option(value='Kirkuk') Kirkuk
-										option(value='Baghdad') Baghdad
-										option(value='Mosul') Mosul
-										option(value='Basra') Basra
-										option(value='Salah Al Din') Salah Al Din
-										option(value='Diyala') Diyala
-										option(value='Wasit') Wasit
-										option(value='Maysan') Maysan
-										option(value='Dhi Qar') Dhi Qar
-										option(value='Al Muthana') Al Muthana
-										option(value='Al-Qadisiyah') Al-Qadisiyah
-										option(value='Babil') Babil
-										option(value='Karbala') Karbala
-										option(value='Najaf') Najaf
-										option(value='Al Anbar') Al Anbar
+                                        option(value='Hawler') Hawler
+                                        option(value='Slemany') Slemany
+                                        option(value='Duhok') Duhok
+                                        option(value='Halabja') Halabja
+                                        option(value='Kirkuk') Kirkuk
+                                        option(value='Baghdad') Baghdad
+                                        option(value='Mosul') Mosul
+                                        option(value='Basra') Basra
+                                        option(value='Salah Al Din') Salah Al Din
+                                        option(value='Diyala') Diyala
+                                        option(value='Wasit') Wasit
+                                        option(value='Maysan') Maysan
+                                        option(value='Dhi Qar') Dhi Qar
+                                        option(value='Al Muthana') Al Muthana
+                                        option(value='Al-Qadisiyah') Al-Qadisiyah
+                                        option(value='Babil') Babil
+                                        option(value='Karbala') Karbala
+                                        option(value='Najaf') Najaf
+                                        option(value='Al Anbar') Al Anbar
                     .form-group.col-md-3.col-sm-6.black_input
                         .select
                             select#makes.form-control(name='make')
@@ -90,6 +90,22 @@ block content
                             i.fa.fa-search(aria-hidden='true')
                             |  Search
     // /Filter-Form
+
+    section.basic-info
+        .container
+            .row
+                .col-md-9.text-center
+                    h2.car-name #{car.make.makeName} #{car.model}
+                    .add_compare
+                .col-md-3.text-center
+                    .price_info
+                        p $ #{car.price}
+                    .row
+                    .car-location
+                        span
+                        i.fa.fa-map-marker(aria-hidden='true')
+                        |  #{car.location}
+
 
     // Listing-detail
     section.listing-detail
