@@ -54,7 +54,7 @@ router.get("/addmake", ensureAuthenticated, (req, res) => {
 // getMakes Json
 router.get("/getMakes", (req, res) => {
   Make.find({})
-    .sort({ makeName: "asc" })
+    .sort({ count: -1 })
     .then(makes => {
       res.json(makes);
     });
@@ -86,6 +86,10 @@ router.get("/addmodel", ensureAuthenticated, (req, res) => {
 
 // getModels Json
 router.post("/getModels", (req, res) => {
+  Make.findById(req.body.modId).then(makes => {
+    makes.count++;
+    makes.save();
+  });
   CarModel.find({ make: req.body.modId })
     .sort({ modName: "asc" })
     .then(mo => {
