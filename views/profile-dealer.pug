@@ -6,10 +6,10 @@ block content
         .container
             ul.coustom-breadcrumb
                 li
-                    a(href='/', style='color: #1e96fe') Home
+                    a(href='/', style='color: #1e96fe') #{translation.HOME_TXT}
                 li
                     a(style='color: #1e96fe') >
-                li(style='color: #1e96fe') Dealers Profile
+                li(style='color: #1e96fe') #{translation.DEALER_PROFILE}
             .row
                 .col-md-3.col-sm-3.col-xs-4
                     .dealer_logo
@@ -17,7 +17,44 @@ block content
                 .col-md-6.col-sm-5.col-xs-8
                     .dealer_info
                         h4 #{pro.company}
-                        p #{pro.address.city} - #{pro.address.street}
+                        if pro.address.city == "Hawler"
+                            p #{translation.CITY_HAWLER} - #{pro.address.street}
+                        if pro.address.city == "Slemany"
+                            p #{translation.CITY_SLEMANY}- #{pro.address.street}
+                        if pro.address.city == "Duhok"
+                            p #{translation.CITY_DUHOK}- #{pro.address.street}
+                        if pro.address.city == "Halabja"
+                            p #{translation.CITY_HALABJA}- #{pro.address.street}
+                        if pro.address.city == "Kirkuk"
+                            p #{translation.CITY_KIRKUK}- #{pro.address.street}
+                        if pro.address.city == "Baghdad"
+                            p #{translation.CITY_BAGHDAD}- #{pro.address.street}
+                        if pro.address.city == "Mosul"
+                            p #{translation.CITY_MOSUL}- #{pro.address.street}
+                        if pro.address.city == "Basra"
+                            p #{translation.CITY_BASRA}- #{pro.address.street}
+                        if pro.address.city == "Salah Al Din"
+                            p #{translation.CITY_SALAH_AL_DIN}- #{pro.address.street}
+                        if pro.address.city == "Diyala"
+                            p #{translation.CITY_DIYALA}- #{pro.address.street}
+                        if pro.address.city == "Wasit"
+                            p #{translation.CITY_WASIT}- #{pro.address.street}
+                        if pro.address.city == "Maysan"
+                            p #{translation.CITY_MAYSAN}- #{pro.address.street}
+                        if pro.address.city == "Dhi Qar"
+                            p #{translation.CITY_DHI_QAR}- #{pro.address.street}
+                        if pro.address.city == "Al Muthana"
+                            p #{translation.CITY_AL_MUTHANA}- #{pro.address.street}
+                        if pro.address.city == "Al-Qadisiyah"
+                            p #{translation.CITY_AL_QADISIYAH}- #{pro.address.street}
+                        if pro.address.city == "Babil"
+                            p #{translation.CITY_BABIL}- #{pro.address.street}
+                        if pro.address.city == "Karbala"
+                            p #{translation.CITY_KARBALA}- #{pro.address.street}
+                        if pro.address.city == "Najaf"
+                            p #{translation.CITY_NAJAF}- #{pro.address.street}
+                        if pro.address.city == "Al Anbar"
+                            p #{translation.CITY_AL_ANBAR}- #{pro.address.street}
                         ul.dealer_social_links
                             if pro.socialLinks.facebook
                                 li.facebook-icon
@@ -40,13 +77,13 @@ block content
                         .dealer_contact_info.gray-bg
                             h6
                                 i.fa.fa-globe(aria-hidden='true')
-                                |  Website
+                                |  #{translation.WEBSITE}
                             a(href=pro.website)=pro.website
                     if pro.phoneNumber
                     .dealer_contact_info.gray-bg
                         h6
                             i.fa.fa-phone(aria-hidden='true')
-                            |  Phone Number
+                            |  #{translation.PHONE_NUMBER}
                         a(href='tel:'+pro.phoneNumber)=pro.phoneNumber
                     //- .dealer_contact_info.gray-bg
                     //-     h6
@@ -79,10 +116,10 @@ block content
             .row
                 .col-md-9
                     .dealer_more_info
-                        h5.gray-bg.info_title  About #{pro.company}
+                        h5.gray-bg.info_title  #{translation.ABOUT} #{pro.company}
                         p=pro.info
                         .dealer_listings
-                            h6 Agency Listing Cars
+                            h6 #{translation.AGENCY_LISTING_CARS}
                             .row
                                 each car in cars
                                     .col-md-4.grid_listing
@@ -100,18 +137,55 @@ block content
                                                 p.list-price $ #{car.price}
                                                 .car-location
                                                     span
-                                                        i.fa.fa-map-marker(aria-hidden='true')=car.location
-                                                ul.features_list
-                                                    li
-                                                        i.fa.fa-road(aria-hidden='true')
-                                                        | #{car.kmsd} km
-                                                    li
-                                                        i.fa.fa-tachometer(aria-hidden='true')
-                                                        | #{car.drivetrian}
-                                                    li
-                                                        i.fa.fa-calendar(aria-hidden='true')
-                                                        | #{car.year}
-                                                    li
-                                                        i.fa.fa-car(aria-hidden='true')
-                                                        | #{car.fuelType}
+                                                        if car.location == "Hawler"
+                                                            i.fa.fa-map-marker(aria-hidden='true') #{translation.CITY_HAWLER}
+                                                        if car.location == "Slemany"
+                                                            i.fa.fa-map-marker(aria-hidden='true') #{translation.CITY_SLEMANY}
+                                                        if car.location == "Duhok"
+                                                            i.fa.fa-map-marker(aria-hidden='true') #{translation.CITY_DUHOK}
+                                                        if car.location == "Halabja"
+                                                            i.fa.fa-map-marker(aria-hidden='true') #{translation.CITY_HALABJA}
+                                                        if car.location == "Kirkuk"
+                                                            i.fa.fa-map-marker(aria-hidden='true') #{translation.CITY_KIRKUK}
+                                                        if car.location == "Baghdad"
+                                                            i.fa.fa-map-marker(aria-hidden='true') #{translation.CITY_BAGHDAD}
+                                                        if car.location == "Mosul"
+                                                            i.fa.fa-map-marker(aria-hidden='true') #{translation.CITY_MOSUL}
+                                                        if car.location == "Basra"
+                                                            i.fa.fa-map-marker(aria-hidden='true') #{translation.CITY_BASRA}
+                                                        if car.location == "Salah Al Din"
+                                                            i.fa.fa-map-marker(aria-hidden='true') #{translation.CITY_SALAH_AL_DIN}
+                                                        if car.location == "Diyala"
+                                                            i.fa.fa-map-marker(aria-hidden='true') #{translation.CITY_DIYALA}
+                                                        if car.location == "Wasit"
+                                                            i.fa.fa-map-marker(aria-hidden='true') #{translation.CITY_WASIT}
+                                                        if car.location == "Maysan"
+                                                            i.fa.fa-map-marker(aria-hidden='true') #{translation.CITY_MAYSAN}
+                                                        if car.location == "Dhi Qar"
+                                                            i.fa.fa-map-marker(aria-hidden='true') #{translation.CITY_DHI_QAR}
+                                                        if car.location == "Al Muthana"
+                                                            i.fa.fa-map-marker(aria-hidden='true') #{translation.CITY_AL_MUTHANA}
+                                                        if car.location == "Al-Qadisiyah"
+                                                            i.fa.fa-map-marker(aria-hidden='true') #{translation.CITY_AL_QADISIYAH}
+                                                        if car.location == "Babil"
+                                                            i.fa.fa-map-marker(aria-hidden='true') #{translation.CITY_BABIL}
+                                                        if car.location == "Karbala"
+                                                            i.fa.fa-map-marker(aria-hidden='true') #{translation.CITY_KARBALA}
+                                                        if car.location == "Najaf"
+                                                            i.fa.fa-map-marker(aria-hidden='true') #{translation.CITY_NAJAF}
+                                                        if car.location == "Al Anbar"
+                                                            i.fa.fa-map-marker(aria-hidden='true') #{translation.CITY_AL_ANBAR}
+                                                //- ul.features_list
+                                                //-     li
+                                                //-         i.fa.fa-road(aria-hidden='true')
+                                                //-         | #{car.kmsd} km
+                                                //-     li
+                                                //-         i.fa.fa-tachometer(aria-hidden='true')
+                                                //-         | #{car.drivetrian}
+                                                //-     li
+                                                //-         i.fa.fa-calendar(aria-hidden='true')
+                                                //-         | #{car.year}
+                                                //-     li
+                                                //-         i.fa.fa-car(aria-hidden='true')
+                                                //-         | #{car.fuelType}
                                     

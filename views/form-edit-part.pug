@@ -6,10 +6,10 @@ block content
 		.container
 			ul.coustom-breadcrumb
 				li
-					a(href='/', style='color: #1e96fe') Home
+					a(href='/', style='color: #1e96fe') #{translation.HOME_TXT}
 				li
 					a(style='color: #1e96fe') >
-				li(style='color: #1e96fe') Edit Vehicles Part
+				li(style='color: #1e96fe') #{translation.EDIT_VEHICLE_PART}
 			//- .user_profile_info.gray-bg.padding_4x4_40
 				//- .upload_user_logo
 				//- 	img(src='/images/222x172.jpg', alt='image')
@@ -23,128 +23,128 @@ block content
 					.profile_nav
 						ul
 							li
-								a(href='profile-settings.html') Profile Settings
+								a(href='/profile/myprofile') #{translation.PROFILE_SETTING}
 							li
-								a(href='my-vehicles.html') My Vehicles
+								a(href='/profile/myvehicles') #{translation.MY_VEHICLES}
 							li
-								a(href='my-car-parts.html') My Vehicle Parts
+								a(href='/parts/myvehicleparts') #{translation.MY_VEHICLE_PARTS}
+							li
+								a(href='/car/addnewcar') #{translation.POST_A_VEHICLE}
 							li.active
-								a(href='post-vehicle.html') Post a Vehicles
+								a(href='/parts/addCarPart') #{translation.POST_A_VEHICLE_PART}
 							li
-								a(href='post-car-parts.html') Post a Vehicle Part
-							li
-								a(href='#') Sign Out
+								a(href='/auth/logout') #{translation.SIGN_OUT}
 				.col-md-6.col-sm-8
 					.profile_wrap
-						h5.uppercase.underline Edit Car Part
+						h5.uppercase.underline #{translation.EDIT_VEHICLE_PART}
 						form(action='/parts/edit/'+car._id, method='post')
 							.form-group
-								label.control-label Name
+								label.control-label #{translation.CARPART_NAME}
 								input#Price.form-control.white_bg(type='text',name='name',value=car.name)
 							.form-group
-								label.control-label Make
+								label.control-label #{translation.MAKE}
 								.select
-									select#makes.form-control.white_bg(name='make',required="")
-										option(value="") Select Brand
+									select#makes.form-control.white_bg(name='make',required="required")
+										option(value="") #{translation.SELECT_BRAND}
 							.form-group
-								label.control-label Model
+								label.control-label #{translation.MODEL}
 								.select
-									select#models.form-control.white_bg(name="model",required="")
-										option(value="") Select Model
+									select#models.form-control.white_bg(name="model",required="required")
+										option(value="") #{translation.SELECT_MODEL}
 							.form-group
-								label.control-label Model Year
+								label.control-label #{translation.MODEL_YEAR}
 								.select
-									select#year.form-control.white_bg(name="year",required="")
-										option(value="") Select Year
+									select#year.form-control.white_bg(name="year",required="required")
+										option(value="") #{translation.SELECT_YEAR}
 							.form-group
-								label.control-label City
+								label.control-label #{translation.CITY}
 								.select
 									select.form-control.white_bg(name="location",required="")
 										if car.location == "Hawler"
-											option(value='Hawler',selected="") Hawler
+											option(value='Hawler',selected="") #{translation.CITY_HAWLER}
 										else
-											option(value='Hawler') Hawler
+											option(value='Hawler') #{translation.CITY_HAWLER}
 										if car.location == "Slemany"
-											option(value='Slemany',selected="") Slemany
+											option(value='Slemany',selected="") #{translation.CITY_SLEMANY}
 										else
-											option(value='Slemany') Slemany
+											option(value='Slemany') #{translation.CITY_SLEMANY}
 										if car.location == "Duhok"
-											option(value='Duhok',selected="") Duhok
+											option(value='Duhok',selected="") #{translation.CITY_DUHOK}
 										else
-											option(value='Duhok') Duhok
+											option(value='Duhok') #{translation.CITY_DUHOK}
 										if car.location == "Halabja"
-											option(value='Halabja',selected="") Halabja
+											option(value='Halabja',selected="") #{translation.CITY_HALABJA}
 										else
-											option(value='Halabja') Halabja
+											option(value='Halabja') #{translation.CITY_HALABJA}
 										if car.location == "Kirkuk"
-											option(value='Kirkuk',selected="") Kirkuk
+											option(value='Kirkuk',selected="") #{translation.CITY_KIRKUK}
 										else
-											option(value='Kirkuk') Kirkuk
+											option(value='Kirkuk') #{translation.CITY_KIRKUK}
 										if car.location == "Baghdad"
-											option(value='Baghdad',selected="") Baghdad
+											option(value='Baghdad',selected="") #{translation.CITY_BAGHDAD}
 										else
-											option(value='Baghdad') Baghdad
+											option(value='Baghdad') #{translation.CITY_BAGHDAD}
 										if car.location == "Mosul"
-											option(value='Mosul',selected="") Mosul
+											option(value='Mosul',selected="") #{translation.CITY_MOSUL}
 										else
-											option(value='Mosul') Mosul
+											option(value='Mosul') #{translation.CITY_MOSUL}
 										if car.location == "Basra"
-											option(value='Basra',selected="") Basra
+											option(value='Basra',selected="") #{translation.CITY_BASRA}
 										else
-											option(value='Basra') Basra
+											option(value='Basra') #{translation.CITY_BASRA}
 										if car.location == "Salah Al Din"
-											option(value='Salah Al Din',selected="") Salah Al Din
+											option(value='Salah Al Din',selected="") #{translation.CITY_SALAH_AL_DIN}
 										else
-											option(value='Salah Al Din') Salah Al Din
+											option(value='Salah Al Din') #{translation.CITY_SALAH_AL_DIN}
 										if car.location == "Diyala"
-											option(value='Diyala',selected="") Diyala
+											option(value='Diyala',selected="") #{translation.CITY_DIYALA}
 										else
-											option(value='Diyala') Diyala
+											option(value='Diyala') #{translation.CITY_DIYALA}
 										if car.location == "Wasit"
-											option(value='Wasit',selected="") Wasit
+											option(value='Wasit',selected="") #{translation.CITY_WASIT}
 										else
-											option(value='Wasit') Wasit
+											option(value='Wasit') #{translation.CITY_WASIT}
 										if car.location == "Maysan"
-											option(value='Maysan',selected="") Maysan
+											option(value='Maysan',selected="") #{translation.CITY_MAYSAN}
 										else
-											option(value='Maysan') Maysan
+											option(value='Maysan') #{translation.CITY_MAYSAN}
 										if car.location == "Dhi Qar"
-											option(value='Dhi Qar',selected="") Dhi Qar
+											option(value='Dhi Qar',selected="") #{translation.CITY_DHI_QAR}
 										else
-											option(value='Dhi Qar') Dhi Qar
+											option(value='Dhi Qar') #{translation.CITY_DHI_QAR}
 										if car.location == "Al Muthana"
-											option(value='Al Muthana',selected="") Al Muthana
+											option(value='Al Muthana',selected="") #{translation.CITY_AL_MUTHANA}
 										else
-											option(value='Al Muthana') Al Muthana
+											option(value='Al Muthana') #{translation.CITY_AL_MUTHANA}
 										if car.location == "Al-Qadisiyah"
-											option(value='Al-Qadisiyah',selected="") Al-Qadisiyah
+											option(value='Al-Qadisiyah',selected="") #{translation.CITY_AL_QADISIYAH}
 										else
-											option(value='Al-Qadisiyah') Al-Qadisiyah
+											option(value='Al-Qadisiyah') #{translation.CITY_AL_QADISIYAH}
 										if car.location == "Babil"
-											option(value='Babil',selected="") Babil
+											option(value='Babil',selected="") #{translation.CITY_BABIL}
 										else
-											option(value='Babil') Babil
+											option(value='Babil') #{translation.CITY_BABIL}
 										if car.location == "Karbala"
-											option(value='Karbala',selected="") Karbala
+											option(value='Karbala',selected="") #{translation.CITY_KARBALA}
 										else
-											option(value='Karbala') Karbala
+											option(value='Karbala') #{translation.CITY_KARBALA}
 										if car.location == "Najaf"
-											option(value='Najaf',selected="") Najaf
+											option(value='Najaf',selected="") #{translation.CITY_NAJAF}
 										else
-											option(value='Najaf') Najaf
+											option(value='Najaf') #{translation.CITY_NAJAF}
 										if car.location == "Al Anbar"
-											option(value='Al Anbar',selected="") Al Anbar
+											option(value='Al Anbar',selected="") #{translation.CITY_AL_ANBAR}
 										else
-											option(value='Al Anbar') Al Anbar
+											option(value='Al Anbar') #{translation.CITY_AL_ANBAR}
 							.form-group
-								label.control-label Price ($)
+								label.control-label #{translation.PRICE} ($)
 								input#Price.form-control.white_bg(type='number',name='price',value=car.price)
 							.form-group
-								label.control-label Description
+								label.control-label #{translation.DESCRIPTION}
 								textarea.form-control.white_bg(rows='4',name="description")=car.description
 							.form-group
 								button.btn(style='width: 100%;', type='submit')
-									| Save
+									| #{translation.SAVE}
 									span.angle_arrow
 										i.fa.fa-angle-right(aria-hidden='true')
 	script(src='/js/jquery.min.js')

@@ -3,14 +3,14 @@ extends layout
 block content  
     
 
-	section.user_profile.inner_pages(style='padding-top: 1%')
+	section.user_profile.inner_pages(style='padding-top: 1%;')
 		.container
 			ul.coustom-breadcrumb
 				li
-					a(href='/', style='color: #1e96fe') Home
+					a(href='/', style='color: #1e96fe') #{translation.HOME_TXT}
 				li
 					a(style='color: #1e96fe') >
-				li(style='color: #1e96fe') My Vehicles
+				li(style='color: #1e96fe') #{translation.POST_A_VEHICLE}
 			//- .user_profile_info.gray-bg.padding_4x4_40
 				//- .upload_user_logo
 				//- 	img(src='/images/222x172.jpg', alt='image')
@@ -24,163 +24,163 @@ block content
 					.profile_nav
 						ul
 							li
-								a(href='/profile/myprofile') Profile Settings
+								a(href='/profile/myprofile') #{translation.PROFILE_SETTING}
 							li
-								a(href='/profile/myvehicles') My Vehicles
+								a(href='/profile/myvehicles') #{translation.MY_VEHICLES}
 							li
-								a(href='/parts/myvehicleparts') My Vehicle Parts
+								a(href='/parts/myvehicleparts') #{translation.MY_VEHICLE_PARTS}
 							li.active
-								a(href='/car/addnewcar') Post a Vehicles
+								a(href='/car/addnewcar') #{translation.POST_A_VEHICLE}
 							li
-								a(href='/parts/addCarPart') Post a Vehicle Part
+								a(href='/parts/addCarPart') #{translation.POST_A_VEHICLE_PART}
 							li
-								a(href='/auth/logout') Sign Out
+								a(href='/auth/logout') #{translation.SIGN_OUT}
 				.col-md-6.col-sm-8
 					.profile_wrap
-						h5.uppercase.underline Post a New Vehicle
+						h5.uppercase.underline #{translation.POST_A_VEHICLE}
 						form(action='/car/addnewcar', method='post', encType="multipart/form-data")
 							.form-group
-								label.control-label Make
+								label.control-label #{translation.MAKE}
 								.select
 									select#makes.form-control.white_bg(name='make',required="")
-										option(value="") Select Brand
+										option(value="") #{translation.SELECT_BRAND}
 							.form-group
-								label.control-label Model
+								label.control-label #{translation.MODEL}
 								.select
 									select#models.form-control.white_bg(name="model",required="")
-										option(value="") Select Model
+										option(value="") #{translation.SELECT_MODEL}
 							.form-group
-								label.control-label Model Year
+								label.control-label #{translation.MODEL_YEAR}
 								.select
 									select#year.form-control.white_bg(name="year",required="")
-										option(value="") Select Year
+										option(value="") #{translation.SELECT_YEAR}
 							.form-group
-								label.control-label City
+								label.control-label #{translation.CITY}
 								.select
 									select.form-control.white_bg(name="location")
-										option(value='Hawler') Hawler
-										option(value='Slemany') Slemany
-										option(value='Duhok') Duhok
-										option(value='Halabja') Halabja
-										option(value='Kirkuk') Kirkuk
-										option(value='Baghdad') Baghdad
-										option(value='Mosul') Mosul
-										option(value='Basra') Basra
-										option(value='Salah Al Din') Salah Al Din
-										option(value='Diyala') Diyala
-										option(value='Wasit') Wasit
-										option(value='Maysan') Maysan
-										option(value='Dhi Qar') Dhi Qar
-										option(value='Al Muthana') Al Muthana
-										option(value='Al-Qadisiyah') Al-Qadisiyah
-										option(value='Babil') Babil
-										option(value='Karbala') Karbala
-										option(value='Najaf') Najaf
-										option(value='Al Anbar') Al Anbar
+										option(value='Hawler') #{translation.CITY_HAWLER}
+										option(value='Slemany') #{translation.CITY_SLEMANY}
+										option(value='Duhok') #{translation.CITY_DUHOK}
+										option(value='Halabja') #{translation.CITY_HALABJA}
+										option(value='Kirkuk') #{translation.CITY_KIRKUK}
+										option(value='Baghdad') #{translation.CITY_BAGHDAD}
+										option(value='Mosul') #{translation.CITY_MOSUL}
+										option(value='Basra') #{translation.CITY_BASRA}
+										option(value='Salah Al Din') #{translation.CITY_SALAH_AL_DIN}
+										option(value='Diyala') #{translation.CITY_DIYALA}
+										option(value='Wasit') #{translation.CITY_WASIT}
+										option(value='Maysan') #{translation.CITY_MAYSAN}
+										option(value='Dhi Qar') #{translation.CITY_DHI_QAR}
+										option(value='Al Muthana') #{translation.CITY_AL_MUTHANA}
+										option(value='Al-Qadisiyah') #{translation.CITY_AL_QADISIYAH}
+										option(value='Babil') #{translation.CITY_BABIL}
+										option(value='Karbala') #{translation.CITY_KARBALA}
+										option(value='Najaf') #{translation.CITY_NAJAF}
+										option(value='Al Anbar') #{translation.CITY_AL_ANBAR}
 							.form-group
-								label.control-label Price ($)
+								label.control-label #{translation.PRICE} ($)
 								input#Price.form-control.white_bg(type='number',name='price')
 							.form-group
-								label.control-label Upload Images ( size = 900 x 560 )
+								label.control-label #{translation.UPLOAD_IMAGE}
 								.vehicle_images#gallery
 									.upload_more_img
 										input#gallery-photo-add(name='pics',multiple="multiple",accept="image/*", type='file')
 							.gray-bg.field-title
-								h6 Basic Info
+								h6 #{translation.BASIC_INFO}
 							.form-group
-								label.control-label KMs Driven
+								label.control-label #{translation.KMS_DRIVEN}
 								input#kws.form-control.white_bg(type='number',name='kmsd')
 							.form-group
-								label.control-label Fuel Type
+								label.control-label #{translation.FUEL_TYPE}
 								.select
 									select.form-control.white_bg(name="fuelType")
-										option(value="",selected="") Select fuel type
-										option(value='Petrol') Petrol
-										option(value='Diesel') Diesel
-										option(value='LPG autogas') LPG autogas
-										option(value='Electric') Electric
-										option(value='Hybrid') Hybrid
+										option(value="",selected="") #{translation.SELECT_FUEL_TYPE}
+										option(value='Petrol') #{translation.FUEL_PETROL}
+										option(value='Diesel') #{translation.FUEL_DIESEL}
+										option(value='LPG autogas') #{translation.FUEL_LPG_AUTOGAS}
+										option(value='Electric') #{translation.FUEL_ELECTRIC}
+										option(value='Hybrid') #{translation.FUEL_HYBRID}
 							.form-group
-								label.control-label Roof Type
+								label.control-label #{translation.ROOF_TYPE}
 								.select
 									select.form-control.white_bg(name="roofType")
-										option(value="",selected="") Select roof type
-										option(value='Regular') Regular
-										option(value='Convertible') Convertible
-										option(value='Slide Sunroof') Slide Sunroof
-										option(value='Panoramic Sunroof') Panoramic Sunroof
+										option(value="",selected="") #{translation.SELECT_ROOF_TYPE}
+										option(value='Regular') #{translation.ROOF_REGULAR}
+										option(value='Convertible') #{translation.ROOF_CONVERTIBLE}
+										option(value='Slide Sunroof') #{translation.ROOF_SLIDE}
+										option(value='Panoramic Sunroof') #{translation.ROOF_PANORAMIC}
 							.gray-bg.field-title
-								h6 Technical Specification
+								h6 #{translation.TECHNICAL_SPECIFICATION}
 							.form-group
-								label.control-label No. of Cylinders
+								label.control-label #{translation.CYLINDERS}
 								input#cylinders.form-control.white_bg(type='text',name="cylNo")
 							.form-group
-								label.control-label Fuel Tank Capacity
+								label.control-label #{translation.FEUL_TANK_CAPACITY}
 								input#capacity.form-control.white_bg(type='text',name="tankCap")
 							.form-group
-								label.control-label Seating Capacity
+								label.control-label #{translation.SEATING_CAPACITY}
 								input#s-capacity.form-control.white_bg(type='text',name="seatCap")
 							.form-group
-								label.control-label Airbags
+								label.control-label #{translation.AIRBAGS}
 								input#airbags.form-control.white_bg(type='number',name="airbags")
 							.form-group
-								label.control-label Transmission
+								label.control-label #{translation.TRANSMISSION}
 								.form-check.form-check-inline
 									input#inlineRadio1.form-check-input(type='radio', name='transmission', value='Automatic')
-									label.form-check-label(for='inlineRadio1') Automatic
+									label.form-check-label(for='inlineRadio1') #{translation.TRANSMISSION_AUTOMATIC}
 								.form-check.form-check-inline
 									input#inlineRadio2.form-check-input(type='radio', name='transmission', value='Manual')
-									label.form-check-label(for='inlineRadio2') Manual
+									label.form-check-label(for='inlineRadio2') #{translation.TRANSMISSION_MANUAL}
 
 							.form-group
-								label.control-label Drivetrain
+								label.control-label #{translation.DRIVETRAIN}
 								.select
 									select.form-control.white_bg(name="drivetrain")
-										option(value="",selected="") Select Drivetrain
+										option(value="",selected="") #{translation.SELECT_DRIVETRAIN}
 										option(value='AWD') AWD
 										option(value='FWD') FWD
 										option(value='RWD') RWD
 										option(value='4X4') 4X4
 							.gray-bg.field-title
-								h6 Accessories
+								h6 #{translation.ACCESSORIES}
 							.vehicle_accessories
 								.form-group.checkbox.col-md-6.accessories_list
 									input#screen(type='checkbox', name="screen",value="Big Screen")
-									label(for='screen') Big Screen
+									label(for='screen') #{translation.BIG_SCREEN}
 								.form-group.checkbox.col-md-6.accessories_list
 									input#camera(type='checkbox', name="camera",value="Backup Camera")
-									label(for='camera') Backup Camera
+									label(for='camera') #{translation.BACKUP_CAMERA}
 								.form-group.checkbox.col-md-6.accessories_list
 									input#bluetooth(type='checkbox', name="bluetooth",value="Bluetooth")
-									label(for='bluetooth') Bluetooth
+									label(for='bluetooth') #{translation.BLUETOOTH}
 								.form-group.checkbox.col-md-6.accessories_list
 									input#seats(type='checkbox', name="lseats",value="Leather Seats")
-									label(for='seats') Leather Seats
+									label(for='seats') #{translation.LEATHER_SEATS}
 								.form-group.checkbox.col-md-6.accessories_list
 									input#hseats(type='checkbox', name="hseats",value="Heated Seats")
-									label(for='hseats') Heated Seats
+									label(for='hseats') #{translation.HEATED_SEATS}
 								.form-group.checkbox.col-md-6.accessories_list
 									input#starter(type='checkbox', name="starter",value="Remote Starter")
-									label(for='starter') Remote Starter
+									label(for='starter') #{translation.REMOTE_STARTER}
 								.form-group.checkbox.col-md-6.accessories_list
 									input#cruise(type='checkbox', name="cruise",value="Cruise Control")
-									label(for='cruise') Cruise Control
+									label(for='cruise') #{translation.CRUISE_CONTROL}
 								.form-group.checkbox.col-md-6.accessories_list
 									input#ac(type='checkbox', name="ac",value="Dual Air Conditioner")
-									label(for='ac') Dual Air Conditioner
+									label(for='ac') #{translation.DUAL_AIR_CONDITIONER}
 							.form-group
-								label.control-label Vehicle Overview Description
+								label.control-label #{translation.VEHICLE_OVERVIEW_DESCRIPTION}
 								textarea.form-control.white_bg(rows='4',name="description")
 							.vehicle_type
 								.form-group.radio.col-md-6.accessories_list
 									input#newcar(type='radio', name='vehicle_type', value='New',required='')
-									label(for='newcar') New Car
+									label(for='newcar') #{translation.NEW_CAR}
 								.form-group.radio.col-md-6.accessories_list
 									input#usedcar(type='radio', name='vehicle_type', value='Used')
-									label(for='usedcar') Used Car
+									label(for='usedcar') #{translation.USED_CAR}
 							.form-group
 								button.btn(style='width: 100%;', type='submit')
-									| Submit and Post 
+									| #{translation.SUBMIT_AND_POST}
 									span.angle_arrow
 										i.fa.fa-angle-right(aria-hidden='true')
 	script(src='/js/jquery.min.js')

@@ -6,14 +6,14 @@ block content
         .container
             ul.coustom-breadcrumb
                 li
-                    a(href='/', style='color: #1e96fe;') Home
+                    a(href='/', style='color: #1e96fe;') #{translation.HOME_TXT}
                 li
                     a(style='color: #1e96fe;') >
-                li(style='color: #1e96fe;') Dealers List
+                li(style='color: #1e96fe;') #{translation.DEALERS_LIST}
             .result-sorting-wrapper
                 .sorting-count
                     p
-                        span #{result.totalDocs} Dealers available.
+                        span #{result.totalDocs} #{translation.DEALERS_AVAILABLE}
                 //- .result-sorting-by
                 //-     p Sort by:
                 //-     form(action='#', method='post')
@@ -33,10 +33,47 @@ block content
                                 .dealer_info
                                     h5
                                         a(href='/dealers/profile/'+doc._id) #{doc.company}
-                                    p #{doc.address.city}
+                                    if doc.address.city == "Hawler"
+                                        i.fa.fa-map-marker(aria-hidden='true') #{translation.CITY_HAWLER}
+                                    if doc.address.city == "Slemany"
+                                        i.fa.fa-map-marker(aria-hidden='true') #{translation.CITY_SLEMANY}
+                                    if doc.address.city == "Duhok"
+                                        i.fa.fa-map-marker(aria-hidden='true') #{translation.CITY_DUHOK}
+                                    if doc.address.city == "Halabja"
+                                        i.fa.fa-map-marker(aria-hidden='true') #{translation.CITY_HALABJA}
+                                    if doc.address.city == "Kirkuk"
+                                        i.fa.fa-map-marker(aria-hidden='true') #{translation.CITY_KIRKUK}
+                                    if doc.address.city == "Baghdad"
+                                        i.fa.fa-map-marker(aria-hidden='true') #{translation.CITY_BAGHDAD}
+                                    if doc.address.city == "Mosul"
+                                        i.fa.fa-map-marker(aria-hidden='true') #{translation.CITY_MOSUL}
+                                    if doc.address.city == "Basra"
+                                        i.fa.fa-map-marker(aria-hidden='true') #{translation.CITY_BASRA}
+                                    if doc.address.city == "Salah Al Din"
+                                        i.fa.fa-map-marker(aria-hidden='true') #{translation.CITY_SALAH_AL_DIN}
+                                    if doc.address.city == "Diyala"
+                                        i.fa.fa-map-marker(aria-hidden='true') #{translation.CITY_DIYALA}
+                                    if doc.address.city == "Wasit"
+                                        i.fa.fa-map-marker(aria-hidden='true') #{translation.CITY_WASIT}
+                                    if doc.address.city == "Maysan"
+                                        i.fa.fa-map-marker(aria-hidden='true') #{translation.CITY_MAYSAN}
+                                    if doc.address.city == "Dhi Qar"
+                                        i.fa.fa-map-marker(aria-hidden='true') #{translation.CITY_DHI_QAR}
+                                    if doc.address.city == "Al Muthana"
+                                        i.fa.fa-map-marker(aria-hidden='true') #{translation.CITY_AL_MUTHANA}
+                                    if doc.address.city == "Al-Qadisiyah"
+                                        i.fa.fa-map-marker(aria-hidden='true') #{translation.CITY_AL_QADISIYAH}
+                                    if doc.address.city == "Babil"
+                                        i.fa.fa-map-marker(aria-hidden='true') #{translation.CITY_BABIL}
+                                    if doc.address.city == "Karbala"
+                                        i.fa.fa-map-marker(aria-hidden='true') #{translation.CITY_KARBALA}
+                                    if doc.address.city == "Najaf"
+                                        i.fa.fa-map-marker(aria-hidden='true') #{translation.CITY_NAJAF}
+                                    if doc.address.city == "Al Anbar"
+                                        i.fa.fa-map-marker(aria-hidden='true') #{translation.CITY_AL_ANBAR}
                             .col-sm-3.col-xs-12
                                 .view_profile
-                                    a.btn.btn-xs.outline(href='/dealers/profile/'+doc._id) View Profile
+                                    a.btn.btn-xs.outline(href='/dealers/profile/'+doc._id) #{translation.VIEW_PROFILE}
             .pagination
                 ul
                     - for(var i = 1; i <= result.totalPages; i++) {

@@ -35,7 +35,7 @@ html
         //if lt IE 9
           script(src='https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js')
           script(src='https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js')
-    body
+    body(style="direction:"+translation.DIRECTION)
         // Header
         header
             .default-header
@@ -65,11 +65,18 @@ html
                                         li
                                             a(href='#')
                                                 i.fa.fa-instagram(aria-hidden='true')
+                                    ul
+                                        li
+                                            a(href="/?clang=en") English
+                                        li
+                                            a(href="/?clang=ku") کوردی
+                                        li
+                                            a(href="/?clang=ar") العربی
                                 if user == null || user == undifiended || user ==""
                                     .login_btn
-                                        a.btn.btn-xs.uppercase(href='#loginform', data-toggle='modal', data-dismiss='modal') Login
+                                        a.btn.btn-xs.uppercase(href='#loginform', data-toggle='modal', data-dismiss='modal') #{translation.LOGIN}
                                         span 
-                                        a.btn.btn-xs.uppercase(href='#signupform', data-toggle='modal', data-dismiss='modal') Register
+                                        a.btn.btn-xs.uppercase(href='#signupform', data-toggle='modal', data-dismiss='modal') #{translation.REGISTER}
 
         != messages('message', locals)
         if errors
@@ -95,26 +102,26 @@ html
                                         i.fa.fa-angle-down(aria-hidden='true')
                                     ul.dropdown-menu
                                         li
-                                            a(href='/profile/myprofile') Profile
+                                            a(href='/profile/myprofile') #{translation.PROFILE}
                                         hr
                                         if user.role=='admin'
                                             li
-                                                a(href='/admin/users') Users
+                                                a(href='/admin/users') #{translation.USERS}
                                             li
-                                                a(href='/admin/Dealers') Dealers 
+                                                a(href='/admin/Dealers') #{translation.DEALERS} 
                                             li
-                                                a(href='/admin/requests') Requests
+                                                a(href='/admin/requests') #{translation.REQUESTS}
                                             hr
                                         li
-                                            a(href='/profile/myvehicles') My Vehicles
+                                            a(href='/profile/myvehicles') #{translation.MY_VEHICLES}
                                         li
-                                            a(href='/parts/myvehicleparts') My Vehicle Parts
+                                            a(href='/parts/myvehicleparts') #{translation.MY_VEHICLE_PARTS}
                                         li
-                                            a(href='/car/addnewcar') Post a Vehicle
+                                            a(href='/car/addnewcar') #{translation.POST_A_VEHICLE}
                                         li
-                                            a(href='/parts/addCarPart') Post a Vehicle Part
+                                            a(href='/parts/addCarPart') #{translation.POST_A_VEHICLE_PART}
                                         li
-                                            a(href='/auth/logout') Sign Out
+                                            a(href='/auth/logout') #{translation.SIGN_OUT}
                     //- .header_search
                     //-     #search_toggle
                     //-         i.fa.fa-search(aria-hidden='true')
@@ -125,17 +132,17 @@ html
                 #navigation.collapse.navbar-collapse
                     ul.nav.navbar-nav
                         li
-                            a(href='/') Home
+                            a(href='/') #{translation.HOME_TXT}
                         li
-                            a(href='/dealers') Dealers
+                            a(href='/dealers') #{translation.DEALERS}
                         li
-                            a(href="/list?page=1&l=New") New Cars
+                            a(href="/list?page=1&l=New") #{translation.NEW_CARS}
                         li
-                            a(href="/list?page=1&l=Used") Used Cars
+                            a(href="/list?page=1&l=Used") #{translation.USED_CARS}
                         li
-                            a(href='/parts/list') Car Parts
+                            a(href='/parts/list') #{translation.CAR_PARTS}
                         li
-                            a(href='/about-us') About us
+                            a(href='/about-us') #{translation.ABOUT_US}
         // Navigation end
 
         block content
@@ -184,21 +191,21 @@ html
                     .modal-header
                         button.close(type='button', data-dismiss='modal', aria-label='Close')
                             span(aria-hidden='true') ×
-                        h3.modal-title Login
+                        h3.modal-title  #{translation.LOGIN}
                     .modal-body
                         .row
                             .login_wrap
                                 .col-md-6.col-sm-6
                                     form(action='/auth/login', method='post')
                                         .form-group
-                                            input.form-control(type='text',name='email', placeholder='Email address')
+                                            input.form-control(type='text',name='email', placeholder=translation.EMAIL_ADDRESS)
                                         .form-group
-                                            input.form-control(type='password',name='password', placeholder='Password*')
+                                            input.form-control(type='password',name='password', placeholder=translation.PASSWORD)
                                         //- .form-group.checkbox
                                         //-     input#remember(type='checkbox',disabled='disabled')
                                         //-     label(for='remember') Remember Me
                                         .form-group
-                                            input.btn.btn-block(type='submit', value='Login')
+                                            input.btn.btn-block(type='submit', value=translation.LOGIN)
                                 //- .col-md-6.col-sm-6
                                 //-     h6.gray_text Login the Quick Way
                                 //-     a.btn.btn-block.facebook-btn(href='#')
@@ -213,8 +220,8 @@ html
                                 .mid_divider
                     .modal-footer.text-center
                         p
-                            | Don't have an account? 
-                            a(href='#signupform', data-toggle='modal', data-dismiss='modal') Signup Here
+                            | #{translation.DONT_HAVE_AN_ACCOUNT} 
+                            a(href='#signupform', data-toggle='modal', data-dismiss='modal') #{translation.SIGNIP_HERE} 
                         //- p
                         //-     a(href='#forgotpassword', data-toggle='modal', data-dismiss='modal') Forgot Password ?
         // /Login-Form
@@ -226,30 +233,30 @@ html
                     .modal-header
                         button.close(type='button', data-dismiss='modal', aria-label='Close')
                             span(aria-hidden='true') ×
-                        h3.modal-title Sign Up 
+                        h3.modal-title #{translation.REGISTER} 
                     .modal-body
                         .row
                             .signup_wrap
                                 .col-md-6.col-sm-6
                                     form(action='/auth/register', method='post')
                                         .form-group
-                                            input.form-control(type='text', name='name',placeholder='Full Name',required='')
+                                            input.form-control(type='text', name='name',placeholder=translation.FULL_NAME,required='')
                                         .form-group
-                                            input.form-control(type='email',id="get-email",name='email', placeholder='Email Address',required='')
-                                            span#err.text-danger This email is already in use
+                                            input.form-control(type='email',id="get-email",name='email', placeholder=translation.EMAIL_ADDRESS,required='')
+                                            span#err.text-danger #{translation.THIS_EMAIL_ALREADY_IN_USE}
                                         .form-group
-                                            input.form-control(type='number' , name='phoneNumber',placeholder='Phone Number',required='')
+                                            input.form-control(type='number' , name='phoneNumber',placeholder=translation.PHONE_NUMBER,required='')
                                         .form-group
-                                            input.form-control(type='password',name='password', placeholder='Password',required='')
+                                            input.form-control(type='password',name='password', placeholder=translation.PASSWORD,required='')
                                         .form-group
-                                            input.form-control(type='password' , name='password2',placeholder='Confirm Password',required='')
+                                            input.form-control(type='password' , name='password2',placeholder=translation.CONFIRM_PASSWORD,required='')
                                         //- .form-group.checkbox
                                         //-     input#terms_agree(type='checkbox')
                                         //-     label(for='terms_agree')
                                         //-         | I Agree with 
                                         //-         a(href='#') Terms and Conditions
                                         .form-group
-                                            input.btn.btn-block#sub(type='submit', value='Sign Up')
+                                            input.btn.btn-block#sub(type='submit', value=translation.REGISTER)
                                 //- .col-md-6.col-sm-6
                                 //-     h6.gray_text Login the Quick Way
                                 //-     a.btn.btn-block.facebook-btn(href='#')

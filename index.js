@@ -2,16 +2,15 @@ const express = require("express");
 const path = require("path");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
+const cookieParser = require("cookie-parser");
 const expressValidator = require("express-validator");
 const flash = require("connect-flash");
 const session = require("express-session");
 const passport = require("passport");
 const config = require("./config/database");
+const i18n = require("i18n-express");
 
-mongoose.connect(
-  config.database,
-  { useNewUrlParser: true }
-);
+mongoose.connect(config.database, { useNewUrlParser: true });
 mongoose.set("useFindAndModify", false);
 let db = mongoose.connection;
 
@@ -32,6 +31,9 @@ const app = express();
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "pug");
 
+//cookie parser
+app.use(cookieParser());
+
 // Body Parser Middleware
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -47,6 +49,16 @@ app.use(
     secret: "keyboard cat",
     resave: true,
     saveUninitialized: true
+  })
+);
+
+//i18n
+app.use(
+  i18n({
+    translationsPath: path.join(__dirname, "languages"), // <--- use here. Specify translations files path.
+    siteLangs: ["ku", "ar", "en"],
+    textsVarName: "translation",
+    defaultLang: "ku"
   })
 );
 

@@ -6,81 +6,81 @@ block content
             .profile_nav
                 ul
                     li.active
-                        a(href='/profile/myprofile') Profile Settings
+                        a(href='/profile/myprofile') #{translation.PROFILE_SETTING}
                     li
-                        a(href='/profile/myvehicles') My Vehicles
+                        a(href='/profile/myvehicles') #{translation.MY_VEHICLES}
                     li
-                        a(href='/parts/myvehicleparts') My Vehicle Parts
+                        a(href='/parts/myvehicleparts') #{translation.MY_VEHICLE_PARTS}
                     li
-                        a(href='/car/addnewcar') Post a Vehicles
+                        a(href='/car/addnewcar') #{translation.POST_A_VEHICLE}
                     li
-                        a(href='/parts/addCarPart') Post a Vehicle Part
+                        a(href='/parts/addCarPart') #{translation.POST_A_VEHICLE_PART}
                     li
-                        a(href='/auth/logout') Sign Out
+                        a(href='/auth/logout') #{translation.SIGN_OUT}
         .col-md-6.col-sm-8
             .profile_wrap
-                h5.uppercase.underline Please fill the form to request a profile
+                h5.uppercase.underline #{translation.PLEASE_FILL_THE_FORM}
                 form(action='/profile/createprofile',method="post", encType="multipart/form-data")
                     .form-group
-                        label.control-label Company Name
-                        input#fullname.form-control.white_bg(type='text', name='company', placeholder='Company Name',required='')
+                        label.control-label #{translation.COMPANY_NAME}
+                        input#fullname.form-control.white_bg(type='text', name='company', placeholder=translation.COMPANY_NAME,required='')
                     .form-group
-                        label.control-label Your Name
+                        label.control-label #{translation.YOUR_NAME}
                         input#fullname.form-control.white_bg(type='text', name='name', value=user.name,required='')
                     .form-group
-                        label.control-label Phone Number
-                        input#phone-number.form-control.white_bg(type='text', name='phoneNumber', placeholder='Phone Number',required='')
+                        label.control-label #{translation.PHONE_NUMBER}
+                        input#phone-number.form-control.white_bg(type='text', name='phoneNumber', placeholder=translation.PHONE_NUMBER,required='')
                     .form-group
-                        label.control-label City
+                        label.control-label #{translation.CITY}
                         select.selection(style='width: 100%; padding: 15px; border-color: #dbdbdb',name='city')
-                            option(value='Hawler') Hawler
-                            option(value='Slemany') Slemany
-                            option(value='Duhok') Duhok
-                            option(value='Halabja') Halabja
-                            option(value='Kirkuk') Kirkuk
-                            option(value='Baghdad') Baghdad
-                            option(value='Mosul') Mosul
-                            option(value='Basra') Basra
-                            option(value='Salah Al Din') Salah Al Din
-                            option(value='Diyala') Diyala
-                            option(value='Wasit') Wasit
-                            option(value='Maysan') Maysan
-                            option(value='Dhi Qar') Dhi Qar
-                            option(value='Al Muthana') Al Muthana
-                            option(value='Al-Qadisiyah') Al-Qadisiyah
-                            option(value='Babil') Babil
-                            option(value='Karbala') Karbala
-                            option(value='Najaf') Najaf
-                            option(value='Al Anbar') Al Anbar
+                            option(value='Hawler') #{translation.CITY_HAWLER}
+                            option(value='Slemany') #{translation.CITY_SLEMANY}
+                            option(value='Duhok') #{translation.CITY_DUHOK}
+                            option(value='Halabja') #{translation.CITY_HALABJA}
+                            option(value='Kirkuk') #{translation.CITY_KIRKUK}
+                            option(value='Baghdad') #{translation.CITY_BAGHDAD}
+                            option(value='Mosul') #{translation.CITY_MOSUL}
+                            option(value='Basra') #{translation.CITY_BASRA}
+                            option(value='Salah Al Din') #{translation.CITY_SALAH_AL_DIN}
+                            option(value='Diyala') #{translation.CITY_DIYALA}
+                            option(value='Wasit') #{translation.CITY_WASIT}
+                            option(value='Maysan') #{translation.CITY_MAYSAN}
+                            option(value='Dhi Qar') #{translation.CITY_DHI_QAR}
+                            option(value='Al Muthana') #{translation.CITY_AL_MUTHANA}
+                            option(value='Al-Qadisiyah') #{translation.CITY_AL_QADISIYAH}
+                            option(value='Babil') #{translation.CITY_BABIL}
+                            option(value='Karbala') #{translation.CITY_KARBALA}
+                            option(value='Najaf') #{translation.CITY_NAJAF}
+                            option(value='Al Anbar') #{translation.CITY_AL_ANBAR}
                     .form-group
-                        label.control-label Street
-                        input#fullname.form-control.white_bg(type='text', name='street',placeholder="Street",required='')
+                        label.control-label #{translation.STREET}
+                        input#fullname.form-control.white_bg(type='text', name='street',placeholder=translation.STREET,required='')
                     .form-group
-                        label.control-label Website
-                        input#fullname.form-control.white_bg(type='text', name='website',placeholder="Website")
+                        label.control-label #{translation.WEBSITE}
+                        input#fullname.form-control.white_bg(type='text', name='website',placeholder=translation.WEBSITE)
                     .gray-bg.field-title
-                        h6 Social Links
+                        h6 #{translation.SOCIAL_LINKS}
                     .form-group
-                        label.control-label Facebook Link
-                        input#facebook.form-control.white_bg(type='text', name='facebook', placeholder="Facebook")
+                        label.control-label #{translation.FACEBOOK_LINKS}
+                        input#facebook.form-control.white_bg(type='text', name='facebook', placeholder=translation.FACEBOOK_LINKS)
                     .form-group
-                        label.control-label Instagram Link
-                        input#instagram.form-control.white_bg(type='text', name='instagram', placeholder="Instagram")
+                        label.control-label #{translation.INSTAGRAM_LINK}
+                        input#instagram.form-control.white_bg(type='text', name='instagram', placeholder=translation.INSTAGRAM_LINK)
                     .form-group
-                        label.control-label Youtube Link
-                        input#instagram.form-control.white_bg(type='text', name='youtube', placeholder="Youtube")
+                        label.control-label #{translation.YOUTUBE_LINK}
+                        input#instagram.form-control.white_bg(type='text', name='youtube', placeholder=translation.YOUTUBE_LINK)
                     .form-group
-                        label.control-label Twitter Link
-                        input#instagram.form-control.white_bg(type='text', name='twitter', placeholder="Twitter")
+                        label.control-label #{translation.TWITTER_LINK}
+                        input#instagram.form-control.white_bg(type='text', name='twitter', placeholder=translation.TWITTER_LINK)
                     .form-group
-                        label.control-label Info
-                        textarea.form-control(placeholder='info',name="info")
+                        label.control-label #{translation.INFO}
+                        textarea.form-control(placeholder=translation.INFO,name="info")
                     .form-group
-                        label.control-label Logo
+                        label.control-label #{translation.LOGO}
                         input.form-control-file(type='file', name='avatar', accept='image/*')
                     .form-group
                         button.btn(type='submit')
-                            | Send Profile request
+                            | #{translation.SEND_PROFILE_REQUEST}
                             span.angle_arrow
                                 i.fa.fa-angle-right(aria-hidden='true')
         // /Profile-setting

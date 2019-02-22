@@ -6,11 +6,11 @@ block content
         .container
             .page-header_wrap
                 .page-heading
-                    h1 Car Listing
+                    h1 #{translation.CAR_LISTING}
                 ul.coustom-breadcrumb
                     li
-                        a(href='/') Home
-                    li Car Listing
+                        a(href='/') #{translation.HOME_TXT}
+                    li #{translation.CAR_LISTING}
         // Dark Overlay
         .dark-overlay
     // /Page Header
@@ -22,7 +22,7 @@ block content
                     .result-sorting-wrapper
                         .sorting-count
                             p
-                                span #{result.totalDocs} Results found for your search.
+                                span #{result.totalDocs} #{translation.RESULTS_FOUND}.
                         //- .result-sorting-by
                         //-     p Sort by:
                         //-     form(action='#', method='post')
@@ -51,20 +51,66 @@ block content
                                         p.list-price $ #{doc.price}
                                         .car-location
                                             span
-                                                i.fa.fa-map-marker(aria-hidden='true')=doc.location
+                                                if doc.location == "Hawler"
+                                                    i.fa.fa-map-marker(aria-hidden='true') #{translation.CITY_HAWLER}
+                                                if doc.location == "Slemany"
+                                                    i.fa.fa-map-marker(aria-hidden='true') #{translation.CITY_SLEMANY}
+                                                if doc.location == "Duhok"
+                                                    i.fa.fa-map-marker(aria-hidden='true') #{translation.CITY_DUHOK}
+                                                if doc.location == "Halabja"
+                                                    i.fa.fa-map-marker(aria-hidden='true') #{translation.CITY_HALABJA}
+                                                if doc.location == "Kirkuk"
+                                                    i.fa.fa-map-marker(aria-hidden='true') #{translation.CITY_KIRKUK}
+                                                if doc.location == "Baghdad"
+                                                    i.fa.fa-map-marker(aria-hidden='true') #{translation.CITY_BAGHDAD}
+                                                if doc.location == "Mosul"
+                                                    i.fa.fa-map-marker(aria-hidden='true') #{translation.CITY_MOSUL}
+                                                if doc.location == "Basra"
+                                                    i.fa.fa-map-marker(aria-hidden='true') #{translation.CITY_BASRA}
+                                                if doc.location == "Salah Al Din"
+                                                    i.fa.fa-map-marker(aria-hidden='true') #{translation.CITY_SALAH_AL_DIN}
+                                                if doc.location == "Diyala"
+                                                    i.fa.fa-map-marker(aria-hidden='true') #{translation.CITY_DIYALA}
+                                                if doc.location == "Wasit"
+                                                    i.fa.fa-map-marker(aria-hidden='true') #{translation.CITY_WASIT}
+                                                if doc.location == "Maysan"
+                                                    i.fa.fa-map-marker(aria-hidden='true') #{translation.CITY_MAYSAN}
+                                                if doc.location == "Dhi Qar"
+                                                    i.fa.fa-map-marker(aria-hidden='true') #{translation.CITY_DHI_QAR}
+                                                if doc.location == "Al Muthana"
+                                                    i.fa.fa-map-marker(aria-hidden='true') #{translation.CITY_AL_MUTHANA}
+                                                if doc.location == "Al-Qadisiyah"
+                                                    i.fa.fa-map-marker(aria-hidden='true') #{translation.CITY_AL_QADISIYAH}
+                                                if doc.location == "Babil"
+                                                    i.fa.fa-map-marker(aria-hidden='true') #{translation.CITY_BABIL}
+                                                if doc.location == "Karbala"
+                                                    i.fa.fa-map-marker(aria-hidden='true') #{translation.CITY_KARBALA}
+                                                if doc.location == "Najaf"
+                                                    i.fa.fa-map-marker(aria-hidden='true') #{translation.CITY_NAJAF}
+                                                if doc.location == "Al Anbar"
+                                                    i.fa.fa-map-marker(aria-hidden='true') #{translation.CITY_AL_ANBAR}
                                         ul.features_list
                                             li
                                                 i.fa.fa-road(aria-hidden='true')
                                                 | #{doc.kmsd} km
                                             li
                                                 i.fa.fa-tachometer(aria-hidden='true')
-                                                | #{doc.drivetrian}
+                                                | #{doc.drivetrain}
                                             li
                                                 i.fa.fa-calendar(aria-hidden='true')
                                                 | #{doc.year}
                                             li
-                                                i.fa.fa-car(aria-hidden='true')
-                                                | #{doc.fuelType}
+                                                if doc.fuelType == "Petrol"
+                                                    i.fa.fa-car(aria-hidden='true') #{translation.FUEL_PETROL}
+                                                if doc.fuelType == "Diesel"
+                                                    i.fa.fa-car(aria-hidden='true') #{translation.FUEL_DIESEL}
+                                                if doc.fuelType == "LPG autogas"
+                                                    i.fa.fa-car(aria-hidden='true') #{translation.FUEL_LPG_AUTOGAS}
+                                                if doc.fuelType == "Electric"
+                                                    i.fa.fa-car(aria-hidden='true') #{translation.FUEL_ELECTRIC}
+                                                if doc.fuelType == "Hybrid"
+                                                    i.fa.fa-car(aria-hidden='true') #{translation.FUEL_HYBRID}
+                                                
                     .pagination
                         ul
                             - for(var i = 1; i <= result.totalPages; i++) {
@@ -89,60 +135,60 @@ block content
                         .widget_heading
                             h5
                                 i.fa.fa-filter(aria-hidden='true')
-                                |  Find Your Car
+                                |  #{translation.FIND_YOUR_CAR}
                         .sidebar_filter
                             form#filtSearch(action='/filtSearch', method='get')
                                 .form-group.select
                                     select#location.form-control(name='location')
-                                        option(value='') All Location 
-                                        option(value='Hawler') Hawler
-                                        option(value='Slemany') Slemany
-                                        option(value='Duhok') Duhok
-                                        option(value='Halabja') Halabja
-                                        option(value='Kirkuk') Kirkuk
-                                        option(value='Baghdad') Baghdad
-                                        option(value='Mosul') Mosul
-                                        option(value='Basra') Basra
-                                        option(value='Salah Al Din') Salah Al Din
-                                        option(value='Diyala') Diyala
-                                        option(value='Wasit') Wasit
-                                        option(value='Maysan') Maysan
-                                        option(value='Dhi Qar') Dhi Qar
-                                        option(value='Al Muthana') Al Muthana
-                                        option(value='Al-Qadisiyah') Al-Qadisiyah
-                                        option(value='Babil') Babil
-                                        option(value='Karbala') Karbala
-                                        option(value='Najaf') Najaf
-                                        option(value='Al Anbar') Al Anbar
+                                        option(value='') #{translation.ALL_LOCATIONS}
+                                        option(value='Hawler') #{translation.CITY_HAWLER}
+                                        option(value='Slemany') #{translation.CITY_SLEMANY}
+                                        option(value='Duhok') #{translation.CITY_DUHOK}
+                                        option(value='Halabja') #{translation.CITY_HALABJA}
+                                        option(value='Kirkuk') #{translation.CITY_KIRKUK}
+                                        option(value='Baghdad') #{translation.CITY_BAGHDAD}
+                                        option(value='Mosul') #{translation.CITY_MOSUL}
+                                        option(value='Basra') #{translation.CITY_BASRA}
+                                        option(value='Salah Al Din') #{translation.CITY_SALAH_AL_DIN}
+                                        option(value='Diyala') #{translation.CITY_DIYALA}
+                                        option(value='Wasit') #{translation.CITY_WASIT}
+                                        option(value='Maysan') #{translation.CITY_MAYSAN}
+                                        option(value='Dhi Qar') #{translation.CITY_DHI_QAR}
+                                        option(value='Al Muthana') #{translation.CITY_AL_MUTHANA}
+                                        option(value='Al-Qadisiyah') #{translation.CITY_AL_QADISIYAH}
+                                        option(value='Babil') #{translation.CITY_BABIL}
+                                        option(value='Karbala') #{translation.CITY_KARBALA}
+                                        option(value='Najaf') #{translation.CITY_NAJAF}
+                                        option(value='Al Anbar') #{translation.CITY_AL_ANBAR}
                                 .form-group.select
                                     select#makes.form-control(name='make')
-                                        option(value='') All Brand
+                                        option(value='') #{translation.ALL_BRANDS}
                                 .form-group.select
                                     select#models.form-control(name='model')
-                                        option(value='') All Model
+                                        option(value='') #{translation.ALL_MODELS}
                                 .form-group.select
                                     select#year.form-control(name='year')
-                                        option(value='') Year of Model 
+                                        option(value='') #{translation.YEAR_OF_MODEL}
                                 .form-group
-                                    label.form-label Price Range ($) 
+                                    label.form-label #{translation.PRICE_RANGE} ($) 
                                     input#price_range.span2(type='text', value='', data-slider-min='0', data-slider-max='100000', data-slider-step='5', data-slider-value='[0,50000]')
                                     input#minprice(type='hidden',name="minPrice",value="0")
                                     input#maxprice(type='hidden',name="maxPrice",value="50000")
                                     input(type='hidden',name="page",value="1")
                                 .form-group.select
                                     select#searchType.form-control(name="searchType")
-                                        option(value='') Type of Search
-                                        option(value='New') New Car
-                                        option(value='Used') Used Car
+                                        option(value='') #{translation.SEARCH_TYPE}
+                                        option(value='New') #{translation.NEW}
+                                        option(value='Used') #{translation.USED}
                                 .form-group
                                     button.btn.btn-block(type='submit')
                                         i.fa.fa-search(aria-hidden='true')
-                                        |  Search
+                                        |  #{translation.SEARCH}
                     .sidebar_widget.sell_car_quote
                         .white-text.div_zindex.text-center
-                            h3 Sell Your Car
+                            h3 #{translation.SELL_YOUR_CAR}
                             a.btn(href='/car/addnewcar')
-                                | Sell Your Car
+                                | #{translation.SELL_YOUR_CAR}
                                 span.angle_arrow
                                     i.fa.fa-angle-right(aria-hidden='true')
                         .dark-overlay

@@ -6,31 +6,31 @@ block content
         .container
             ul.coustom-breadcrumb
                 li
-                    a(href='/', style='color: #1e96fe') Home
+                    a(href='/', style='color: #1e96fe') #{translation.HOME_TXT}
                 li
                     a(style='color: #1e96fe') >
-                li(style='color: #1e96fe') My Vehicles
+                li(style='color: #1e96fe') #{translation.MY_VEHICLES}
             
             .row
                 .col-md-3.col-sm-3
                     .profile_nav
                         ul
                             li
-                                a(href='/profile/myprofile') Profile Settings
+                                a(href='/profile/myprofile') #{translation.PROFILE_SETTING}
+                            li
+                                a(href='/profile/myvehicles') #{translation.MY_VEHICLES}
+                            li
+                                a(href='/parts/myvehicleparts') #{translation.MY_VEHICLE_PARTS}
+                            li
+                                a(href='/car/addnewcar') #{translation.POST_A_VEHICLE}
                             li.active
-                                a(href='/profile/myvehicles') My Vehicles
+                                a(href='/parts/addCarPart') #{translation.POST_A_VEHICLE_PART}
                             li
-                                a(href='/parts/myvehicleparts') My Vehicle Parts
-                            li
-                                a(href='/car/addnewcar') Post a Vehicles
-                            li
-                                a(href='/parts/addCarPart') Post a Vehicle Part
-                            li
-                                a(href='/auth/logout') Sign Out
+                                a(href='/auth/logout') #{translation.SIGN_OUT}
                 .col-md-6.col-sm-8
                     .profile_wrap
                         h5.uppercase.underline
-                            | My Vehicles 
+                            | #{translation.MY_VEHICLES}
                         .my_vehicles_list
                             ul.vehicle_listing
                                 each doc in result
@@ -46,7 +46,7 @@ block content
                                                 h6
                                                     a(href='/car/forsale/'+doc._id) #{doc.model}
                                             .vehicle_status
-                                                a.btn.outline.btn-xs.active-btn.chng(href='/inactive/'+doc._id) Sold
+                                                a.btn.outline.btn-xs.active-btn.chng(href='/inactive/'+doc._id) #{translation.SOLD}
                                                 .clearfix
                                                 a(href='/car/edit/'+doc._id)
                                                     i.fa.fa-pencil-square-o(aria-hidden='true')
@@ -64,7 +64,7 @@ block content
                                                 h6
                                                     a(href='/car/forsale/'+doc._id) #{doc.model}
                                             .vehicle_status
-                                                a.btn.outline.btn-xs.chng(href='/active/'+doc._id) Activate
+                                                a.btn.outline.btn-xs.chng(href='/active/'+doc._id) #{translation.ACTIVATE}
                                                 .clearfix
                                                 a(href='/car/edit/'+doc._id)
                                                     i.fa.fa-pencil-square-o(aria-hidden='true')

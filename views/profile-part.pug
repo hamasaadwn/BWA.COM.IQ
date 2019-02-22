@@ -10,8 +10,44 @@ block content
                     h2(style='color:#000;')=part.name
                     .car-location
                         span
-                            i.fa.fa-map-marker(aria-hidden='true')
-                            |  Iraq / #{part.location}
+                            if part.location == "Hawler"
+                                i.fa.fa-map-marker(aria-hidden='true') #{translation.IRAQ} / #{translation.CITY_HAWLER}
+                            if part.location == "Slemany"
+                                i.fa.fa-map-marker(aria-hidden='true') #{translation.IRAQ} / #{translation.CITY_SLEMANY}
+                            if part.location == "Duhok"
+                                i.fa.fa-map-marker(aria-hidden='true') #{translation.IRAQ} / #{translation.CITY_DUHOK}
+                            if part.location == "Halabja"
+                                i.fa.fa-map-marker(aria-hidden='true') #{translation.IRAQ} / #{translation.CITY_HALABJA}
+                            if part.location == "Kirkuk"
+                                i.fa.fa-map-marker(aria-hidden='true') #{translation.IRAQ} / #{translation.CITY_KIRKUK}
+                            if part.location == "Baghdad"
+                                i.fa.fa-map-marker(aria-hidden='true') #{translation.IRAQ} / #{translation.CITY_BAGHDAD}
+                            if part.location == "Mosul"
+                                i.fa.fa-map-marker(aria-hidden='true') #{translation.IRAQ} / #{translation.CITY_MOSUL}
+                            if part.location == "Basra"
+                                i.fa.fa-map-marker(aria-hidden='true') #{translation.IRAQ} / #{translation.CITY_BASRA}
+                            if part.location == "Salah Al Din"
+                                i.fa.fa-map-marker(aria-hidden='true') #{translation.IRAQ} / #{translation.CITY_SALAH_AL_DIN}
+                            if part.location == "Diyala"
+                                i.fa.fa-map-marker(aria-hidden='true') #{translation.IRAQ} / #{translation.CITY_DIYALA}
+                            if part.location == "Wasit"
+                                i.fa.fa-map-marker(aria-hidden='true') #{translation.IRAQ} / #{translation.CITY_WASIT}
+                            if part.location == "Maysan"
+                                i.fa.fa-map-marker(aria-hidden='true') #{translation.IRAQ} / #{translation.CITY_MAYSAN}
+                            if part.location == "Dhi Qar"
+                                i.fa.fa-map-marker(aria-hidden='true') #{translation.IRAQ} / #{translation.CITY_DHI_QAR}
+                            if part.location == "Al Muthana"
+                                i.fa.fa-map-marker(aria-hidden='true') #{translation.IRAQ} / #{translation.CITY_AL_MUTHANA}
+                            if part.location == "Al-Qadisiyah"
+                                i.fa.fa-map-marker(aria-hidden='true') #{translation.IRAQ} / #{translation.CITY_AL_QADISIYAH}
+                            if part.location == "Babil"
+                                i.fa.fa-map-marker(aria-hidden='true') #{translation.IRAQ} / #{translation.CITY_BABIL}
+                            if part.location == "Karbala"
+                                i.fa.fa-map-marker(aria-hidden='true') #{translation.IRAQ} / #{translation.CITY_KARBALA}
+                            if part.location == "Najaf"
+                                i.fa.fa-map-marker(aria-hidden='true') #{translation.IRAQ} / #{translation.CITY_NAJAF}
+                            if part.location == "Al Anbar"
+                                i.fa.fa-map-marker(aria-hidden='true') #{translation.IRAQ} / #{translation.CITY_AL_ANBAR}
                 .col-md-3
                     .price_info
                         p $#{part.price}
@@ -42,7 +78,7 @@ block content
                             .tab-content
                                 // vehicle-overview
                                 #vehicle-overview.tab-pane.active(role='tabpanel')
-                                    h4 About This Car Part
+                                    h4 #{translation.ABOUT_THIS_CAR_PART}
                                     p #{part.description}
                                 // Technical-Specification
                                 #specification.tab-pane(role='tabpanel')
@@ -51,19 +87,19 @@ block content
                                         table
                                             thead
                                                 tr
-                                                    th(colspan='2') BASIC INFO
+                                                    th(colspan='2') #{translation.BASIC_INFO}
                                             tbody
                                                 tr
-                                                    td Part Name
+                                                    td #{translation.CARPART_NAME}
                                                     td #{part.name}
                                                 tr
-                                                    td Brand
+                                                    td #{translation.MODEL}
                                                     td #{part.model}
                                                 tr
-                                                    td Make
+                                                    td #{translation.MAKE}
                                                     td #{part.make.makeName}
                                                 tr
-                                                    td Year
+                                                    td #{translation.YEAR}
                                                     td #{part.year}
                 // Side-Bar
                 aside.col-md-3
@@ -72,37 +108,111 @@ block content
                             .widget_heading
                                 h5
                                     i.fa.fa-address-card-o(aria-hidden='true')
-                                    |  Dealer Contact
+                                    |  #{translation.DEALER_CONTACT}
                             .dealer_detail
                                 img(src='/uploads/avatars/'+pro.avatar, alt='image')
                                 p
-                                    span Name:
+                                    span #{translation.NAME}:
                                     |  #{pro.company}
                                 if pro.phoneNumber
                                     p
-                                        span Phone:
+                                        span #{translation.PHONE}:
                                         |  #{pro.phoneNumber}
                                 p
-                                    span city:
-                                    |  #{pro.address.city}
-                                a.btn.btn-xs(href='#') View Profile
+                                    span #{translation.CITY}:
+                                    if pro.address.city == "Hawler"
+                                        |  #{translation.CITY_HAWLER}
+                                    if pro.address.city == "Slemany"
+                                        |  #{translation.CITY_SLEMANY}
+                                    if pro.address.city == "Duhok"
+                                        |  #{translation.CITY_DUHOK}
+                                    if pro.address.city == "Halabja"
+                                        |  #{translation.CITY_HALABJA}
+                                    if pro.address.city == "Kirkuk"
+                                        |  #{translation.CITY_KIRKUK}
+                                    if pro.address.city == "Baghdad"
+                                        |  #{translation.CITY_BAGHDAD}
+                                    if pro.address.city == "Mosul"
+                                        |  #{translation.CITY_MOSUL}
+                                    if pro.address.city == "Basra"
+                                        |  #{translation.CITY_BASRA}
+                                    if pro.address.city == "Salah Al Din"
+                                        |  #{translation.CITY_SALAH_AL_DIN}
+                                    if pro.address.city == "Diyala"
+                                        |  #{translation.CITY_DIYALA}
+                                    if pro.address.city == "Wasit"
+                                        |  #{translation.CITY_WASIT}
+                                    if pro.address.city == "Maysan"
+                                        |  #{translation.CITY_MAYSAN}
+                                    if pro.address.city == "Dhi Qar"
+                                        |  #{translation.CITY_DHI_QAR}
+                                    if pro.address.city == "Al Muthana"
+                                        |  #{translation.CITY_AL_MUTHANA}
+                                    if pro.address.city == "Al-Qadisiyah"
+                                        |  #{translation.CITY_AL_QADISIYAH}
+                                    if pro.address.city == "Babil"
+                                        |  #{translation.CITY_BABIL}
+                                    if pro.address.city == "Karbala"
+                                        |  #{translation.CITY_KARBALA}
+                                    if pro.address.city == "Najaf"
+                                        |  #{translation.CITY_NAJAF}
+                                    if pro.address.city == "Al Anbar"
+                                        |  #{translation.CITY_AL_ANBAR}
+                                a.btn.btn-xs(href='#') #{translation.VIEW_PROFILE}
                     else
                         .sidebar_widget
                             .widget_heading
                                 h5
                                     i.fa.fa-address-card-o(aria-hidden='true')
-                                    |  Dealer Contact
+                                    |  #{translation.DEALER_CONTACT}
                             .dealer_detail
                                 p
-                                    span Name:
+                                    span #{translation.NAME}:
                                     |  #{part.user.name}
                                 if part.user.phoneNumber
                                     p
-                                        span Phone:
+                                        span #{translation.PHONE}:
                                         |  #{part.user.phoneNumber}
                                 p
-                                    span city:
-                                    |  #{part.location}
+                                    span #{translation.CITY}:
+                                    if part.location == "Hawler"
+                                        |  #{translation.CITY_HAWLER}
+                                    if part.location == "Slemany"
+                                        |  #{translation.CITY_SLEMANY}
+                                    if part.location == "Duhok"
+                                        |  #{translation.CITY_DUHOK}
+                                    if part.location == "Halabja"
+                                        |  #{translation.CITY_HALABJA}
+                                    if part.location == "Kirkuk"
+                                        |  #{translation.CITY_KIRKUK}
+                                    if part.location == "Baghdad"
+                                        |  #{translation.CITY_BAGHDAD}
+                                    if part.location == "Mosul"
+                                        |  #{translation.CITY_MOSUL}
+                                    if part.location == "Basra"
+                                        |  #{translation.CITY_BASRA}
+                                    if part.location == "Salah Al Din"
+                                        |  #{translation.CITY_SALAH_AL_DIN}
+                                    if part.location == "Diyala"
+                                        |  #{translation.CITY_DIYALA}
+                                    if part.location == "Wasit"
+                                        |  #{translation.CITY_WASIT}
+                                    if part.location == "Maysan"
+                                        |  #{translation.CITY_MAYSAN}
+                                    if part.location == "Dhi Qar"
+                                        |  #{translation.CITY_DHI_QAR}
+                                    if part.location == "Al Muthana"
+                                        |  #{translation.CITY_AL_MUTHANA}
+                                    if part.location == "Al-Qadisiyah"
+                                        |  #{translation.CITY_AL_QADISIYAH}
+                                    if part.location == "Babil"
+                                        |  #{translation.CITY_BABIL}
+                                    if part.location == "Karbala"
+                                        |  #{translation.CITY_KARBALA}
+                                    if part.location == "Najaf"
+                                        |  #{translation.CITY_NAJAF}
+                                    if part.location == "Al Anbar"
+                                        |  #{translation.CITY_AL_ANBAR}
                     //- .sidebar_widget
                     //-     .widget_heading
                     //-         h5
