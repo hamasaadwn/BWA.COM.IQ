@@ -210,17 +210,17 @@ html
                                         //-     label(for='remember') Remember Me
                                         .form-group
                                             input.btn.btn-block(type='submit', value=translation.LOGIN)
-                                //- .col-md-6.col-sm-6
-                                //-     h6.gray_text Login the Quick Way
-                                //-     a.btn.btn-block.facebook-btn(href='#')
-                                //-         i.fa.fa-facebook-square(aria-hidden='true')
-                                //-         |  Login with Facebook
-                                //-     a.btn.btn-block.twitter-btn(href='#')
-                                //-         i.fa.fa-twitter-square(aria-hidden='true')
-                                //-         |  Login with Twitter
-                                //-     a.btn.btn-block.googleplus-btn(href='#')
-                                //-         i.fa.fa-google-plus-square(aria-hidden='true')
-                                //-         |  Login with Google+
+                                .col-md-6.col-sm-6
+                                    h6.gray_text #{translation.LOGIN_THE_QUICK_WAY}
+                                    a.btn.btn-block.facebook-btn(href='/auth/facebook')
+                                        i.fa.fa-facebook-square(aria-hidden='true')
+                                        |  #{translation.LOGIN_WITH_FACEBOOK}
+                                    //- a.btn.btn-block.twitter-btn(href='#')
+                                    //-     i.fa.fa-twitter-square(aria-hidden='true')
+                                    //-     |  Login with Twitter
+                                    a.btn.btn-block.googleplus-btn(href='/auth/google')
+                                        i.fa.fa-google-plus-square(aria-hidden='true')
+                                        |  #{translation.LOGIN_WITH_GOOGLE_P}
                                 .mid_divider
                     .modal-footer.text-center
                         p
@@ -262,13 +262,13 @@ html
                                         .form-group
                                             input.btn.btn-block#sub(type='submit', value=translation.REGISTER)
                                 .col-md-6.col-sm-6
-                                    h6.gray_text Login the Quick Way
+                                    h6.gray_text #{translation.LOGIN_THE_QUICK_WAY}
                                     a.btn.btn-block.googleplus-btn(href='/auth/google')
                                         i.fa.fa-google-plus-square(aria-hidden='true')
-                                        |  Login with Google+
+                                        |  #{translation.LOGIN_WITH_GOOGLE_P}
                                     a.btn.btn-block.facebook-btn(href='/auth/facebook')
                                         i.fa.fa-facebook-square(aria-hidden='true')
-                                        |  Login with Facebook
+                                        |  #{translation.LOGIN_WITH_FACEBOOK}
                                 //-     a.btn.btn-block.twitter-btn(href='#')
                                 //-         i.fa.fa-twitter-square(aria-hidden='true')
                                 //-         |  Login with Twitter
@@ -276,8 +276,8 @@ html
                                 .mid_divider
                     .modal-footer.text-center
                         p
-                            | Already got an account? 
-                            a(href='#loginform', data-toggle='modal', data-dismiss='modal') Login Here
+                            | #{translation.ALREADY_GOT_AN_ACCOUNT}
+                            a(href='#loginform', data-toggle='modal', data-dismiss='modal') #{translation.LOGIN_HERE}
         // /Register-Form
 
 

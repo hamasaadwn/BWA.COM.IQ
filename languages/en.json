@@ -149,5 +149,9 @@
   "YOU_HAVE_REQUESTED_A_PROFILE": "you have requested a profile ",
   "PLEASE_WAIT": "please wait until we will review it",
   "YOU_DONT_HAVE_A_PROFILE": "you dont have a profile",
-  "PLEASE_CLICK_HERE": "please click here to request a profile"
+  "PLEASE_CLICK_HERE": "please click here to request a profile",
+  "LOGIN_THE_QUICK_WAY": "Login the Quick Way",
+  "LOGIN_WITH_FACEBOOK": "Login with Facebook",
+  "LOGIN_WITH_GOOGLE_P": "Login with Google+",
+  "PLEASE_ENTER_YOUR_PHONE_NUMBER": "Please Enter Your Phone Number"
 }

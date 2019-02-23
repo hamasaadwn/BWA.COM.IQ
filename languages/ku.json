@@ -143,9 +143,13 @@
   "IRAQ": "عراق",
   "ABOUT_THIS_CAR_PART": "دەربارەی ئەم پارچەیە",
   "YEAR": "ساڵ",
-  "EDIT_PROFILE": "",
-  "WE_HAVE_REQUESTED_A_PROFILE": "",
-  "PLEASE_WAIT": "",
-  "YOU_DONT_HAVE_A_PROFILE": "",
-  "PLEASE_CLICK_HERE": ""
+  "EDIT_PROFILE": "گۆڕانکاری لە پرۆفایل",
+  "YOU_HAVE_REQUESTED_A_PROFILE": "تۆ داوالاری پرۆفایلت ناردووە",
+  "PLEASE_WAIT": "تکایە چاوەڕوانبە",
+  "YOU_DONT_HAVE_A_PROFILE": "تۆ پرۆفایکت نیە",
+  "PLEASE_CLICK_HERE": "تکایە کلیک لێرە بکە بۆ داوکردنی پرۆفایل",
+  "LOGIN_THE_QUICK_WAY": "چونە ژورەوە بە ڕێگەی خێرا",
+  "LOGIN_WITH_FACEBOOK": "چونە ژورەوە بەهۆی فەیسبووک",
+  "LOGIN_WITH_GOOGLE_P": "چونەژورەوە بەهۆی گوگل پلەس",
+  "PLEASE_ENTER_YOUR_PHONE_NUMBER": "تکایە ژمارەی مۆبایل لێرە بنوسە"
 }

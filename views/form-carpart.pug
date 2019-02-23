@@ -1,100 +1,113 @@
 extends layout
 
 block content  
-
-	section.user_profile.inner_pages(style='padding-top: 1%')
-		.container
-			ul.coustom-breadcrumb
-				li
-					a(href='/', style='color: #1e96fe') #{translation.HOME_TXT}
-				li
-					a(style='color: #1e96fe') >
-				li(style='color: #1e96fe') #{translation.POST_A_VEHICLE_PART}
-			//- .user_profile_info.gray-bg.padding_4x4_40
-				//- .upload_user_logo
-				//- 	img(src='/images/222x172.jpg', alt='image')
-				//- 	.upload_newlogo
-				//- 		input(name='upload', type='file')
-				//- .dealer_info
-				//- 	h5 Muhannad Group
-				//- 	p Iraq - Sulaymaniyah
-			.row
-				.col-md-3.col-sm-3
-					.profile_nav
-						ul
-							li
-								a(href='/profile/myprofile') #{translation.PROFILE_SETTING}
-							li
-								a(href='/profile/myvehicles') #{translation.MY_VEHICLES}
-							li
-								a(href='/parts/myvehicleparts') #{translation.MY_VEHICLE_PARTS}
-							li
-								a(href='/car/addnewcar') #{translation.POST_A_VEHICLE}
-							li.active
-								a(href='/parts/addCarPart') #{translation.POST_A_VEHICLE_PART}
-							li
-								a(href='/auth/logout') #{translation.SIGN_OUT}
-				.col-md-6.col-sm-8
-					.profile_wrap
-						h5.uppercase.underline #{translation.POST_A_VEHICLE_PART}
-						form(action='/parts/addCarPart', method='post', encType="multipart/form-data")
-							.form-group
-								label.control-label #{translation.CARPART_NAME}
-								input#Price.form-control.white_bg(type='text',name='name')
-							.form-group
-								label.control-label #{translation.MAKE}
-								.select
-									select#makes.form-control.white_bg(name='make',required="required")
-										option(value="") #{translation.SELECT_BRAND}
-							.form-group
-								label.control-label #{translation.MODEL}
-								.select
-									select#models.form-control.white_bg(name="model",required="required")
-										option(value="") #{translation.SELECT_MODEL}
-							.form-group
-								label.control-label #{translation.MODEL_YEAR}
-								.select
-									select#year.form-control.white_bg(name="year",required="required")
-										option(value="") #{translation.SELECT_YEAR}
-							.form-group
-								label.control-label #{translation.CITY}
-								.select
-									select.form-control.white_bg(name="location")
-										option(value='Hawler') #{translation.CITY_HAWLER}
-										option(value='Slemany') #{translation.CITY_SLEMANY}
-										option(value='Duhok') #{translation.CITY_DUHOK}
-										option(value='Halabja') #{translation.CITY_HALABJA}
-										option(value='Kirkuk') #{translation.CITY_KIRKUK}
-										option(value='Baghdad') #{translation.CITY_BAGHDAD}
-										option(value='Mosul') #{translation.CITY_MOSUL}
-										option(value='Basra') #{translation.CITY_BASRA}
-										option(value='Salah Al Din') #{translation.CITY_SALAH_AL_DIN}
-										option(value='Diyala') #{translation.CITY_DIYALA}
-										option(value='Wasit') #{translation.CITY_WASIT}
-										option(value='Maysan') #{translation.CITY_MAYSAN}
-										option(value='Dhi Qar') #{translation.CITY_DHI_QAR}
-										option(value='Al Muthana') #{translation.CITY_AL_MUTHANA}
-										option(value='Al-Qadisiyah') #{translation.CITY_AL_QADISIYAH}
-										option(value='Babil') #{translation.CITY_BABIL}
-										option(value='Karbala') #{translation.CITY_KARBALA}
-										option(value='Najaf') #{translation.CITY_NAJAF}
-										option(value='Al Anbar') #{translation.CITY_AL_ANBAR}
-										
-							.form-group
-								label.control-label #{translation.PRICE} ($)
-								input#Price.form-control.white_bg(type='number',name='price')
-							.form-group
-								label.control-label #{translation.UPLOAD_IMAGE}
-								.vehicle_images#gallery
-									.upload_more_img
-										input#gallery-photo-add(name='pics',multiple="multiple",accept="image/*", type='file')
-							.form-group
-								label.control-label #{translation.DESCRIPTION}
-								textarea.form-control.white_bg(rows='4',name="description")
-							.form-group
-								button.btn(style='width: 100%;', type='submit')
-									| #{translation.SUBMIT_AND_POST} 
-									span.angle_arrow
-										i.fa.fa-angle-right(aria-hidden='true')
+	if !user.phoneNumber
+		section.user_profile.inner_pages(style='padding-top: 1%;')
+			.container
+				h5.uppercase.underline #{translation.PLEASE_ENTER_YOUR_PHONE_NUMBER}
+				form(action='/profile/addphonenumberr', method='post')
+					.form-group
+						label.control-label #{translation.PHONE_NUMBER}
+						input.form-control(type='number' , name='phoneNumber',placeholder=translation.PHONE_NUMBER,required='')
+					.form-group
+						button.btn(style='width: 100%;', type='submit')
+							| #{translation.SAVE}
+							span.angle_arrow
+								i.fa.fa-angle-right(aria-hidden='true')
+	else
+		section.user_profile.inner_pages(style='padding-top: 1%')
+			.container
+				ul.coustom-breadcrumb
+					li
+						a(href='/', style='color: #1e96fe') #{translation.HOME_TXT}
+					li
+						a(style='color: #1e96fe') >
+					li(style='color: #1e96fe') #{translation.POST_A_VEHICLE_PART}
+				//- .user_profile_info.gray-bg.padding_4x4_40
+					//- .upload_user_logo
+					//- 	img(src='/images/222x172.jpg', alt='image')
+					//- 	.upload_newlogo
+					//- 		input(name='upload', type='file')
+					//- .dealer_info
+					//- 	h5 Muhannad Group
+					//- 	p Iraq - Sulaymaniyah
+				.row
+					.col-md-3.col-sm-3
+						.profile_nav
+							ul
+								li
+									a(href='/profile/myprofile') #{translation.PROFILE_SETTING}
+								li
+									a(href='/profile/myvehicles') #{translation.MY_VEHICLES}
+								li
+									a(href='/parts/myvehicleparts') #{translation.MY_VEHICLE_PARTS}
+								li
+									a(href='/car/addnewcar') #{translation.POST_A_VEHICLE}
+								li.active
+									a(href='/parts/addCarPart') #{translation.POST_A_VEHICLE_PART}
+								li
+									a(href='/auth/logout') #{translation.SIGN_OUT}
+					.col-md-6.col-sm-8
+						.profile_wrap
+							h5.uppercase.underline #{translation.POST_A_VEHICLE_PART}
+							form(action='/parts/addCarPart', method='post', encType="multipart/form-data")
+								.form-group
+									label.control-label #{translation.CARPART_NAME}
+									input#Price.form-control.white_bg(type='text',name='name')
+								.form-group
+									label.control-label #{translation.MAKE}
+									.select
+										select#makes.form-control.white_bg(name='make',required="required")
+											option(value="") #{translation.SELECT_BRAND}
+								.form-group
+									label.control-label #{translation.MODEL}
+									.select
+										select#models.form-control.white_bg(name="model",required="required")
+											option(value="") #{translation.SELECT_MODEL}
+								.form-group
+									label.control-label #{translation.MODEL_YEAR}
+									.select
+										select#year.form-control.white_bg(name="year",required="required")
+											option(value="") #{translation.SELECT_YEAR}
+								.form-group
+									label.control-label #{translation.CITY}
+									.select
+										select.form-control.white_bg(name="location")
+											option(value='Hawler') #{translation.CITY_HAWLER}
+											option(value='Slemany') #{translation.CITY_SLEMANY}
+											option(value='Duhok') #{translation.CITY_DUHOK}
+											option(value='Halabja') #{translation.CITY_HALABJA}
+											option(value='Kirkuk') #{translation.CITY_KIRKUK}
+											option(value='Baghdad') #{translation.CITY_BAGHDAD}
+											option(value='Mosul') #{translation.CITY_MOSUL}
+											option(value='Basra') #{translation.CITY_BASRA}
+											option(value='Salah Al Din') #{translation.CITY_SALAH_AL_DIN}
+											option(value='Diyala') #{translation.CITY_DIYALA}
+											option(value='Wasit') #{translation.CITY_WASIT}
+											option(value='Maysan') #{translation.CITY_MAYSAN}
+											option(value='Dhi Qar') #{translation.CITY_DHI_QAR}
+											option(value='Al Muthana') #{translation.CITY_AL_MUTHANA}
+											option(value='Al-Qadisiyah') #{translation.CITY_AL_QADISIYAH}
+											option(value='Babil') #{translation.CITY_BABIL}
+											option(value='Karbala') #{translation.CITY_KARBALA}
+											option(value='Najaf') #{translation.CITY_NAJAF}
+											option(value='Al Anbar') #{translation.CITY_AL_ANBAR}
+											
+								.form-group
+									label.control-label #{translation.PRICE} ($)
+									input#Price.form-control.white_bg(type='number',name='price')
+								.form-group
+									label.control-label #{translation.UPLOAD_IMAGE}
+									.vehicle_images#gallery
+										.upload_more_img
+											input#gallery-photo-add(name='pics',multiple="multiple",accept="image/*", type='file')
+								.form-group
+									label.control-label #{translation.DESCRIPTION}
+									textarea.form-control.white_bg(rows='4',name="description")
+								.form-group
+									button.btn(style='width: 100%;', type='submit')
+										| #{translation.SUBMIT_AND_POST} 
+										span.angle_arrow
+											i.fa.fa-angle-right(aria-hidden='true')
 	script(src='/js/jquery.min.js')
 	script(src='/js/ajax/car.js')

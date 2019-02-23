@@ -5,6 +5,7 @@ const multer = require("multer");
 // Bring in profile Model
 let profile = require("../models/Profile");
 const Car = require("../models/Car");
+const User = require("../models/User");
 
 // multer config
 const storage = multer.diskStorage({
@@ -73,6 +74,29 @@ router.post("/changestate/:state/:id", ensureAuthenticated, (req, res) => {
   });
 });
 
+// add  phone number
+router.post("/addphonenumber", ensureAuthenticated, (req, res) => {
+  User.findOneAndUpdate(
+    { _id: req.user.id },
+    { $set: { phoneNumber: req.body.phoneNumber } },
+    { new: true }
+  ).then(car => {
+    req.flash("success", "phone number have been added");
+    res.redirect("/car/addnewcar");
+  });
+});
+
+// add  phone number
+router.post("/addphonenumberr", ensureAuthenticated, (req, res) => {
+  User.findOneAndUpdate(
+    { _id: req.user.id },
+    { $set: { phoneNumber: req.body.phoneNumber } },
+    { new: true }
+  ).then(car => {
+    req.flash("success", "phone number have been added");
+    res.redirect("/parts/addCarPart");
+  });
+});
 //create profile route
 router.get("/createprofile", ensureAuthenticated, (req, res) => {
   res.render("createProfile", {
