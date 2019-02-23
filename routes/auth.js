@@ -3,6 +3,7 @@ const router = express.Router();
 const bcrypt = require("bcryptjs");
 const multer = require("multer");
 const passport = require("passport");
+var passportGoogle = require("../auth/google");
 
 // Bring in User Model
 let User = require("../models/User");
@@ -73,6 +74,36 @@ router.post("/register", function(req, res) {
     });
   }
 });
+
+/* GOOGLE ROUTER */
+router.get(
+  "/google",
+  passport.authenticate("google", {
+    scope: ["profile", "email"]
+  })
+);
+
+router.get(
+  "/google/callback",
+  passport.authenticate("google", { failureRedirect: "/login" }),
+  function(req, res) {
+    res.redirect("/");
+  }
+);
+
+/* facebook router */
+router.get(
+  "/facebook",
+  passport.authenticate("facebook", { scope: ["email"] })
+);
+
+router.get(
+  "/facebook/callback",
+  passport.authenticate("facebook", {
+    successRedirect: "/",
+    failureRedirect: "/login"
+  })
+);
 
 // Login Process
 router.post("/login", (req, res, next) => {

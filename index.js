@@ -9,6 +9,8 @@ const session = require("express-session");
 const passport = require("passport");
 const config = require("./config/database");
 const i18n = require("i18n-express");
+var passportGoogle = require("./auth/google");
+var passportGoogle = require("./auth/facebook");
 
 mongoose.connect(config.database, { useNewUrlParser: true });
 mongoose.set("useFindAndModify", false);

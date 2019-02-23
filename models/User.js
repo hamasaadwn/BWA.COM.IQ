@@ -12,21 +12,20 @@ const UserSchema = new Schema({
     required: true
   },
   phoneNumber: {
-    type: String,
-    required: true
+    type: String
   },
   role: {
     type: String,
     default: "user"
   },
   password: {
-    type: String,
-    required: true
+    type: String
   },
   date: {
     type: Date,
     default: Date.now
-  }
+  },
+  userid: String
 });
 
 module.exports = User = mongoose.model("users", UserSchema);
