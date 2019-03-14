@@ -2,72 +2,66 @@ extends layout
 
 block content   
     // Banners
-    section#banner.banner-section
+    .text-center
+        button#filter_toggle.btn.btn-info(name='singlebutton',
+            | style='background-color: rgb(211, 62, 35); margin-top: 10px;') FIND A CAR
+    section#filter_form.inner-filter.gray-bg
         .container
-            .div_zindex
-                .row
-                    // Filter-Form
-                    section#filter_form.gray-bg
-                        .container 
-                            h3
-                                | #{translation.FIND_YOUR_CAR}
-                            .row
-                                form#filtSearch(action='/filtSearch', method='get')
-                                    .form-group.col-md-3.col-sm-6.black_input
-                                        .select
-                                            select.form-control(name="location")
-                                                option(value='') #{translation.ALL_LOCATIONS}
-                                                option(value='Hawler') #{translation.CITY_HAWLER}
-                                                option(value='Slemany') #{translation.CITY_SLEMANY}
-                                                option(value='Duhok') #{translation.CITY_DUHOK}
-                                                option(value='Halabja') #{translation.CITY_HALABJA}
-                                                option(value='Kirkuk') #{translation.CITY_KIRKUK}
-                                                option(value='Baghdad') #{translation.CITY_BAGHDAD}
-                                                option(value='Mosul') #{translation.CITY_MOSUL}
-                                                option(value='Basra') #{translation.CITY_BASRA}
-                                                option(value='Salah Al Din') #{translation.CITY_SALAH_AL_DIN}
-                                                option(value='Diyala') #{translation.CITY_DIYALA}
-                                                option(value='Wasit') #{translation.CITY_WASIT}
-                                                option(value='Maysan') #{translation.CITY_MAYSAN}
-                                                option(value='Dhi Qar') #{translation.CITY_DHI_QAR}
-                                                option(value='Al Muthana') #{translation.CITY_AL_MUTHANA}
-                                                option(value='Al-Qadisiyah') #{translation.CITY_AL_QADISIYAH}
-                                                option(value='Babil') #{translation.CITY_BABIL}
-                                                option(value='Karbala') #{translation.CITY_KARBALA}
-                                                option(value='Najaf') #{translation.CITY_NAJAF}
-                                                option(value='Al Anbar') #{translation.CITY_AL_ANBAR}
-                                    .form-group.col-md-3.col-sm-6.black_input
-                                        .select
-                                            select#makes.form-control(name='make')
-                                                option(value='') #{translation.ALL_BRANDS}
-
-                                    .form-group.col-md-3.col-sm-6.black_input
-                                        .select
-                                            select#models.form-control(name='model')
-                                                option(value='') #{translation.ALL_MODELS}
-
-                                    .form-group.col-md-3.col-sm-6.black_input
-                                        .select
-                                            select#year.form-control(name='year')
-                                                option(value='') #{translation.YEAR_OF_MODEL}
-                                    
-                                    .form-group.col-md-6.col-sm-6.black_input
-                                        label.form-label #{translation.PRICE_RANGE} ($)
-                                        input#price_range.span2(type='text', value='', data-slider-min='0', data-slider-max='100000', data-slider-step='5', data-slider-value='[0,50000]')
-                                        input#minprice(type='hidden',name="minPrice",value="0")
-                                        input#maxprice(type='hidden',name="maxPrice",value="50000")
-                                        input(type='hidden',name="page",value="1")
-                                    .form-group.col-md-3.col-sm-6.black_input
-                                        .select
-                                            select#searchType.form-control(name="searchType")
-                                                option(value='') #{translation.SEARCH_TYPE}
-                                                option(value='New') #{translation.NEW}
-                                                option(value='Used') #{translation.USED}
-                                    .form-group.col-md-3.col-sm-6
-                                        button.btn.btn-block(type='submit')
-                                            i.fa.fa-search(aria-hidden='true')
-                                            |  #{translation.SEARCH}
-                    // /Filter-Form
+            h3 Find Your Car 
+            .row
+                form(action='/filtSearch', method='get')
+                    .form-group.col-md-3.col-sm-6.black_input
+                        .select
+                            select.form-control(name="location")
+                                option(value='') #{translation.ALL_LOCATIONS}
+                                option(value='Hawler') #{translation.CITY_HAWLER}
+                                option(value='Slemany') #{translation.CITY_SLEMANY}
+                                option(value='Duhok') #{translation.CITY_DUHOK}
+                                option(value='Halabja') #{translation.CITY_HALABJA}
+                                option(value='Kirkuk') #{translation.CITY_KIRKUK}
+                                option(value='Baghdad') #{translation.CITY_BAGHDAD}
+                                option(value='Mosul') #{translation.CITY_MOSUL}
+                                option(value='Basra') #{translation.CITY_BASRA}
+                                option(value='Salah Al Din') #{translation.CITY_SALAH_AL_DIN}
+                                option(value='Diyala') #{translation.CITY_DIYALA}
+                                option(value='Wasit') #{translation.CITY_WASIT}
+                                option(value='Maysan') #{translation.CITY_MAYSAN}
+                                option(value='Dhi Qar') #{translation.CITY_DHI_QAR}
+                                option(value='Al Muthana') #{translation.CITY_AL_MUTHANA}
+                                option(value='Al-Qadisiyah') #{translation.CITY_AL_QADISIYAH}
+                                option(value='Babil') #{translation.CITY_BABIL}
+                                option(value='Karbala') #{translation.CITY_KARBALA}
+                                option(value='Najaf') #{translation.CITY_NAJAF}
+                                option(value='Al Anbar') #{translation.CITY_AL_ANBAR}
+                    .form-group.col-md-3.col-sm-6.black_input
+                        .select
+                            select#makes.form-control(name='make')
+                                option(value='') #{translation.ALL_BRANDS}
+                    .form-group.col-md-3.col-sm-6.black_input
+                        .select
+                            select#models.form-control(name='model')
+                                option(value='') #{translation.ALL_MODELS}
+                    .form-group.col-md-3.col-sm-6.black_input
+                        .select
+                            select#year.form-control(name='year')
+                                option(value='') #{translation.YEAR_OF_MODEL}
+                    .form-group.col-md-6.col-sm-6.black_input
+                        label.form-label #{translation.PRICE_RANGE} ($)
+                        input#price_range.span2(type='text', value='', data-slider-min='0', data-slider-max='100000', data-slider-step='5', data-slider-value='[0,50000]')
+                        input#minprice(type='hidden',name="minPrice",value="0")
+                        input#maxprice(type='hidden',name="maxPrice",value="50000")
+                        input(type='hidden',name="page",value="1")
+                    .form-group.col-md-3.col-sm-6.black_input
+                        .select
+                            select#searchType.form-control(name="searchType")
+                                option(value='') #{translation.SEARCH_TYPE}
+                                option(value='New') #{translation.NEW}
+                                option(value='Used') #{translation.USED}
+                    .form-group.col-md-3.col-sm-6
+                        button.btn.btn-block(type='submit')
+                            i.fa.fa-search(aria-hidden='true')
+                            |  #{translation.SEARCH}
+    // /Filter-Form
     // /Banners
     // Listing-detail
     section.listing-detail

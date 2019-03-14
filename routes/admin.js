@@ -199,6 +199,36 @@ router.get("/requests", ensureAuthenticated, (req, res) => {
   }
 });
 
+//delete a car make
+router.delete("/deletemake/:id", function(req, res) {
+  if (!req.user._id) {
+    res.status(500).send();
+  }
+  let query = { _id: req.params.id };
+  let query2 = { make: req.params.id };
+  CarModel.deleteMany(query2).exec();
+  Make.deleteOne(query, function(err) {
+    if (err) {
+      console.log(err);
+    }
+    res.send("Success");
+  });
+});
+
+//delete a car model
+router.delete("/deletemodel/:id", function(req, res) {
+  if (!req.user._id) {
+    res.status(500).send();
+  }
+  let query = { _id: req.params.id };
+  CarModel.deleteOne(query, function(err) {
+    if (err) {
+      console.log(err);
+    }
+    res.send("Success");
+  });
+});
+
 // Access Control
 function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {

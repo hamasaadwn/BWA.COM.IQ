@@ -17,7 +17,36 @@ $(document).ready(() => {
     $.post("/admin/getModels", { modId }).done(data => {
       $.each(data, (i, models) => {
         $("ul#models").append(
-          '<li class="list-group-item">' + models.modName + "</li>"
+          $(
+            '<li class="list-group-item" id=' +
+              models._id +
+              ">" +
+              models.modName +
+              "</li>"
+          ).append(
+            $(' <a href="#"' + '><i class="fa fa-trash" ></i></a>').on(
+              "click",
+              function(e) {
+                e.preventDefault();
+                var answer = confirm(
+                  "Deleting a used model can cause error \nAre you sure you want to delete this?"
+                );
+                var id = models._id;
+                if (answer) {
+                  $.ajax({
+                    type: "DELETE",
+                    url: "/admin/deletemodel/" + id,
+                    success: function(response) {
+                      $("#" + id).hide("slow");
+                    },
+                    error: function(err) {
+                      console.log(err);
+                    }
+                  });
+                }
+              }
+            )
+          )
         );
       });
     });
