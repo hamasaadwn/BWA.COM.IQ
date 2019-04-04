@@ -74,6 +74,15 @@ router.post("/changestate/:state/:id", ensureAuthenticated, (req, res) => {
   });
 });
 
+//update logo
+router.post("/logoupdate", ensureAuthenticated, (req, res) => {
+  console.log(req.body);
+  upload(req, res, err => {
+    console.log(req.body);
+  });
+  res.redirect("/profile/myprofile");
+});
+
 // add  phone number
 router.post("/addphonenumber", ensureAuthenticated, (req, res) => {
   User.findOneAndUpdate(

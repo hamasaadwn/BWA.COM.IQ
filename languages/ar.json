@@ -1,5 +1,6 @@
 {
   "DIRECTION": "rtl",
+  "LANGUAGE": "لغة",
   "HOME_TXT": "الصفحة الرئيسية",
   "DEALERS": "معارض سيارات",
   "NEW_CARS": "السيارات الجديدة",
@@ -9,6 +10,7 @@
   "LOGIN": "تسجيل الدخول",
   "REGISTER": "إنشاء حساب",
   "FIND_YOUR_CAR": "",
+  "FIND_A_CAR": "",
   "ALL_LOCATIONS": "",
   "ALL_BRANDS": "",
   "ALL_MODELS": "",

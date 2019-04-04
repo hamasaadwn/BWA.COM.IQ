@@ -28,6 +28,10 @@ html
         link(rel='apple-touch-icon-precomposed', sizes='72x72', href='/images/favicon-icon/apple-touch-icon-72-precomposed.png')
         link(rel='apple-touch-icon-precomposed', href='/images/favicon-icon/apple-touch-icon-57-precomposed.png')
         link(rel='shortcut icon', href='/images/favicon-icon/favicon.png')
+        //<link href="http://services.webchin.org/web-fonts/web-font?font=UniQAIDAR_7EMZE" rel="stylesheet" type="text/css">
+        // kurdish font
+        link(rel="stylesheet", type="text/css", href='http://fonts.googleapis.com/earlyaccess/droidarabickufi.css)')
+        link(rel="stylesheet", type="text/css", href='http://services.webchin.org/web-fonts/web-font?font=UniQAIDAR_Ebrahim')
         // Google-Font
         link(href='https://fonts.googleapis.com/css?family=Lato:300,400,700,900', rel='stylesheet')
         // HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
@@ -35,6 +39,11 @@ html
         //if lt IE 9
           script(src='https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js')
           script(src='https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js')
+        style.
+            body{
+            font-family: 'Droid Arabic Kufi', serif;;
+            }
+
     body(style="direction:"+translation.DIRECTION)
         // Header
         header
@@ -66,12 +75,15 @@ html
                                             a(href='#')
                                                 i.fa.fa-instagram(aria-hidden='true')
                                     ul
-                                        li
-                                            a(href="/?clang=en") English
-                                        li
-                                            a(href="/?clang=ku") کوردی
-                                        li
-                                            a(href="/?clang=ar") العربی
+                                        li.dropdown
+                                            a(href='#', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false') #{translation.LANGUAGE}
+                                            ul.dropdown-menu
+                                                li
+                                                    a(href="/?clang=en") English
+                                                li
+                                                    a(href="/?clang=ku") کوردی
+                                                li
+                                                    a(href="/?clang=ar") العربی
                                 if user == null || user == undifiended || user ==""
                                     .login_btn
                                         a.btn.btn-xs.uppercase(href='#loginform', data-toggle='modal', data-dismiss='modal') #{translation.LOGIN}

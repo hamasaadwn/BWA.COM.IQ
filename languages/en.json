@@ -1,5 +1,6 @@
 {
   "DIRECTION": "ltr",
+  "LANGUAGE": "Language",
   "HOME_TXT": "Home",
   "DEALERS": "Dealers",
   "NEW_CARS": "New Cars",
@@ -9,6 +10,7 @@
   "LOGIN": "Login",
   "REGISTER": "Register",
   "FIND_YOUR_CAR": "Find Your Car",
+  "FIND_A_CAR": "Find A Car",
   "ALL_LOCATIONS": "All Locations",
   "ALL_BRANDS": "All Brands",
   "ALL_MODELS": "All Models",

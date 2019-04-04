@@ -4,10 +4,10 @@ block content
     // Banners
     .text-center
         button#filter_toggle.btn.btn-info(name='singlebutton',
-            | style='background-color: rgb(211, 62, 35); margin-top: 10px;') FIND A CAR
+            | style='background-color: rgb(211, 62, 35); margin-top: 10px;') #{translation.FIND_A_CAR}
     section#filter_form.inner-filter.gray-bg
         .container
-            h3 Find Your Car 
+            h3 #{translation.FIND_YOUR_CAR}
             .row
                 form(action='/filtSearch', method='get')
                     .form-group.col-md-3.col-sm-6.black_input

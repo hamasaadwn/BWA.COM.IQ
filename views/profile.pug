@@ -2,6 +2,16 @@ extends layout
 
 block content   
     if profile && profile.state == "active"
+        //- .user_profile_info.gray-bg.padding_4x4_40
+        //-     .upload_user_logo
+        //-         img(src='/uploads/avatars/'+profile.avatar, alt='image')
+        //-         form(action='/profile/logoupdate', method='post', enctype='multipart/form-data')
+        //-             .upload_newlogo
+        //-                 input(name='upload', type='file',onchange="this.form.submit()")
+                        
+        //-     .dealer_info
+        //-         h2=profile.company
+
         .row
             .col-md-3.col-sm-3
                 .profile_nav
@@ -21,13 +31,13 @@ block content
             .col-md-6.col-sm-8
                 .profile_wrap
                     h5.uppercase.underline #{translation.EDIT_PROFILE}
-                    form(action='/profile/createprofile',method="post", encType="multipart/form-data")
+                    form(action='/profile/createprofile',method="post")
                         .form-group
                             label.control-label #{translation.COMPANY_NAME}
-                            input#fullname.form-control.white_bg(type='text', name='company', value=profile.company,required='')
+                            input#company.form-control.white_bg(type='text', name='company', value=profile.company,required='')
                         .form-group
                             label.control-label #{translation.YOUR_NAME}
-                            input#fullname.form-control.white_bg(type='text', name='name', value=profile.name,required='')
+                            input#name.form-control.white_bg(type='text', name='name', value=profile.name,required='')
                         .form-group
                             label.control-label #{translation.PHONE_NUMBER}
                             input#phone-number.form-control.white_bg(type='text', name='phoneNumber', value=profile.phoneNumber,required='')
@@ -114,10 +124,10 @@ block content
                                 
                         .form-group
                             label.control-label #{translation.STREET}
-                            input#fullname.form-control.white_bg(type='text', name='street',value=profile.address.street,required='')
+                            input#street.form-control.white_bg(type='text', name='street',value=profile.address.street,required='')
                         .form-group
                             label.control-label #{translation.WEBSITE}
-                            input#fullname.form-control.white_bg(type='text', name='website',value=profile.website)
+                            input#website.form-control.white_bg(type='text', name='website',value=profile.website)
                         .gray-bg.field-title
                             h6 #{translation.SOCIAL_LINKS}
                         .form-group
@@ -128,10 +138,10 @@ block content
                             input#instagram.form-control.white_bg(type='text', name='instagram', value=profile.socialLinks.instagram)
                         .form-group
                             label.control-label #{translation.YOUTUBE_LINK}
-                            input#instagram.form-control.white_bg(type='text', name='youtube', value=profile.socialLinks.youtube)
+                            input#youtube.form-control.white_bg(type='text', name='youtube', value=profile.socialLinks.youtube)
                         .form-group
                             label.control-label #{translation.TWITTER_LINK}
-                            input#instagram.form-control.white_bg(type='text', name='twitter', value=profile.socialLinks.twitter)
+                            input#twitter.form-control.white_bg(type='text', name='twitter', value=profile.socialLinks.twitter)
                         .form-group
                             label.control-label #{translation.INFO}
                             textarea.form-control(name="info")=profile.info
@@ -157,3 +167,6 @@ block content
                 .dealer_info
                     h5 #{translation.YOU_DONT_HAVE_A_PROFILE}
                     a.button.is-primary(href="/profile/createprofile") #{translation.PLEASE_CLICK_HERE}
+
+    script(src='/js/jquery.min.js')
+    script(src='/js/ajax/change-logo.js')
