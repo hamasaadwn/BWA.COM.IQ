@@ -103,7 +103,7 @@ block content
 											input#gallery-photo-add(name='pics',multiple="multiple",accept="image/*", type='file')
 								.form-group
 									label.control-label #{translation.DESCRIPTION}
-									textarea.form-control.white_bg(rows='4',name="description")
+									textarea.form-control.white_bg(rows='4',name="description",maxlength="500")
 								.form-group
 									button.btn(style='width: 100%;', type='submit')
 										| #{translation.SUBMIT_AND_POST} 

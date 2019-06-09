@@ -31,22 +31,26 @@ html
         //<link href="http://services.webchin.org/web-fonts/web-font?font=UniQAIDAR_7EMZE" rel="stylesheet" type="text/css">
         // kurdish font
         link(rel="stylesheet", type="text/css", href='http://fonts.googleapis.com/earlyaccess/droidarabickufi.css)')
-        link(rel="stylesheet", type="text/css", href='http://services.webchin.org/web-fonts/web-font?font=UniQAIDAR_Ebrahim')
+        //- link(rel="stylesheet", type="text/css", href='http://services.webchin.org/web-fonts/web-font?font=UniQAIDAR_Ebrahim')
         // Google-Font
-        link(href='https://fonts.googleapis.com/css?family=Lato:300,400,700,900', rel='stylesheet')
+        //- link(href='https://fonts.googleapis.com/css?family=Lato:300,400,700,900', rel='stylesheet')
+        //roboto 
+        <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+        //tajawl
+        //- <link href="https://fonts.googleapis.com/css?family=Tajawal:200,300,400,500,700,800,900&amp;subset=arabic" rel="stylesheet">
         // HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
         // WARNING: Respond.js doesn't work if you view the page via file://
         //if lt IE 9
           script(src='https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js')
           script(src='https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js')
-        style.
-            body{
-            font-family: 'Droid Arabic Kufi', serif;;
-            }
+        //- style.
+        //-     body{
+        //-     font-family: 'Droid Arabic Kufi', serif;;
+        //-     }
 
-    body(style="direction:"+translation.DIRECTION)
+    body(style="direction:"+translation.DIRECTION,class=translation.FONT)
         // Header
-        header
+        header.ltr
             .default-header
                 .container
                     .row
@@ -56,16 +60,21 @@ html
                                 img(src='/images/logo.png', alt='image')
                         .col-sm-9.col-md-10
                             .header_info
-                                .header_widgets
-                                    .circle_icon
-                                        i.fa.fa-envelope(aria-hidden='true')
-                                    p.uppercase_text Mail us : 
-                                    a(href='mailto:info@bwa.com.iq') info@bwa.com.iq
-                                .header_widgets
-                                    .circle_icon
-                                        i.fa.fa-phone(aria-hidden='true')
-                                    p.uppercase_text Call Us: 
-                                    a(href='tel:+964 770 152 7381') +964 770 152 7381
+                                //- select.selectpicker(data-width='fit')
+                                //-     option(data-content='<span class="flag-icon flag-icon-us"></span> English')
+                                //-         a(href="/?clang=en") English
+                                //-     option(data-content='<span class="flag-icon flag-icon-mx"></span> Español')
+                                //-         a(href="/?clang=ku") کوردی
+                                .dropdown.div-inline
+                                    button.btn.btn-primary.dropdown-toggle.btn-xs(type='button', data-toggle='dropdown') #{translation.LANGUAGE}
+                                        span.caret
+                                    ul.dropdown-menu
+                                        li
+                                            a(href="/?clang=en") English
+                                        li
+                                            a(href="/?clang=ku") کوردی
+                                        li
+                                            a(href="/?clang=ar") العربی
                                 .social-follow
                                     ul
                                         li
@@ -74,18 +83,19 @@ html
                                         li
                                             a(href='#')
                                                 i.fa.fa-instagram(aria-hidden='true')
-                                    ul
-                                        li.dropdown
-                                            a(href='#', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false') #{translation.LANGUAGE}
-                                            ul.dropdown-menu
-                                                li
-                                                    a(href="/?clang=en") English
-                                                li
-                                                    a(href="/?clang=ku") کوردی
-                                                li
-                                                    a(href="/?clang=ar") العربی
-                                if user == null || user == undifiended || user ==""
-                                    .login_btn
+                                    //- ul
+                                    //-     li.dropdown
+                                    //-         a(href='#', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false') #{translation.LANGUAGE}
+                                    //-         ul.dropdown-menu
+                                    //-             li
+                                    //-                 a(href="/?clang=en") English
+                                    //-             li
+                                    //-                 a(href="/?clang=ku") کوردی
+                                    //-             li
+                                    //-                 a(href="/?clang=ar") العربی
+                                .login_btn
+                                
+                                    if user == null || user == undifiended || user ==""
                                         a.btn.btn-xs.uppercase(href='#loginform', data-toggle='modal', data-dismiss='modal') #{translation.LOGIN}
                                         span 
                                         a.btn.btn-xs.uppercase(href='#signupform', data-toggle='modal', data-dismiss='modal') #{translation.REGISTER}

@@ -5,13 +5,24 @@
 ==========================*/
 
 body {
-    font-family: 'Lato', sans-serif;
+    
     margin: 0px;
     padding: 0px !important;
     overflow-x: hidden;
     color: #555555;
 }
 
+.font-ar{
+    font-family: 'Droid Arabic Kufi', sans-serif;
+}
+
+.font-en{
+    font-family: 'Roboto', sans-serif;
+}
+
+.ltr{
+    direction: ltr !important;
+}
 /****** Style Star Rating Widget *****/
 
 .rating {
@@ -6102,4 +6113,7 @@ table.info-tabel tr td {
     .testimonial_wrap {
         padding: 40px 20px;
     }
+}
+.div-inline{
+    display:inline-block;
 }

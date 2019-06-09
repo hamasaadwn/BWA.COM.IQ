@@ -144,7 +144,7 @@ block content
 
     // Listing-detail
     section.listing-detail
-        .container
+        .container.ltr
             .row
                 .col-md-9
                     .listing_images
@@ -188,9 +188,9 @@ block content
                                 li
                                     i.fa.fa-power-off(aria-hidden='true')
                                     if car.transmission == 'Automatic'
-                                        h5 #{car.TRANSMISSION_AUTOMATIC}
-                                    if car.transmission == 'Manual'
-                                        h5 #{car.TRANSMISSION_MANUAL}
+                                        h5 #{translation.TRANSMISSION_AUTOMATIC}
+                                    else if car.transmission == 'Manual'
+                                        h5 #{translation.TRANSMISSION_MANUAL}
                                     p #{translation.TRANSMISSION}
                             if car.cylNo
                                 li
@@ -499,7 +499,7 @@ block content
             .divider
             // Similar-Cars
             .similar_cars
-                h3 #{translation.CITY_AL_ANBAR}
+                //- h3 #{translation.CITY_AL_ANBAR}
                 .row
                     each doc, i in cars
                         .col-md-3.grid_listing

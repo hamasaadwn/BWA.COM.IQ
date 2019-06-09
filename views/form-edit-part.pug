@@ -141,7 +141,7 @@ block content
 								input#Price.form-control.white_bg(type='number',name='price',value=car.price)
 							.form-group
 								label.control-label #{translation.DESCRIPTION}
-								textarea.form-control.white_bg(rows='4',name="description")=car.description
+								textarea.form-control.white_bg(rows='4',name="description",maxlength="500")=car.description
 							.form-group
 								button.btn(style='width: 100%;', type='submit')
 									| #{translation.SAVE}

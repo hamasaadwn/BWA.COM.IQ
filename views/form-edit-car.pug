@@ -136,12 +136,12 @@ block content
 											option(value='Al Anbar') #{translation.CITY_AL_ANBAR}
 							.form-group
 								label.control-label #{translation.PRICE} ($)
-								input#Price.form-control.white_bg(type='number',name='price',value=car.price)
+								input#Price.form-control.white_bg(type='number',name='price',value=car.price,min="0",max="9999999")
 							.gray-bg.field-title
 								h6 #{translation.BASIC_INFO}
 							.form-group
 								label.control-label #{translation.KMS_DRIVEN}
-								input#kws.form-control.white_bg(type='number',name='kmsd',value=car.kmsd)
+								input#kws.form-control.white_bg(type='number',name='kmsd',value=car.kmsd,min="0",max="9999999")
 							.form-group
 								label.control-label #{translation.FUEL_TYPE}
 								.select
@@ -192,16 +192,16 @@ block content
 								h6 #{translation.TECHNICAL_SPECIFICATION}
 							.form-group
 								label.control-label #{translation.CYLINDERS}
-								input#cylinders.form-control.white_bg(type='text',name="cylNo",value=car.cylNo)
+								input#cylinders.form-control.white_bg(type='number',name="cylNo",value=car.cylNo,min="1",max="24")
 							.form-group
 								label.control-label #{translation.FEUL_TANK_CAPACITY}
-								input#capacity.form-control.white_bg(type='text',name="tankCap",value=car.tankCap)
+								input#capacity.form-control.white_bg(type='number',name="tankCap",value=car.tankCap,min="1",max="999")
 							.form-group
 								label.control-label #{translation.SEATING_CAPACITY}
-								input#s-capacity.form-control.white_bg(type='text',name="seatCap",value=car.seatCap)
+								input#s-capacity.form-control.white_bg(type='number',name="seatCap",value=car.seatCap,min="1",max="99")
 							.form-group
 								label.control-label #{translation.AIRBAGS}
-								input#airbags.form-control.white_bg(type='number',name="airbags",value=car.airbags)
+								input#airbags.form-control.white_bg(type='number',name="airbags",value=car.airbags,min="1",max="99")
 							.form-group
 								label.control-label #{translation.TRANSMISSION}
 								.form-check.form-check-inline
@@ -237,6 +237,10 @@ block content
 											option(value='4X4',selected="") 4X4
 										else
 											option(value='4X4') 4X4
+										if car.drivetrain == "2X4"
+											option(value='2X4',selected="") 2X4
+										else
+											option(value='2X4') 2X4
 							.gray-bg.field-title
 								h6 #{translation.ACCESSORIES}
 							.vehicle_accessories
@@ -290,7 +294,7 @@ block content
 									label(for='ac') #{translation.DUAL_AIR_CONDITIONER}
 							.form-group
 								label.control-label #{translation.VEHICLE_OVERVIEW_DESCRIPTION}
-								textarea.form-control.white_bg(rows='4',name="description")=car.description
+								textarea.form-control.white_bg(rows='4',name="description",maxlength="500")=car.description
 							.vehicle_type
 								.form-group.radio.col-md-6.accessories_list
 									if car.vehicle_type == "New"

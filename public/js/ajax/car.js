@@ -38,9 +38,9 @@ $(document).ready(function() {
     $.post("/admin/getModels", { modId }).done(data => {
       $.each(data, (i, models) => {
         $("select#models").append(
-          "<option value=" +
+          "<option value='" +
             models.modName +
-            " >" +
+            "' >" +
             models.modName +
             "</option>"
         );
