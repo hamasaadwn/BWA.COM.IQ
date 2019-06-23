@@ -17,7 +17,7 @@
   "ALL_MODELS": "All Models",
   "YEAR_OF_MODEL": "Year Of Model",
   "PRICE_RANGE": "Price Range",
-  "SEARCH_TYPE": "Type of Search",
+  "SEARCH_TYPE": "Condition",
   "SEARCH": "Search",
   "NEW": "New",
   "USED": "Used",
@@ -156,5 +156,9 @@
   "LOGIN_THE_QUICK_WAY": "Login the Quick Way",
   "LOGIN_WITH_FACEBOOK": "Login with Facebook",
   "LOGIN_WITH_GOOGLE_P": "Login with Google+",
-  "PLEASE_ENTER_YOUR_PHONE_NUMBER": "Please Enter Your Phone Number"
+  "PLEASE_ENTER_YOUR_PHONE_NUMBER": "Please Enter Your Phone Number",
+  "ENGINE": "Engine(L)",
+  "CHANGE_PASSWORD": "Change Password",
+  "OLD_PASSWORD": "Old Password",
+  "NEW_PASSWORD": "New Password"
 }

@@ -5,12 +5,21 @@ const Car = require("../models/Car");
 
 //home route
 router.get("/", (req, res) => {
-  Car.find({ state: "promoted" }).then(car => {
-    res.render("index", {
-      title: "home",
-      car
+  Car.find({ state: "promoted" })
+    .limit(4)
+    .sort({ date: -1 })
+    .then(carPromoted => {
+      Car.find({ state: "active" })
+        .limit(15)
+        .sort({ date: -1 })
+        .then(carActive => {
+          res.render("index", {
+            title: "home",
+            carPromoted,
+            carActive
+          });
+        });
     });
-  });
 });
 
 router.get("/home", (req, res) => {
@@ -49,18 +58,24 @@ router.get("/filtSearch", (req, res) => {
       },
       { page: page, limit: 15, sort: { date: -1 } }
     ).then(result => {
-      res.render("list-search", {
-        title: "search",
-        result,
-        maxPrice,
-        minPrice,
-        make,
-        model,
-        year,
-        searchType,
-        location,
-        page
-      });
+      Car.find({ state: "promoted" })
+        .limit(8)
+        .sort({ date: -1 })
+        .then(promotedCars => {
+          res.render("list-search", {
+            title: "search",
+            result,
+            maxPrice,
+            minPrice,
+            make,
+            model,
+            year,
+            searchType,
+            location,
+            page,
+            promotedCars
+          });
+        });
     });
   } else {
     Car.paginate(
@@ -106,12 +121,18 @@ router.get("/list", (req, res) => {
     },
     { page: page, limit: 15, sort: { date: -1 } }
   ).then(result => {
-    res.render("list-cars", {
-      title: "search",
-      result,
-      searchType,
-      page
-    });
+    Car.find({ state: "promoted" })
+      .limit(8)
+      .sort({ date: -1 })
+      .then(promotedCars => {
+        res.render("list-cars", {
+          title: "search",
+          result,
+          searchType,
+          page,
+          promotedCars
+        });
+      });
   });
 });
 

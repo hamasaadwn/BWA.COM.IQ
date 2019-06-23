@@ -57,7 +57,7 @@ html
                         .col-sm-3.col-md-2
                             .logo
                                 a(href='/')
-                                img(src='/images/logo.png', alt='image')
+                                    img(src='/images/logo.svg', width='200', height='58', alt='image')
                         .col-sm-9.col-md-10
                             .header_info
                                 //- select.selectpicker(data-width='fit')
@@ -66,15 +66,15 @@ html
                                 //-     option(data-content='<span class="flag-icon flag-icon-mx"></span> Español')
                                 //-         a(href="/?clang=ku") کوردی
                                 .dropdown.div-inline
-                                    button.btn.btn-primary.dropdown-toggle.btn-xs(type='button', data-toggle='dropdown') #{translation.LANGUAGE}
+                                    button.btn.btn-outline-dark.dropdown-toggle.btn-xs(type='button', data-toggle='dropdown') #{translation.LANGUAGE}
                                         span.caret
                                     ul.dropdown-menu
                                         li
                                             a(href="/?clang=en") English
                                         li
                                             a(href="/?clang=ku") کوردی
-                                        li
-                                            a(href="/?clang=ar") العربی
+                                        //- li
+                                        //-     a(href="/?clang=ar") العربی
                                 .social-follow
                                     ul
                                         li
@@ -248,8 +248,8 @@ html
                         p
                             | #{translation.DONT_HAVE_AN_ACCOUNT} 
                             a(href='#signupform', data-toggle='modal', data-dismiss='modal') #{translation.SIGNIP_HERE} 
-                        //- p
-                        //-     a(href='#forgotpassword', data-toggle='modal', data-dismiss='modal') Forgot Password ?
+                        p
+                            a(href='/auth/forgot') Forgot Password ?
         // /Login-Form
 
         // Register-Form

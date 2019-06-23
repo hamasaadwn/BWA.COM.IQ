@@ -154,5 +154,9 @@
   "LOGIN_THE_QUICK_WAY": "چونە ژورەوە بە ڕێگەی خێرا",
   "LOGIN_WITH_FACEBOOK": "چونە ژورەوە بەهۆی فەیسبووک",
   "LOGIN_WITH_GOOGLE_P": "چونەژورەوە بەهۆی گوگل پلەس",
-  "PLEASE_ENTER_YOUR_PHONE_NUMBER": "تکایە ژمارەی مۆبایل لێرە بنوسە"
+  "PLEASE_ENTER_YOUR_PHONE_NUMBER": "تکایە ژمارەی مۆبایل لێرە بنوسە",
+  "ENGINE": "حەجمی مەکینە بە لیتر",
+  "CHANGE_PASSWORD": "گۆرینی پاسۆرد",
+  "OLD_PASSWORD": "پاسۆردی پێشتر",
+  "NEW_PASSWORD": "پاسۆردی نوێ"
 }

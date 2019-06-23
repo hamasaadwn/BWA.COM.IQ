@@ -43,17 +43,17 @@ block content
 								label.control-label #{translation.MAKE}
 								.select
 									select#makes.form-control.white_bg(name='make',required="required")
-										option(value="") #{translation.SELECT_BRAND}
+										option(value=car.make._id) #{car.make.makeName}
 							.form-group
 								label.control-label #{translation.MODEL}
 								.select
 									select#models.form-control.white_bg(name="model",required="required")
-										option(value="") #{translation.SELECT_MODEL}
+										option(value=car.model) #{car.model}
 							.form-group
 								label.control-label #{translation.MODEL_YEAR}
 								.select
 									select#year.form-control.white_bg(name="year",required="required")
-										option(value="") #{translation.SELECT_YEAR}
+										option(value=car.year) #{car.year}
 							.form-group
 								label.control-label #{translation.CITY}
 								.select
@@ -142,6 +142,9 @@ block content
 							.form-group
 								label.control-label #{translation.KMS_DRIVEN}
 								input#kws.form-control.white_bg(type='number',name='kmsd',value=car.kmsd,min="0",max="9999999")
+							.form-group
+								label.control-label #{translation.ENGINE}
+								input.form-control.white_bg(type='number',name='engine',value=car.engine,min="0",max="999",step="0.01")
 							.form-group
 								label.control-label #{translation.FUEL_TYPE}
 								.select
@@ -237,10 +240,10 @@ block content
 											option(value='4X4',selected="") 4X4
 										else
 											option(value='4X4') 4X4
-										if car.drivetrain == "2X4"
-											option(value='2X4',selected="") 2X4
+										if car.drivetrain == "4X2"
+											option(value='4X2',selected="") 4X2
 										else
-											option(value='2X4') 2X4
+											option(value='4X2') 4X2
 							.gray-bg.field-title
 								h6 #{translation.ACCESSORIES}
 							.vehicle_accessories

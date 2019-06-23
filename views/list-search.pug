@@ -1,22 +1,14 @@
 extends layout
 
 block content
-    // Page Header
-    section.page-header.listing_page
+    section.listing-page(style="padding-top: 1%")
         .container
-            .page-header_wrap
-                .page-heading
-                    h1 #{translation.CAR_LISTING}
-                ul.coustom-breadcrumb
-                    li
-                        a(href='#') #{translation.HOME_TXT}
-                    li #{translation.CAR_LISTING}
-        // Dark Overlay
-        .dark-overlay
-    // /Page Header
-    // Listing-grid-view
-    section.listing-page
-        .container
+            ul.coustom-breadcrumb
+                li
+                    a(href='/', style='color: #1e96fe;') #{translation.HOME_TXT}
+                li
+                    a(style='color: #1e96fe;') >
+                li(style='color: #1e96fe;') #{translation.CAR_LISTING}
             .row
                 .col-md-9.col-md-push-3
                     .result-sorting-wrapper
@@ -191,6 +183,24 @@ block content
                                 span.angle_arrow
                                     i.fa.fa-angle-right(aria-hidden='true')
                         .dark-overlay
+                    .sidebar_widget
+                        .widget_heading
+                            h5
+                                i.fa.fa-car(aria-hidden='true')
+                                |  #{translation.FEATURED_CARS}
+                        .recent_addedcars
+                            ul
+                                each car in promotedCars
+                                    li.gray-bg
+                                        .recent_post_img
+                                            a(href='/car/forsale/'+car._id)
+                                                if(car.pics[0])
+                                                    img(src="/uploads/carpics/"+car.pics[0], alt='image')
+                                                if(!car.pics[0])
+                                                    img(src="/images/Car-Placeholder.jpg", alt='image')
+                                        .recent_post_title
+                                            a(href='href='/car/forsale/'+car._id') #{car.model}
+                                            p.widget_price $ #{car.price}
 
                 // /Side-Bar
     // /Listing-grid-view

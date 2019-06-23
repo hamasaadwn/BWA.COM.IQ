@@ -167,6 +167,10 @@ block content
                 .dealer_info
                     h5 #{translation.YOU_DONT_HAVE_A_PROFILE}
                     a.button.is-primary(href="/profile/createprofile") #{translation.PLEASE_CLICK_HERE}
+    .container
+        .user_profile_info.padding_4x4_40
+            a(href="/auth/changepassword") #{translation.CHANGE_PASSWORD}
+            br
 
     script(src='/js/jquery.min.js')
     script(src='/js/ajax/change-logo.js')

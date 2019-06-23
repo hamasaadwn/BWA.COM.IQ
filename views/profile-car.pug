@@ -231,6 +231,10 @@ block content
                                                 tr
                                                     td #{translation.MODEL_YEAR}
                                                     td #{car.year}
+                                                if car.engine
+                                                    tr
+                                                        td #{translation.ENGINE}
+                                                        td #{car.engine}
                                                 if car.kmsd
                                                     tr
                                                         td #{translation.KMS_DRIVEN}

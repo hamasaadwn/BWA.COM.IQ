@@ -99,6 +99,9 @@ const CarSchema = new Schema({
   date: {
     type: Date,
     default: Date.now
+  },
+  engine: {
+    type: Number
   }
 });
 

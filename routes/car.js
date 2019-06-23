@@ -64,6 +64,7 @@ router.post("/addnewcar", ensureAuthenticated, (req, res) => {
     if (req.body.starter) car.starter = req.body.starter;
     if (req.body.cruise) car.cruise = req.body.cruise;
     if (req.body.ac) car.ac = req.body.ac;
+    if (req.body.engine) car.engine = req.body.engine;
 
     if (req.body.location) car.location = req.body.location;
     if (req.files) {
@@ -86,14 +87,16 @@ router.get("/forsale/:id", (req, res) => {
     .populate("make")
     .then(car => {
       Profile.findOne({ user: car.user._id }).then(pro => {
-        Car.find({ state: "promoted" }).then(cars => {
-          res.render("profile-car", {
-            title: "car",
-            car,
-            cars,
-            pro
+        Car.find({ state: "promoted" })
+          .limit(8)
+          .then(cars => {
+            res.render("profile-car", {
+              title: "car",
+              car,
+              cars,
+              pro
+            });
           });
-        });
       });
     });
 });
@@ -141,6 +144,7 @@ router.post("/edit/:id", ensureAuthenticated, (req, res) => {
   if (req.body.starter) carFields.starter = req.body.starter;
   if (req.body.cruise) carFields.cruise = req.body.cruise;
   if (req.body.ac) carFields.ac = req.body.ac;
+  if (req.body.engine) carFields.engine = req.body.engine;
 
   Car.findOneAndUpdate(
     { _id: req.params.id },

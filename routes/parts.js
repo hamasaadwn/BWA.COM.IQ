@@ -4,6 +4,7 @@ const multer = require("multer");
 const fs = require("fs");
 
 const CarParts = require("../models/CarParts");
+const Car = require("../models/Car");
 
 // multer config
 const storage = multer.diskStorage({
@@ -96,11 +97,17 @@ router.get("/list", (req, res) => {
   }
   CarParts.paginate({ state: "active" }, { page: page, limit: 15 }).then(
     result => {
-      res.render("list-parts", {
-        title: "parts",
-        result,
-        page
-      });
+      Car.find({ state: "promoted" })
+        .limit(8)
+        .sort({ date: -1 })
+        .then(promotedCars => {
+          res.render("list-parts", {
+            title: "parts",
+            result,
+            page,
+            promotedCars
+          });
+        });
     }
   );
 });
@@ -128,17 +135,23 @@ router.get("/search", (req, res) => {
       },
       { page: page, limit: 15, sort: { date: -1 } }
     ).then(result => {
-      res.render("list-search-parts", {
-        title: "search",
-        result,
-        maxPrice,
-        minPrice,
-        make,
-        model,
-        year,
-        location,
-        page
-      });
+      Car.find({ state: "promoted" })
+        .limit(8)
+        .sort({ date: -1 })
+        .then(promotedCars => {
+          res.render("list-search-parts", {
+            title: "search",
+            result,
+            maxPrice,
+            minPrice,
+            make,
+            model,
+            year,
+            location,
+            page,
+            promotedCars
+          });
+        });
     });
   } else {
     CarParts.paginate(

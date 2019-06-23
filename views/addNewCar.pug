@@ -104,6 +104,9 @@ block content
 									label.control-label #{translation.KMS_DRIVEN}
 									input#kws.form-control.white_bg(type='number',name='kmsd',min="0",max="9999999")
 								.form-group
+									label.control-label #{translation.ENGINE}
+									input.form-control.white_bg(type='number',name='engine',min="0",max="999",step="0.01")
+								.form-group
 									label.control-label #{translation.FUEL_TYPE}
 									.select
 										select.form-control.white_bg(name="fuelType")
@@ -154,7 +157,7 @@ block content
 											option(value='FWD') FWD
 											option(value='RWD') RWD
 											option(value='4X4') 4X4
-											option(value='2X4') 2X4
+											option(value='4X2') 4X2
 								.gray-bg.field-title
 									h6 #{translation.ACCESSORIES}
 								.vehicle_accessories
