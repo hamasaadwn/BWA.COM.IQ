@@ -200,7 +200,7 @@ router.post("/forgot", (req, res) => {
         service: "gmail",
         auth: {
           user: "hamasaadwn@gmail.com",
-          pass: "bwa.com.iq1"
+          pass: ""
         }
       });
       let info = transporter.sendMail({
