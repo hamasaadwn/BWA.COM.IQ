@@ -190,17 +190,18 @@ block content
                                 |  #{translation.FEATURED_CARS}
                         .recent_addedcars
                             ul
-                                each car in promotedCars
-                                    li.gray-bg
-                                        .recent_post_img
-                                            a(href='/car/forsale/'+car._id)
-                                                if(car.pics[0])
-                                                    img(src="/uploads/carpics/"+car.pics[0], alt='image')
-                                                if(!car.pics[0])
-                                                    img(src="/images/Car-Placeholder.jpg", alt='image')
-                                        .recent_post_title
-                                            a(href='href='/car/forsale/'+car._id') #{car.model}
-                                            p.widget_price $ #{car.price}
+                                if promotedCars
+                                    each car in promotedCars
+                                        li.gray-bg
+                                            .recent_post_img
+                                                a(href='/car/forsale/'+car._id)
+                                                    if(car.pics[0])
+                                                        img(src="/uploads/carpics/"+car.pics[0], alt='image')
+                                                    if(!car.pics[0])
+                                                        img(src="/images/Car-Placeholder.jpg", alt='image')
+                                            .recent_post_title
+                                                a(href='href='/car/forsale/'+car._id') #{car.model}
+                                                p.widget_price $ #{car.price}
 
                 // /Side-Bar
     // /Listing-grid-view
