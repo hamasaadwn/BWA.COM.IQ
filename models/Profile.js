@@ -13,8 +13,7 @@ const ProfileSchema = new Schema({
     required: true
   },
   avatar: {
-    type: String,
-    default: "default.jpg"
+    type: String
   },
   name: {
     type: String,

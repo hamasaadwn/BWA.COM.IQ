@@ -28,7 +28,10 @@ block content
                             .col-sm-3.col-xs-4
                                 .dealer_logo
                                     a(href='/dealers/profile/'+doc._id)
-                                        img(src='/uploads/avatars/'+doc.avatar, alt='image')
+                                        if(doc.avatar)
+                                            img(src='/uploads/avatars/'+doc.avatar, alt='image')
+                                        if(!doc.avatar)
+                                            img(src='/images/Car-Placeholder.jpg', alt='image')
                             .col-sm-6.col-xs-8
                                 .dealer_info
                                     h5

@@ -380,7 +380,10 @@ block content
                                     i.fa.fa-address-card-o(aria-hidden='true')
                                     |  #{translation.DEALER_CONTACT}
                             .dealer_detail
-                                img(src='/uploads/avatars/'+pro.avatar, alt='image')
+                                if(pro.avatar)
+                                    img(src='/uploads/avatars/'+pro.avatar, alt='image')
+                                if(!pro.avatar)
+                                    img(src='/images/Car-Placeholder.jpg', alt='image')
                                 p
                                     span #{translation.NAME}:
                                     |  #{pro.company}

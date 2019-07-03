@@ -13,7 +13,10 @@ block content
             .row
                 .col-md-3.col-sm-3.col-xs-4
                     .dealer_logo
-                        img(src='/uploads/avatars/'+pro.avatar, alt='image')
+                        if(pro.avatar)
+                            img(src='/uploads/avatars/'+pro.avatar, alt='image')
+                        if(!pro.avatar)
+                            img(src='/images/Car-Placeholder.jpg', alt='image')
                 .col-md-6.col-sm-5.col-xs-8
                     .dealer_info
                         h4 #{pro.company}

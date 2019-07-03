@@ -160,5 +160,6 @@
   "ENGINE": "Engine(L)",
   "CHANGE_PASSWORD": "Change Password",
   "OLD_PASSWORD": "Old Password",
-  "NEW_PASSWORD": "New Password"
+  "NEW_PASSWORD": "New Password",
+  "CHANGE_LOGO": "Change Logo"
 }

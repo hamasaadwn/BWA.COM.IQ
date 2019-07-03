@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const multer = require("multer");
+const fs = require("fs");
 
 // Bring in profile Model
 let profile = require("../models/Profile");
@@ -72,15 +73,6 @@ router.post("/changestate/:state/:id", ensureAuthenticated, (req, res) => {
       });
     }
   });
-});
-
-//update logo
-router.post("/logoupdate", ensureAuthenticated, (req, res) => {
-  console.log(req.body);
-  upload(req, res, err => {
-    console.log(req.body);
-  });
-  res.redirect("/profile/myprofile");
 });
 
 // add  phone number
@@ -195,6 +187,37 @@ router.post("/createprofile", ensureAuthenticated, (req, res) => {
   });
 });
 
+//change logo form
+router.get("/changelogo", ensureAuthenticated, (req, res) => {
+  Profile.findOne({ user: req.user.id }).then(profile => {
+    res.render("form-change-logo", {
+      title: "Change Logo",
+      profile
+    });
+  });
+});
+
+//change logo submit
+router.post("/changelogo", ensureAuthenticated, (req, res) => {
+  Profile.findOne({ user: req.user.id }).then(profile => {
+    upload(req, res, err => {
+      if (profile.avatar) {
+        fs.unlink("./public/uploads/avatars/" + profile.avatar, err => {
+          if (err) throw err;
+        });
+      }
+      let avatar = req.file.filename;
+      Profile.findOneAndUpdate(
+        { user: req.user.id },
+        { $set: { avatar: avatar } },
+        (error, doc) => {
+          req.flash("success", "Logo have been updated");
+          res.redirect("/profile/changelogo");
+        }
+      );
+    });
+  });
+});
 // Access Control
 function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {

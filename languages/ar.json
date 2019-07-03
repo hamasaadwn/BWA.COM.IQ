@@ -158,5 +158,6 @@
   "ENGINE": "",
   "CHANGE_PASSWORD": "",
   "OLD_PASSWORD": "",
-  "NEW_PASSWORD": ""
+  "NEW_PASSWORD": "",
+  "CHANGE_LOGO": ""
 }
