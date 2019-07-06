@@ -98,7 +98,7 @@ block content
                     .add_compare
                 .col-md-3.text-center
                     .price_info
-                        p $ #{car.price}
+                        p#price #{car.price}
                     .row
                     .car-location
                         span
@@ -582,3 +582,7 @@ block content
     script(src='/js/ajax/car.js')
     script(src='/js/ajax/filter-search.js')
     script(src='/js/ajax/car-promote.js')
+    script.
+        var price = document.getElementById("price").innerHTML;
+        price = '$ ' + price.replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+        document.getElementById("price").innerHTML = price;

@@ -68,7 +68,7 @@ html
                                 //-     option(data-content='<span class="flag-icon flag-icon-mx"></span> Español')
                                 //-         a(href="/?clang=ku") کوردی
                                 .dropdown.div-inline
-                                    button.btn.btn-outline-dark.dropdown-toggle.btn-xs(type='button', data-toggle='dropdown') #{translation.LANGUAGE}
+                                    button.btn-primary.dropdown-toggle(type='button', data-toggle='dropdown') #{translation.LANGUAGE}
                                         span.caret
                                     ul.dropdown-menu
                                         li
@@ -250,8 +250,8 @@ html
                         p
                             | #{translation.DONT_HAVE_AN_ACCOUNT} 
                             a(href='#signupform', data-toggle='modal', data-dismiss='modal') #{translation.SIGNIP_HERE} 
-                        p
-                            a(href='/auth/forgot') Forgot Password ?
+                        //p
+                            //a(href='/auth/forgot') Forgot Password ?
         // /Login-Form
 
         // Register-Form
